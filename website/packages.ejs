@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <% include ./includes/head-meta-tag.ejs %>
+    <% include ./includes/head-link-tag.ejs %>
+    <link rel="stylesheet" href="/assets/css/package.css">
+    <% include ./includes/head-script-tag.ejs %>
+</head>
+
+<body>
+    <% include ./includes/body-no-script-tag.ejs %>
+    <div id="nsg-taxi-wrapper">
+        <div id="nsg-taxi-page">
+            <% include ./includes/header.ejs %>
+            <div id="nsg-taxi-package" class="nsg-taxi-section-gray">
+                <div class="container nsg-taxi-package-container">
+                    <div class="row">
+                        <% for(var i=0; i < packageData.length; i++) { %>
+                        <div class="col-md-6 col-md-6 col-sm-12 col-xs-12 col-xxs-12 animate-box"
+                            data-animate-effect="fadeIn">
+                            <div class="package-details">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-xxs-12 animate-box">
+                                        <img src="<%= packageData[i].package_image %>" class="package-image"
+                                            alt="<%= packageData[i].package_image_name %>" />
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-xxs-12 animate-box">
+                                        <div class="row package-description">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 animate-box">
+                                                <span class="package-title"><%= packageData[i].package_name %></span>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 animate-box">
+                                                <span class="package-rating">
+                                                    <% for(var j=0; j < packageData[i].package_rating; j++) { %>
+                                                    <i class="icon-star-full"></i>
+                                                    <% } %>
+                                                    <% for(var j=0; j < 5 - packageData[i].package_rating; j++) { %>
+                                                    <i class="icon-star-empty"></i>
+                                                    <% } %>
+                                                </span>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 animate-box">
+                                                <div class="package-location"><%= packageData[i].package_location %>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 animate-box">
+                                                <% for(var j=0; j < packageData[i].package_services.length; j++) { %>
+                                                <span class="package-service">✓
+                                                    <%= packageData[i].package_services[j].package_service %></span>
+                                                <% } %>
+                                            </div>
+                                            <div
+                                                class="col-lg-5 col-md-5 col-sm-5 col-xs-5 col-xxs-5 animate-box text-left">
+                                                <div class="package-fare">
+                                                    &#8377;<%= packageData[i].package_plans[0].package_plan_fare %>/-
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-lg-7 col-md-7 col-sm-7 col-xs-7 col-xxs-7 animate-box text-right">
+                                                <a href="/package-booking/<%= packageData[i].page_url %>/<%= packageData[i].package_location %>"
+                                                    target="_blank" class="package-book">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div id="nsg-taxi-package-description">
+                <div class="container">
+                    <div class="row animate-box">
+                        <div class="col-md-12 text-center nsg-taxi-heading">
+                            <br><br>
+                            <h2>NSG Packages</h2><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 animate-box">
+                            <p>
+                                <strong>
+                                    Making your stay cosy, comfortable and memorable!
+                                </strong>
+                            </p>
+                        </div>
+                        <div class="col-md-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 animate-box">
+                            <p>
+                                After arriving at our dream destination, the next thing which we are very particular
+                                about is where we are going to stay. With NSGA we ensure our customer's privacy and
+                                comfortability.
+                            </p>
+                        </div>
+                        <div class="col-md-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 animate-box">
+                            <p>
+                                Irrespective of it being your weekend vacation plans or honeymoon vacation gateway, we
+                                have an array of travel deals together with hotel and resorts package available for
+                                every category of people. Some of the packages include:
+                            </p>
+                            <p>
+                                - Honeymoon packages<br>
+                                - Goa packages <br>
+                                - College tours <br>
+                                - Yatra packages <br>
+                                - Corporate packages <br>
+                            </p>
+                            <p>
+                                And many more packages for you to choose from.
+                            </p>
+                            <p>
+
+                                However, we are proud to say that NSGA has an answer to all your holiday needs and
+                                requirements!
+
+
+                            </p>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% include ./includes/footer.ejs %>
+        </div>
+    </div>
+    <% include ./includes/footer-script.ejs %>
+</body>

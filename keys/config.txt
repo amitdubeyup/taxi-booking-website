@@ -1,0 +1,56 @@
+GIT URL: http://52.66.189.111/root/node-pdf-boat-server.git
+AWS PUBLIC IP: 65.0.184.27
+
+How to connect AWS?
+
+Step 1: chmod 400 nsg-taxi.pem
+Step 2: ssh -i nsg-taxi.pem ec2-user@13.232.94.14
+
+How to install NodeJS AWS?
+
+Step 1: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+Step 2: . ~/.nvm/nvm.sh
+Step 3: nvm install node
+Step 4: node -e "console.log('Running Node.js ' + process.version)"
+
+How to install GIT AWS?
+
+Step 1: sudo yum update -y
+Step 2: sudo yum install git -y
+Step 3: git version
+
+How to install Google Chrome AWS?
+
+Step 1: sudo curl https://intoli.com/install-google-chrome.sh | bash
+Step 2: sudo mv /usr/bin/google-chrome-stable /usr/bin/google-chrome
+Step 3: google-chrome – version && which google-chrome
+Step 4: repoquery --nvr --whatprovides libXss.so.1 libXScrnSaver-1.2.2-6.1.el7
+Step 5: sudo yum install libXScrnSaver
+
+How to install MongoDB AWS?
+
+Step 1: sudo su -
+Step 2: vim /etc/yum.repos.d/mongodb-org-4.4.repo
+Step 3:
+      Paste following content using insert mode(press i)
+
+      "[mongodb-org-4.4]
+      name=MongoDB Repository
+      baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64/
+      gpgcheck=1
+      enabled=1
+      gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc"
+
+      press escape command to exit from insert mode & then press(:wq) will save & close file.
+
+Step 4: sudo yum install -y mongodb-org
+Step 5: sudo systemctl start mongod
+Step 6: sudo systemctl daemon-reload
+Step 7: sudo systemctl status mongod
+Step 8: sudo systemctl enable mongod
+
+How to generate SSL Certificate?
+
+Step 1: openssl genrsa -out server-key.pem 1024
+Step 2: openssl req -new -key server-key.pem -out server-csr.pem
+Step 3: openssl x509 -req -in server-csr.pem -signkey server-key.pem -out server-cert.pem

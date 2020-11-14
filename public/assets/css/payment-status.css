@@ -1,0 +1,103 @@
+.payment-status-section {
+    width: 100%;
+}
+
+.payment-status-content {
+    box-shadow: 1px 1px 10px 5px #eae7e6;
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.common-class, .row {
+    padding: 0px;
+    margin: 0px;
+}
+
+.payment-status-container {
+    width: 100%;
+}
+
+.padding-top {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.padding-bottom {
+    padding-bottom: 40px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+h4 {
+    text-transform: capitalize;
+}
+
+.company-name {
+    font-size: 1.5rem;
+}
+
+.contact-info span {
+    font-size: 14px;
+    padding: 0px 50px 0px 50px;
+}
+
+.contact-info hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.client-info {
+    font-size: 15px;
+}
+
+.total-amounts {
+    text-align: right;
+}
+
+.important {
+    margin-top: 40px;
+}
+
+.important-notes {
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+ol li {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+th, td {
+    text-align: center;
+}
+
+.right-text {
+    text-align: right;
+}
+
+.failed-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 30px 0px;
+}
+
+.failed-description {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-bottom: 30px;
+}
+
+.try-again {
+    margin: 30px 0px;
+}
+
+@media screen and (max-width: 649px) {
+    .payment-content {
+        width: 90%;
+        margin: 25px auto;
+    }
+}

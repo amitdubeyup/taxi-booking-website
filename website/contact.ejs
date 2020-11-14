@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+	<% include ./includes/head-meta-tag.ejs %>
+	<% include ./includes/head-link-tag.ejs %>
+	<% include ./includes/head-script-tag.ejs %>
+</head>
+
+<body>
+	<% include ./includes/body-no-script-tag.ejs %>
+	<div id="nsg-taxi-wrapper">
+		<div id="nsg-taxi-page">
+			<% include ./includes/header.ejs %>
+			<div id="nsg-taxi-contact" class="nsg-taxi-section-gray">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+							<h3>Contact Information</h3>
+							<p>We ensure to be there for our thousands of worthy customers
+								even in the oddest hours of the day!</p>
+								<p>We are available on every portal which suits you the best.
+									Whether you mail us or place a call our toll-free number, we
+									assure you prompt services in an absolutely hassle-free manner.</p>
+									<p>We are a Gurgaon based company where our team of dedicated
+										and friendly personnel works together to provide services.</p>
+						</div>
+					</div>
+					<div class="row animate-box">
+						<div class="col-md-6">
+							<h3 class="section-title">Our Address</h3>
+							<ul class="contact-info">
+								<li><i class="icon-location-pin"></i> Shop No. 209, Central Arcade, DLF-2,
+									Gurugram, Haryana 122002 - India</li>
+								<li><i class="icon-phone2"></i>
+									<a href="tel:+911244077634">+91-124-4077634</a>
+								</li>
+								<li><i class="icon-mail"></i>
+									<a href="mailto:info@nsgtaxi.com">info@nsgtaxi.com</a>
+								</li>
+								<li><i class="icon-globe2"></i>
+									<a href="/">www.nsgtaxi.com</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<form class="contact-form" id="contact-form">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Name" id="name"
+												name="name">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Mobile" id="mobile"
+												name="mobile">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Email" id="email"
+												name="email">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea class="form-control" id="message" name="message" cols="30"
+												rows="7" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="submit" value="Send Message" class="btn btn-primary">
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.745319692554!2d77.03588071490354!3d28.4269406824994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d187414349b0f%3A0xa66b50839c7d7d6b!2sNSG%20TAXI!5e0!3m2!1sen!2sin!4v1598773584428!5m2!1sen!2sin"
+				width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+				tabindex="0"></iframe>
+			<% include ./includes/footer.ejs %>
+		</div>
+	</div>
+	<% include ./includes/footer-script.ejs %>
+	<script type="text/javascript" src="/assets/js/jquery.validation.js"></script>
+	<script type="text/javascript" src="/assets/js/additional-method.js"></script>
+	<script type="text/javascript" src="/assets/js/contact.js"></script>
+</body>
+
+</html>

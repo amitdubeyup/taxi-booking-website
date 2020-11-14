@@ -1,0 +1,101 @@
+.contact-section {
+    margin-top: 100px;
+}
+
+.contact-heading {
+    margin: 50px;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: #ad6c6c;
+}
+
+.message {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+.address-section {
+    margin: 100px 0px;
+}
+
+.get-in-touch {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #ad6c6c;
+}
+
+.address-details {
+    text-align: center;
+    padding: 25px;
+}
+
+.social-section {
+    text-align: center;
+}
+.social-images{
+    width: 40px;
+    height: 40px;
+    margin: 0px 5px;
+}
+
+.contact-form {
+    padding: 30px 10px;
+}
+
+.input-block {
+    padding: 10px;
+}
+.contact-form textarea {
+    margin-bottom: 0px;
+}
+.submit {
+    padding-right: 10px;
+    margin-top: 20px;
+}
+
+.submit-button {
+    background: #ef6437;
+    color: #fff;
+}
+.c-button.b-60 {
+    height: 34px;
+    line-height: 34px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 649px) {
+    .text-dark {
+        margin: 5px 5px;
+        padding: 3px 6px !important;
+        display: inline-block;
+    }
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .contact-section {
+        margin-top: 129px;
+    }
+    .contact-heading {
+        margin: 0px;
+        padding-top: 30px;
+    }
+    .message {
+        margin-bottom: 0px;
+    }
+    .address-section {
+        margin: 20px 0px;
+    }
+    .contact-form {
+        padding: 30px 0px;
+    }
+    .input-block {
+        padding: 10px 0px;
+    }
+}

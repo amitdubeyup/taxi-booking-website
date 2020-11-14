@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <% include ./includes/head-meta-tag.ejs %>
+    <% include ./includes/head-link-tag.ejs %>
+    <link rel="stylesheet" href="/assets/css/hotel.css">
+    <% include ./includes/head-script-tag.ejs %>
+</head>
+
+<body>
+    <% include ./includes/body-no-script-tag.ejs %>
+    <div id="nsg-taxi-wrapper">
+        <div id="nsg-taxi-page">
+            <% include ./includes/header.ejs %>
+            <div id="nsg-taxi-hotel-booking" class="nsg-taxi-section-gray">
+                <div class="container hotel-booking-container">
+                    <input type="hidden" id="hotel_amount" name="hotel_amount" value="<%= hotel_amount %>" />
+                    <input type="hidden" id="hotel_document_id" name="hotel_document_id" value="<%= document_id %>" />
+                    <input type="hidden" id="hotel_owner_mobile" name="hotel_owner_mobile" value="<%= owner_mobile %>" />
+                    <input type="hidden" id="hotel_name" name="hotel_name" value="<%= hotel_name %>" />
+                    <input type="hidden" id="hotel_location" name="hotel_location" value="<%= hotel_location %>" />
+                    <input type="hidden" id="hotel_quotation" name="hotel_quotation" value="<%= hotel_quotation %>" />
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeIn">
+                            <div class="hotel-details">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 hotel-image-collection" id="image-preview">
+                                        <img src="<%= hotel_image %>" class="hotel-large-image"
+                                            alt="<%= hotel_image_name %>" />
+                                    </div>
+                                    <% for(var i=0; i <= 5; i++) { %>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-xxs-2 hotel-image-collection">
+                                        <% if(hotel_image_collections[i]) { %>
+                                        <img src="<%= hotel_image_collections[i].hotel_image %>" class="hotel-sort-image"
+                                            alt="<%= hotel_image_collections[i].hotel_image_name %>" onClick="displayImagePreview('<%= hotel_image_collections[i].hotel_image %>', '<%= hotel_image_collections[i].hotel_image_name %>')" />
+                                        <% } else { %>
+                                            <img src="<%= hotel_image %>" class="hotel-sort-image"
+                                            alt="<%= hotel_image_name %>" onClick="displayImagePreview('<%= hotel_image %>', '<%= hotel_image_name %>')"/>
+                                        <% } %>
+                                    </div>
+                                    <% } %>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                        <div class="hotel-booking-name">
+                                            <%= hotel_name %>(
+                                            <span class="hotel-booking-rating">
+                                                <% for(var j=0; j < hotel_rating; j++) { %>
+                                                <i class="icon-star-full"></i>
+                                                <% } %>
+                                                <% for(var j=0; j < 5 - hotel_rating; j++) { %>
+                                                <i class="icon-star-empty"></i>
+                                                <% } %>
+                                            </span>)
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="hotel-booking-location">
+                                            <%= hotel_location %>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 animate-box">
+                                        <div class="hotel-booking-services">
+                                            <% for(var j=0; j < hotel_services.length; j++) { %>
+                                            <span class="hotel-service">✓
+                                                <%= hotel_services[j].hotel_service %></span>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start ">
+                                        <div class="input-field">
+                                            <div class="left">Base Amount</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
+                                        <div class="input-field">
+                                            <div class="right" id="amount-value">&#8377;0.00/-
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6">
+                                        <div class="input-field">
+                                            <div class="left">GST Amount</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6">
+                                        <div class="input-field">
+                                            <div class="right" id="tax-value">&#8377;0.00/-
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
+                                        <div class="input-field">
+                                            <div class="left">Total Fare</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
+                                        <div class="input-field">
+                                            <div class="right amount-right" id="total-value">
+                                                &#8377;0.00/-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 fare-section-end">
+                                        <div class="hotel-quotation-title"><strong>Note:</strong><span
+                                                class="hotel-quotation"><%= hotel_quotation %></span></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeIn">
+                            <form id="hotel_form" autocomplete="off">
+                                <div class="personal-details">
+                                    <div class="row">
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <section>
+                                                    <label for="salutation">Salutation:</label>
+                                                    <select class="form-control" placeholder="Select Salutation"
+                                                        id="salutation" name="salutation">
+                                                        <option title="salutation" value="Mr.">Mr.</option>
+                                                        <option title="salutation" value="Ms.">Ms.</option>
+                                                        <option title="salutation" value="Mrs.">Mrs.</option>
+                                                    </select>
+                                                </section>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <label for="first_name">First Name:</label>
+                                                <input type="text" class="form-control text-capitalize"
+                                                    placeholder="First Name" id="first_name" name="first_name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <label for="last_name">Last Name:</label>
+                                                <input type="text" class="form-control text-capitalize"
+                                                    placeholder="Last Name" id="last_name" name="last_name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <label for="mobile">Mobile:</label>
+                                                <input type="text" class="form-control" placeholder="Mobile" id="mobile"
+                                                    name="mobile" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <label for="email">Email:</label>
+                                                <input type="text" class="form-control" placeholder="Email" id="email"
+                                                    name="email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <section>
+                                                <label for="room_type">Room Type:</label>
+                                                <select class="form-control" placeholder="Select Room Type"
+                                                    id="room_type" name="room_type" onChange="selectPrice()">
+                                                    <% for(var j=0; j < hotel_rooms.length; j++) { %>
+                                                        <option title="<%= hotel_rooms[j].hotel_room_type %>" value="<%= hotel_rooms[j].hotel_room_type %>-<%= hotel_rooms[j].hotel_room_fare %>"><%= hotel_rooms[j].hotel_room_type %> - <%= hotel_rooms[j].hotel_room_type_description %></option>
+                                                    <% } %>
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <label for="check_in_date">Check-In Date:</label>
+                                                <input type="date" class="form-control" id="check_in_date"
+                                                    name="check_in_date" onChange="calculateFinalAmount()"
+                                                    placeholder="DD/MM/YYYY" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-6 mt">
+                                            <div class="input-field">
+                                                <label for="check_out_date">Check-Out Date:</label>
+                                                <input type="date" class="form-control" id="check_out_date"
+                                                    name="check_out_date" onChange="calculateFinalAmount()"
+                                                    placeholder="DD/MM/YYYY" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-4 mt">
+                                            <section>
+                                                <label for="rooms">Rooms:</label>
+                                                <select class="form-control" placeholder="Select Rooms" id="rooms"
+                                                    name="rooms" onChange="calculateFinalAmount()">
+                                                    <option title="rooms" value="1">1</option>
+                                                    <option title="rooms" value="2">2</option>
+                                                    <option title="rooms" value="3">3</option>
+                                                    <option title="rooms" value="4">4</option>
+                                                    <option title="rooms" value="5">5</option>
+                                                    <option title="rooms" value="6">6</option>
+                                                    <option title="rooms" value="7">7</option>
+                                                    <option title="rooms" value="8">8</option>
+                                                    <option title="rooms" value="9">9</option>
+                                                    <option title="rooms" value="10">10</option>
+                                                    <option title="rooms" value="11">11</option>
+                                                    <option title="rooms" value="12">12</option>
+                                                    <option title="rooms" value="13">13</option>
+                                                    <option title="rooms" value="14">14</option>
+                                                    <option title="rooms" value="15">15</option>
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-4 mt">
+                                            <section>
+                                                <label for="guests">Guests:</label>
+                                                <select class="form-control" placeholder="Select Guests" id="guests"
+                                                    name="guests" onChange="calculateFinalAmount()">
+                                                    <option title="guests" value="1">1</option>
+                                                    <option title="guests" value="2">2</option>
+                                                    <option title="guests" value="3">3</option>
+                                                    <option title="guests" value="4">4</option>
+                                                    <option title="guests" value="5">5</option>
+                                                    <option title="guests" value="6">6</option>
+                                                    <option title="guests" value="7">7</option>
+                                                    <option title="guests" value="8">8</option>
+                                                    <option title="guests" value="9">9</option>
+                                                    <option title="guests" value="10">10</option>
+                                                    <option title="guests" value="11">11</option>
+                                                    <option title="guests" value="12">12</option>
+                                                    <option title="guests" value="13">13</option>
+                                                    <option title="guests" value="14">14</option>
+                                                    <option title="guests" value="15">15</option>
+                                                    <option title="guests" value="16">16</option>
+                                                    <option title="guests" value="17">17</option>
+                                                    <option title="guests" value="18">18</option>
+                                                    <option title="guests" value="19">19</option>
+                                                    <option title="guests" value="20">20</option>
+                                                    <option title="guests" value="21">21</option>
+                                                    <option title="guests" value="22">22</option>
+                                                    <option title="guests" value="23">23</option>
+                                                    <option title="guests" value="24">24</option>
+                                                    <option title="guests" value="25">25</option>
+                                                    <option title="guests" value="26">26</option>
+                                                    <option title="guests" value="27">27</option>
+                                                    <option title="guests" value="28">28</option>
+                                                    <option title="guests" value="29">29</option>
+                                                    <option title="guests" value="30">30</option>
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-4 mt">
+                                            <section>
+                                                <label for="children">Children:</label>
+                                                <select class="form-control" placeholder="Select Children" id="children"
+                                                    name="children" onChange="calculateFinalAmount()">
+                                                    <option title="children" value="0">0</option>
+                                                    <option title="children" value="1">1</option>
+                                                    <option title="children" value="2">2</option>
+                                                    <option title="children" value="3">3</option>
+                                                    <option title="children" value="4">4</option>
+                                                    <option title="children" value="5">5</option>
+                                                    <option title="children" value="6">6</option>
+                                                    <option title="children" value="7">7</option>
+                                                    <option title="children" value="8">8</option>
+                                                    <option title="children" value="9">9</option>
+                                                    <option title="children" value="10">10</option>
+                                                    <option title="children" value="11">11</option>
+                                                    <option title="children" value="12">12</option>
+                                                    <option title="children" value="13">13</option>
+                                                    <option title="children" value="14">14</option>
+                                                    <option title="children" value="15">15</option>
+                                                    <option title="children" value="16">16</option>
+                                                    <option title="children" value="17">17</option>
+                                                    <option title="children" value="18">18</option>
+                                                    <option title="children" value="19">19</option>
+                                                    <option title="children" value="20">20</option>
+                                                    <option title="children" value="21">21</option>
+                                                    <option title="children" value="22">22</option>
+                                                    <option title="children" value="23">23</option>
+                                                    <option title="children" value="24">24</option>
+                                                    <option title="children" value="25">25</option>
+                                                    <option title="children" value="26">26</option>
+                                                    <option title="children" value="27">27</option>
+                                                    <option title="children" value="28">28</option>
+                                                    <option title="children" value="29">29</option>
+                                                    <option title="children" value="30">30</option>
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
+                                            <div class="input-field">
+                                                <label for="message">Message(Optional):</label>
+                                                <input type="text" class="form-control" id="message" name="message"
+                                                    placeholder="Any special message" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
+                                            <div class="input-field">
+                                                <input type="checkbox" class="checkbox-input" id="terms_and_conditions"
+                                                    name="terms_and_conditions" onClick="acceptTermsConditions()" />
+                                                <label for="terms_and_conditions" class="checkbox-label">
+                                                    I read and accept <a hreflang="en" href="/terms-and-conditions"
+                                                        target="_blank" class="terms-link">Terms & Conditions.</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <input type="submit" class="btn btn-primary btn-block book-now"
+                                                value="Book Now">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 fare-section-end">
+                            <div class="hotel-booking-description">
+                                About <%= hotel_name %>
+                            </div>
+                            <div class="hotel-booking-description-content">
+                                <%= hotel_description %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="otp_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Verify Your Mobile</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="input-block">
+                                        <div class="input-label">Mobile Verification Code</div>
+                                        <div class="input-box">
+                                            <input type="number" placeholder="Please enter mobile verification code"
+                                                class="form-control" id="mobile_code" name="mobile_code" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="submit-otp">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% include ./includes/footer.ejs %>
+        </div>
+    </div>
+    <% include ./includes/footer-script.ejs %>
+    <script src="/assets/js/jquery.validation.js"></script>
+    <script src="/assets/js/additional-method.js"></script>
+    <script src="/assets/js/hotel-booking.js"></script>
+</body>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nsg-taxi-india",
+  "private_key_id": "786a78d456d7366bc39c846ea0ddaf2ad2adf65d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDYn/aoZVtSWJEw\nODk1i6dRKtQUJjJNnGYaIM2BDVAHu1jW4vrQedvzTwVa4W+WHAZibCExvG+Xzkka\n/ejACT8Q3c3NcSMObAI3ct/atDeA8XHZPiA/ERbON5i6N4tDlVDAeBXtkxgWSU/e\noIjJUjPUvod80ri+E5xM9NbUZWgRhwgHIRvSsWFk6TTCkPoQzT7+2spVy+D0UYue\nXQaZ+9ccmRmMIymE18UerAbUUcUMQhsuuhBeejOZqBOdLHi8MKrcjGN7VzR//9Ta\neHxoZaQE6i2nYVbI8vtMBoHV7hae1MBo5iTK0/dYbnDtzZvDpw0gaAShBEeq462n\nE7NpP7ULAgMBAAECggEABO4TC38PBn88gqfs6WKNwsOiQvkhkPGbw0F229aFOT/S\nxEUzJxZ24oEsYoaZ5wUpQgkq8jpTIdXQhRw9NU2gkU4y9ld6UEQ2ArQLEyuhzb3w\n9Nw8mKLXbYcHY0mLUlTuGwtAmIEN/cfaWPs3Ubmcs11IsRcMnErO9lNmJjxOk4N/\n+wsRsJin44hUyADjBQCWQwuHiaaWLZHw9eb3Y9zeFG5a8/0iGOwBMAZKpfM+vEKC\nJmaEv/xKM96ri2nMSHLucTqfctsCZaUfckXX1+q0yaMQQMkVn0zuZKfBxKO0gbZC\nl4TnFuL6XsvX86SWfRfwhaLNtW6W8V6d/VPHfrdDxQKBgQDw5liJGjlPofiAcnCp\nK10XqDvsNJ+KXB7PY4xBo3lrKfgPm/sglvWN3XpugbZTtB57Uuu439H5YREr8tCf\n1i4bTJiKIeqvNv3nJcCmq88/lEbu5pjOi8AX/VNvNpx4W+sZ9S7CiakgcS8gk0vZ\n6WP+4XVaKmyeHvmC0e7AyomrBQKBgQDmNBWZYtj2WknRLUEuVHhuzbAwZlKOsZSQ\nfRSwOVGZo229EgpTlTbmqj2UgU+3zSfCX66QDJiTcjJA0VkRPVZs3Rfc3yNb5MRL\nWmLaf3mxiG9tzuK5FxXu9stfct5sVB3culjKu7TLGVRMEJv+1tdrAQQdKed+/Kvi\n7N7HHDh8zwKBgArWEb15FILkgk0k2LSDYtihlLB3XYXXxvsFO1XoiJmtdZ8eIRnC\nMKGFCPDXnN//Bi/99uSGDOfu2drkPUYzWDeaJnJwPCJNkvZG2Hem2te9T8OHU/BW\nkPmDR7GE/1zapaSxRr0xfA4diUUp2wueWAUrFyBLMD+cnRSpZNf/RFoRAoGAaEjm\nFAOEmC2UzS78HTnlCQUjMPnZoozt6XrQeXit77TqjMF0biLlqR8sIG9oJrLItTRV\nRyp9oCYWf+iWucmYsl6CZeusAAAlsKE0sRkYjwVovU0AxqqfpA6nWQkXm+mLUagV\ne1oHcA58cqz/jjXThsUCERgfqBZc48M8tOSi7l8CgYBLxPTiSPNCKjr1PAzhA/A1\nthSmcjHJxE5ixe3G1Aoymf8aMlpN1nAN4ILPaUWliHxOmzT3aM4kRNHQLorSbgJp\nmsb5WhW6WAp/11nvzEJr72gempx0ICMHcOjBl96AJRmw5gDAPrkigIK4pPnBudTz\ncBVjq+XzKlHj9ly/ImFvEA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-nec2e@nsg-taxi-india.iam.gserviceaccount.com",
+  "client_id": "101429718091284776120",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-nec2e%40nsg-taxi-india.iam.gserviceaccount.com"
+}

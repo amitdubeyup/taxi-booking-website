@@ -1,0 +1,21 @@
+.privacy-section{
+    width: 90%;
+    margin: 40px auto;
+}
+*{
+    font-size: 16px !important;
+}
+@media screen and (max-width: 649px) {
+    .text-dark {
+        margin: 5px 5px;
+        padding: 3px 6px !important;
+        display: inline-block;
+    }
+    .privacy-section {
+        margin-top: 100px;
+    }
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+  }

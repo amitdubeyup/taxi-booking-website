@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div style="width: 100%;">
+        <div style="width: 70%;margin: auto;padding: 15px 15px 15px 30px;margin-top: 75px;">Hi, Someone has contacted through the website. Please see the message below.</div>
+        <table style="width: 70%;margin: auto;border: 2px solid #e6dede;border-radius: 4px;padding: 15px;margin-top: 10px;">
+            <tr>
+                <td style="text-align: left;    padding: 10px 0px;"><strong>Name</strong></td>
+                <td style="text-align: right;    padding: 10px 0px;">${contactData['name']}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;    padding: 10px 0px;"><strong>Mobile</strong></td>
+                <td style="text-align: right;    padding: 10px 0px;">+91-${contactData['mobile']}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;    padding: 10px 0px;"><strong>Email</strong></td>
+                <td style="text-align: right;    padding: 10px 0px;">${contactData['email']}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;    padding: 10px 0px;"><strong>Message</strong></td>
+                <td style="text-align: right;    padding: 10px 0px;">${contactData['message']}</td>
+            </tr>
+        </table>
+        <div style="width: 70%;margin: auto;padding: 15px 15px 15px 30px;margin-top: 40px;">
+            Cheers,<br><br> NSG TAXI
+        </div>
+    </div>
+</body>
+
+</html>

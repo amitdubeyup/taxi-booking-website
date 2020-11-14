@@ -1,0 +1,127 @@
+.payment-section {
+    width: 100%;
+}
+
+.payment-content {
+    box-shadow: 1px 1px 10px 5px #eae7e6;
+    width: 50%;
+    margin: 50px auto;
+}
+
+.common-class {
+    padding: 0px;
+    margin: 0px;
+}
+
+.booking-payment {
+    text-align: center;
+    padding: 20px;
+    background: #ef6437;
+    color: #fff;
+}
+
+.booking-details {
+    text-align: center;
+    border-bottom: 1px solid #d4cdcb;
+    padding-bottom: 20px;
+}
+
+.description {
+    font-size: 14px;
+    padding: 15px 0px 15px 20px;
+    border-bottom: 1px solid #f1ecec;
+}
+
+.total-value {
+    color: #ef6437;
+    font-weight: 600;
+}
+
+.pay-now-cash {
+    text-align: center;
+    padding: 20px;
+    background: #755a52;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pay-now-cash a {
+    color: #fff;
+}
+
+.pay-now-online {
+    text-align: center;
+    padding: 20px;
+    background: #ef6437;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pay-now-online a {
+    color: #fff;
+}
+
+.promo-code {
+    padding: 15px 0px 15px 20px;
+    font-size: 14px;
+    min-height: 61px;
+}
+
+.amount-section {
+    padding-top: 7px;
+}
+
+.promo-code-input {
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border: 1px solid #cad6ca;
+    color: #ef6437;
+    outline: none;
+    width: 50%;
+    font-weight: 600;
+}
+
+.promo-code-button {
+    padding: 7px 15px;
+    background: #ef6437;
+    color: #fff;
+    cursor: pointer;
+}
+.important {
+    font-size: 14px;
+    padding: 15px 0px 30px 20px;
+    border-top: 1px solid #f1ecec;
+    border-bottom: 1px solid #f1ecec;
+}
+.important b {
+    margin: 5px 0px;
+    font-weight: 400;
+}
+.important span{
+    margin: 5px 0px;
+}
+sup{
+    color: #755a52;
+    margin-left: 5px;
+}
+small {
+    color: #ef6437;
+}
+::placeholder {
+    color: #755a52 !important;
+    opacity: 0.5 !important;
+}
+:-ms-input-placeholder {
+    color: #755a52 !important;
+    opacity: 0.5 !important;
+}
+::-ms-input-placeholder {
+    color: #755a52 !important;
+    opacity: 0.5 !important;
+}
+@media screen and (max-width: 649px) {
+    .payment-content {
+        width: 90%;
+        margin: 25px auto;
+    }
+}

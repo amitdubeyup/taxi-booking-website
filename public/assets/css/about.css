@@ -1,0 +1,38 @@
+.about-section {
+    margin-top: 100px;
+}
+
+.about-heading {
+    margin: 50px;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: #ad6c6c;
+}
+.about-description {
+    margin: 100px;
+    margin-bottom: 250px;
+}
+
+@media screen and (max-width: 649px) {
+    .text-dark {
+        margin: 5px 5px;
+        padding: 3px 6px !important;
+        display: inline-block;
+    }
+    .about-section {
+        margin-top: 129px;
+    }
+    .about-heading {
+        margin: 0px;
+    }
+    .about-description {
+        margin: 50px 0px;
+        margin-bottom: 250px;
+    }
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+  }
