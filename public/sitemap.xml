@@ -23,7 +23,7 @@
             <changefreq>daily</changefreq>
         </url>
         <url>
-            <loc>https://www.nsgtaxi.com/session/login</loc>
+            <loc>https://www.dashboard.nsgtaxi.com/session/login</loc>
             <lastmod>2020-11-10</lastmod>
             <priority>0.80</priority>
             <changefreq>daily</changefreq>

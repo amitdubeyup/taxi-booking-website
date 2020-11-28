@@ -94,7 +94,7 @@ function sendVendorBookingSMS(bookingData, vendorsMobile) {
     vendorsMobile.forEach((element) => {
         mobile = mobile + `91${element},`;
     });
-    const message = `Dear Partner, A new trip request for ${bookingData['car_type']} from ${bookingData['pickup_address']} to ${bookingData['drop_off_address']} for ${bookingData['pickup_date']} ${bookingData['pickup_time']} is now available to pick. Earn Rs ${returnVendorAmount(bookingData['total_fare'], bookingData['deduction_rate'])}. NSG TAXI, Check https://www.nsgtaxi.com/session/login.`;
+    const message = `Dear Partner, A new trip request for ${bookingData['car_type']} from ${bookingData['pickup_address']} to ${bookingData['drop_off_address']} for ${bookingData['pickup_date']} ${bookingData['pickup_time']} is now available to pick. Earn Rs ${returnVendorAmount(bookingData['total_fare'], bookingData['deduction_rate'])}. NSG TAXI, Check https://www.dashboard.nsgtaxi.com/session/login.`;
     sendCustomPinnacleSMS(mobile, message).then(() => {
         console.log('Booking sms send to vendors successfully!');
     }).catch((error) => {

@@ -163,7 +163,7 @@ function returnSitemap(req, res, routeData, blogData, hotelData, packageData) {
             <changefreq>daily</changefreq>
         </url>
         <url>
-            <loc>https://www.nsgtaxi.com/session/login</loc>
+            <loc>https://www.dashboard.nsgtaxi.com/session/login</loc>
             <lastmod>${formatDate(new Date(), 'yyyy-mm-dd')}</lastmod>
             <priority>0.80</priority>
             <changefreq>daily</changefreq>
