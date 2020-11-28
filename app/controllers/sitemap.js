@@ -1,3 +1,4 @@
+const fs = require('fs');
 const config = require('../config');
 const RouteCollection = config.db.collection('Route');
 const BlogCollection = config.db.collection('Blog');
@@ -231,10 +232,13 @@ function returnSitemap(req, res, routeData, blogData, hotelData, packageData) {
         ${pages}
     </urlset>
     `;
-    res.status(200);
-    return res.json({
-        success: true,
-        message: 'Sitemap generated successfully!',
-        data: finalXML
+
+    fs.writeFile('public/sitemap.xml', finalXML, function (err) {
+        res.status(200);
+        return res.json({
+            success: true,
+            message: 'Sitemap generated successfully!',
+            data: finalXML
+        });
     });
 }
