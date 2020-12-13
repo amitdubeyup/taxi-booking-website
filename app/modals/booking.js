@@ -41,7 +41,7 @@ const Booking = {
   extra_day_charge: null,
   gst_charge: null,
   total_fare: null,
-  deduction_rate: 10,
+  deduction_rate: 20,
 
   payment_gateway: null,
   payment_description: null,
