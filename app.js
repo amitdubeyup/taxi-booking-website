@@ -10,11 +10,6 @@ const websiteRoutes = require('./app/website-routes/routes-new');
 const apiRoutes = require('./app/api-routes/routes');
 
 app.enable('trust proxy');
-// app.use((req, res, next) => {
-//     if ((req.headers['x-forwarded-proto'] == 'https') && (req.headers['host'] == 'www.nsgtaxi.com')) {
-//         res.redirect("https://www.nsgtaxi.com" + req.originalUrl);
-//     }
-// });
 app.use(helmet.hsts({ maxAge: 5184000 }));
 app.use(cors({ origin: true }));
 app.options('*', cors());

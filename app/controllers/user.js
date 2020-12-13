@@ -62,7 +62,6 @@ function loginUser(req, res) {
                 });
             } else {
                 const userData = response.data();
-                console.log(userData);
                 if (userData['mobile_verified']) {
                     if (req.body.password == userData['password']) {
                         const payload = {

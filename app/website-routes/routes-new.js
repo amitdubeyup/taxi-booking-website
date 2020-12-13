@@ -51,7 +51,6 @@ router.get('/', function (req, res) {
       res.render('under-maintenance.ejs');
     });
   }).catch((error) => {
-    console.log(error);
     res.render('under-maintenance.ejs');
   });
 });
@@ -308,7 +307,6 @@ router.get('/hotel-booking/*', function (req, res) {
       }
     }
   }).catch((error) => {
-    console.log(error);
     res.render('under-maintenance.ejs');
   });
 });
@@ -366,8 +364,6 @@ router.get('/package-booking/*', function (req, res) {
   const url_data = (req.originalUrl).split('/').reverse();
   const page_url = url_data[1] ? url_data[1] : '';
   const package_location = url_data[0] ? url_data[0] : '';
-  console.log(page_url);
-  console.log(package_location);
   PackageCollection.where('page_url', '==', page_url).where('package_location', '==', package_location).get().then((packageResponse) => {
     if (packageResponse.empty) {
       res.render('under-maintenance.ejs');
@@ -404,7 +400,6 @@ router.get('/package-booking/*', function (req, res) {
       }
     }
   }).catch((error) => {
-    console.log(error);
     res.render('under-maintenance.ejs');
   });
 });
@@ -529,7 +524,6 @@ router.get('/payment/*', function (req, res) {
       }
     }
   }).catch((error) => {
-    console.log(error);
     res.render('under-maintenance.ejs');
   });
 });
