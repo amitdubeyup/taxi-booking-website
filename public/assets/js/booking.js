@@ -576,9 +576,9 @@ function calculateFinalAmount(trip_type) {
   driver_charge = parseInt(native_driver_charge);
   gst_charge = parseInt(base_fare * 0.05);
   total_fare = parseInt(base_fare + gst_charge);
-  total_distance = actual_distance * trip_type * total_days;
+  total_distance = actual_distance * trip_type;
 
-  $("#distance-value").html(`${actual_distance * trip_type * total_days}.00KM`);
+  $("#distance-value").html(`${actual_distance * trip_type}.00KM`);
   $("#amount-value").html(`&#8377;${base_fare}.00/-`);
   $("#driver-value").html(`&#8377;${driver_charge}.00/-`);
   $("#tax-value").html(`&#8377;${gst_charge}.00/-`);
