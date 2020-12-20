@@ -1,4 +1,10 @@
-; (function () {
+
+webshims.setOptions('waitReady', false);
+webshims.setOptions('forms-ext', { type: 'date' });
+webshims.setOptions('forms-ext', { type: 'time' });
+webshims.polyfill('forms forms-ext');
+
+(function () {
 
 	'use strict';
 

@@ -592,7 +592,7 @@ figure {
   text-transform: uppercase;
 }
 
-select[name="car_type"], select[name="package_type"], select[name="rental_car_type"], select[name="salutation"], select[name="gender"] {
+select[name="vehicle_type"], select[name="vehicle_name"], select[name="rental_vehicle_type"], select[name="rental_vehicle_name"], select[name="car_type"], select[name="package_type"], select[name="rental_car_type"], select[name="salutation"], select[name="gender"] {
   background: rgba(0, 0, 0, 0.05);
   border: none;
   box-shadow: none;
@@ -2412,14 +2412,6 @@ label {
 
 label a {
   color: #337ab7;
-}
-
-.distance {
-  font-weight: bold;
-}
-
-.distance-text, .distance-value {
-  font-weight: bold;
 }
 
 .book-next {
