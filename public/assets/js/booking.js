@@ -547,13 +547,9 @@ function calculateAmount() {
     const pickup_time = $("#pickup_time").val();
     if (pickup_address && drop_off_address && pickup_date && drop_off_date && pickup_time) {
       if (one_way_trip) {
-        $("#fare-note").html(`<strong>Note 1:</strong> If the vehicle travels between 09:00 PM to 06:00 AM, then ₹${vehicle_details['driver_base_charge']} will be charged. This charge should be paid directly to the driver.<br>
-        <strong>Note 2:</strong> If vehicle travels more than ${actual_distance}KM then you have to pay &#8377;${vehicle_details['one_way_fare']} per kilometer extra.`);
         calculateFinalAmount(1);
       }
       if (round_way_trip) {
-        $("#fare-note").html(`<strong>Note 1:</strong> Toll & state tax will be paid by the customer. If the vehicle travels between 09:00 PM to 06:00 AM, then ₹${vehicle_details['driver_base_charge']} will be charged. This charge should be paid directly to the driver.<br>
-        <strong>Note 2:</strong> If vehicle travels more than ${actual_distance * 2}KM then you have to pay &#8377;${vehicle_details['round_way_fare']} per kilometer extra.`);
         calculateFinalAmount(2);
       }
     }
@@ -565,18 +561,23 @@ function calculateFinalAmount(trip_type) {
   driver_charge = 0;
   gst_charge = 0;
   total_fare = 0;
+  fare_per_kilometer = 0;
+  fare_able_minimum_distance = 0;
+  fare_able_distance = 0;
+  total_days = 0;
 
   const driver_charge_applicable = returnTimeValue($('#pickup_time').val());
-  const total_days = returnDateDifference($('#pickup_date').val(), $('#drop_off_date').val());
   one_way_minimum_distance = parseInt(vehicle_details['one_way_minimum_distance']);
   round_way_minimum_distance = parseInt(vehicle_details['round_way_minimum_distance']);
   driver_base_charge = parseInt(vehicle_details['driver_base_charge']);
 
   if (trip_type == 1) {
+    total_days = 1;
     fare_per_kilometer = parseInt(vehicle_details['one_way_fare']);
     fare_able_minimum_distance = one_way_minimum_distance;
     fare_able_distance = actual_distance < one_way_minimum_distance ? one_way_minimum_distance : actual_distance;
   } else {
+    total_days = returnDateDifference($('#pickup_date').val(), $('#drop_off_date').val());
     fare_per_kilometer = parseInt(vehicle_details['round_way_fare']);
     fare_able_minimum_distance = round_way_minimum_distance;
     fare_able_distance = (actual_distance * 2) < round_way_minimum_distance ? round_way_minimum_distance : actual_distance * 2;
@@ -592,23 +593,22 @@ function calculateFinalAmount(trip_type) {
 
   if (total_days <= actual_fare_able_day) {
     native_base_fare = fare_per_kilometer * fare_able_distance;
+    total_distance = fare_able_distance;
   } else {
-    native_base_fare = fare_per_kilometer * total_days * fare_able_minimum_distance;
+    if (trip_type == 1) {
+      native_base_fare = fare_per_kilometer * fare_able_minimum_distance;
+      total_distance = fare_able_minimum_distance;
+    } else {
+      native_base_fare = fare_per_kilometer * total_days * fare_able_minimum_distance;
+      total_distance = total_days * fare_able_minimum_distance;
+    }
   }
 
   base_fare = parseInt(native_base_fare + native_driver_charge);
   driver_charge = parseInt(native_driver_charge);
   gst_charge = parseInt(base_fare * 0.05);
   total_fare = parseInt(base_fare + gst_charge);
-  total_distance = actual_distance * trip_type;
-  if(total_distance == 0) {
-    if (trip_type == 1) {
-      total_distance = one_way_minimum_distance;
-    }
-    if (trip_type == 2) {
-      total_distance = round_way_minimum_distance;
-    }
-  }
+
   $("#distance-value").html(`${total_distance}.00KM`);
   $("#amount-value").html(`&#8377;${base_fare}.00/-`);
   $("#driver-value").html(`&#8377;${driver_charge}.00/-`);
@@ -623,6 +623,15 @@ function calculateFinalAmount(trip_type) {
     $("#pricing-section").css('display', 'none');
     $("#distance-section").css('display', 'none');
     $("#offer-section").css('display', 'block');
+  }
+
+  if (one_way_trip) {
+    $("#fare-note").html(`<strong>Note 1:</strong> If the vehicle travels between 09:00 PM to 06:00 AM, then ₹${vehicle_details['driver_base_charge']} will be charged. This charge should be paid directly to the driver.<br>
+    <strong>Note 2:</strong> If vehicle travels more than ${total_distance}KM then you have to pay &#8377;${vehicle_details['one_way_fare']} per kilometer extra.`);
+  }
+  if (round_way_trip) {
+    $("#fare-note").html(`<strong>Note 1:</strong> Toll & state tax will be paid by the customer. If the vehicle travels between 09:00 PM to 06:00 AM, then ₹${vehicle_details['driver_base_charge']} will be charged. This charge should be paid directly to the driver.<br>
+    <strong>Note 2:</strong> If vehicle travels more than ${total_distance}KM then you have to pay &#8377;${vehicle_details['round_way_fare']} per kilometer extra.`);
   }
 }
 
