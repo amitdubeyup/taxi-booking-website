@@ -601,16 +601,15 @@ function calculateFinalAmount(trip_type) {
   gst_charge = parseInt(base_fare * 0.05);
   total_fare = parseInt(base_fare + gst_charge);
   total_distance = actual_distance * trip_type;
-  let final_distance = 0;
   if(total_distance == 0) {
     if (trip_type == 1) {
-      final_distance = one_way_minimum_distance;
+      total_distance = one_way_minimum_distance;
     }
     if (trip_type == 2) {
-      final_distance = round_way_minimum_distance;
+      total_distance = round_way_minimum_distance;
     }
   }
-  $("#distance-value").html(`${final_distance}.00KM`);
+  $("#distance-value").html(`${total_distance}.00KM`);
   $("#amount-value").html(`&#8377;${base_fare}.00/-`);
   $("#driver-value").html(`&#8377;${driver_charge}.00/-`);
   $("#tax-value").html(`&#8377;${gst_charge}.00/-`);
