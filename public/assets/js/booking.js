@@ -520,10 +520,10 @@ function selectVehicleType() {
     let options = `<option value="">Select One</option>`;
     vehicle_type.forEach((element) => {
       if (one_way_trip == 1) {
-        options = options + `<option value='${JSON.stringify(element)}'>${element['car_name']} - &#8377;${element['one_way_fare']}/KM</option>`;
+        options = options + `<option value='${JSON.stringify(element)}'>${element['car_name']}</option>`;
       }
       if (round_way_trip == 1) {
-        options = options + `<option value='${JSON.stringify(element)}'>${element['car_name']} - &#8377;${element['round_way_fare']}/KM</option>`;
+        options = options + `<option value='${JSON.stringify(element)}'>${element['car_name']}</option>`;
       }
     });
     $("#vehicle_name").html(options);
@@ -640,7 +640,7 @@ function selectRentalVehicleType() {
   if (rental_vehicle_type.length) {
     let options = `<option value="">Select One</option>`;
     rental_vehicle_type.forEach((element) => {
-      options = options + `<option value='${JSON.stringify(element)}'>${element['car_name']} - &#8377;${element['rental_fare']}/KM</option>`;
+      options = options + `<option value='${JSON.stringify(element)}'>${element['car_name']}</option>`;
     });
     $("#rental_vehicle_name").html(options);
   }
