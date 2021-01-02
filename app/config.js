@@ -40,8 +40,8 @@ module.exports = {
   // Razorpay Credentials
   // key: 'rzp_test_bLWnHfbTJQWcfw',
   // secret: 'JR0Uvtg45vuY00NYK5q6HcTa',
-  // name: 'NSGA Travels Pvt. Ltd.',
-  // description: 'We plan for your travel.',
+  // name: 'NSGA TRAVELS PVT LTD',
+  // description: 'We plan for your travel!',
   // image: 'https://www.nsgtaxi.com/assets/images/company/logo-110-40.png',
   // url: 'http://localhost:3000/payment-status',
   // address: `Shop No. 209, Central Arcade, DLF-2, Gurugram, Haryana 122002 - India`,
@@ -50,7 +50,7 @@ module.exports = {
    // Razorpay Live Credentials
   key: 'rzp_live_nAYX5ZDKcQwWGF',
   secret: '13z11vEyS4lyO3jC3v1FJyes',
-  name: 'NSGA Travels Pvt. Ltd.',
+  name: 'NSGA TRAVELS PVT LTD',
   description: 'We plan for your travel!',
   image: 'https://www.nsgtaxi.com/assets/images/company/logo-110-40.png',
   url: 'https://www.nsgtaxi.com/payment-status',

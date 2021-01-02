@@ -631,7 +631,7 @@ router.post('/payment-status', function (req, res) {
           description: 'Booking payment status of NSG TAXI. Best taxi service provider in india.',
           keywords: 'Booking Payment Status, Customer Payment Status, Bill Payment Status, Trip Payment Status',
           transaction_status: 'success',
-          transaction_amount: response.payment.amount,
+          transaction_amount: parseInt(response.payment.amount / 100, 10),
           transaction_id: response.payment.id,
           first_name: response.booking.first_name,
           last_name: response.booking.last_name,
@@ -685,7 +685,7 @@ function updatePaymentStatus(gatewayData) {
   bookingData['payment_gateway'] = 'Razorpay Softwares Pvt. Ltd.';
   bookingData['payment_description'] = 'Booking Payment';
   bookingData['payment_reference_number'] = gatewayData.order.order_id;
-  bookingData['payment_amount'] = gatewayData.order.amount;
+  bookingData['payment_amount'] = parseInt(gatewayData.order.amount / 100, 10);
   bookingData['payment_status'] = (gatewayData.order.status == 'authorized') ? 'success' : 'failed';
   BookingCollection.doc(bookingData.document_id).update(bookingData).then((response) => {
     console.log('Booking updated after payment!');
@@ -694,6 +694,8 @@ function updatePaymentStatus(gatewayData) {
     console.log('Unable to update booking after payment!');
   });
   const paymentData = gatewayData.payment;
+  
+  paymentData['amount'] = parseInt(gatewayData.order.amount / 100, 10);
   paymentData['status'] = (gatewayData.order.status == 'authorized') ? 'success' : 'failed';
   paymentData['updated_at'] = gatewayData.order.created_at;
   PaymentCollection.doc(paymentData.document_id).update(paymentData).then((response) => {
