@@ -68,7 +68,7 @@ $("#pay-cash-payment").click(() => {
         customer_name: $("#name").val(),
         customer_email: $("#email").val(),
         customer_contact: $("#mobile").val(),
-        amount: parseInt($("#cash_payment").val(), 10),
+        amount: parseInt($("#cash_payment").val(), 10) * 100,
         currency: "INR",
         receipt: $("#document_id").val(),
         notes: 'Booking Payment'
@@ -82,7 +82,7 @@ $("#pay-full-payment").click(() => {
         customer_name: $("#name").val(),
         customer_email: $("#email").val(),
         customer_contact: $("#mobile").val(),
-        amount: parseInt($("#full_payment").val(), 10),
+        amount: parseInt($("#full_payment").val(), 10) * 100,
         currency: "INR",
         receipt: $("#document_id").val(),
         notes: 'Booking Payment'
