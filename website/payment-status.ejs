@@ -24,9 +24,6 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 company-info">
                                 <strong class="company-name">NSGA TRAVELS PRIVATE LIMITED</strong>
                                 <br>
-                                <strong>Address: </strong> Address: Shop No. 209, Central Arcade, DLF-2<br>
-                                Gurugram, Haryana 122002 - India
-                                <br>
                                 <strong>CIN: </strong>U63030HR2018PTC074774
                                 <br>
                                 <strong>Email: </strong>info@nsgtaxi.com
@@ -39,27 +36,23 @@
                         <div class="row padding-top client-info">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <h4> <strong>Client Information</strong></h4>
-                                <strong><%= first_name %> <%= last_name %></strong>
+                                <b>Name: </b><%= first_name %> <%= last_name %>
                                 <br>
                                 <b>Gender:</b> <%= gender %>
                                 <br>
-                                <b>Email:</b> <%= mobile %>
+                                <b>Email:</b> <%= email %>
                                 <br>
                                 <b>Contact:</b> +91-<%= mobile %>
-                                <br>
-                                <b>Booking ID:</b> <%= booking_id %>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <h4> <strong>Payment Details </strong></h4>
-                                Transaction ID: <%= order_id %>
+                                <b>Transaction ID:</b> <%= transaction_id %>
                                 <br>
-                                Bank Transaction ID: <%= bank_transaction_id %>
+                                <b>Booking ID:</b> <%= booking_id %>
                                 <br>
-                                Payment Amount: <%= transaction_amount %> <%= currency %>
+                                <b>Payment Amount:</b> <%= transaction_amount %> INR
                                 <br>
-                                Payment Date: <%= transaction_date %>
-                                <br>
-                                <b>Payment Status: <%= status %> </b>
+                                <b>Payment Status: </b><span class="text-capitalize"><%= transaction_status %></span>
                             </div>
                         </div>
                         <hr>
@@ -114,33 +107,6 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 right-text">
                                 <%= trip_type %> - <%= car_type %>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 left-text">
-                                <strong>Payment Amount</strong>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 right-text">
-                                <strong><%= transaction_amount %> <%= currency %></strong>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 left-text">
-                                <strong>Payment Status</strong>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 right-text">
-                                <strong><%= status %></strong>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 left-text">
-                                <strong>Payment Mode</strong>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 right-text">
-                                <strong><%= bank_name %> - <%= payment_mode %></strong>
                             </div>
                         </div>
                         <hr>

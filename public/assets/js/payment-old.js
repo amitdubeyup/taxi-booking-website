@@ -47,7 +47,7 @@ function initiateTransaction(passingData) {
     $("#loader").css('display', 'block');
     $.ajax({
         type: 'POST',
-        url: `${page_url}/api/payment/create-order`,
+        url: `${page_url}/api/transaction/initiate`,
         data: passingData,
         dataType: 'json',
         success: function (result) {
@@ -65,28 +65,18 @@ function initiateTransaction(passingData) {
 
 $("#pay-cash-payment").click(() => {
     const passingData = {
-        customer_name: $("#name").val(),
-        customer_email: $("#email").val(),
-        customer_contact: $("#mobile").val(),
-        amount: parseInt($("#cash_payment").val(), 10),
-        currency: "INR",
-        receipt: $("#document_id").val(),
-        notes: 'Booking Payment'
+        order_id: $("#document_id").val(),
+        order_amount: $("#cash_payment").val(),
+        customer_id: $("#mobile").val(),
     };
-    console.log(passingData);
     initiateTransaction(passingData);
 });
 
 $("#pay-full-payment").click(() => {
     const passingData = {
-        customer_name: $("#name").val(),
-        customer_email: $("#email").val(),
-        customer_contact: $("#mobile").val(),
-        amount: parseInt($("#full_payment").val(), 10),
-        currency: "INR",
-        receipt: $("#document_id").val(),
-        notes: 'Booking Payment'
+        order_id: $("#document_id").val(),
+        order_amount: $("#full_payment").val(),
+        customer_id: $("#mobile").val(),
     };
-    console.log(passingData);
     initiateTransaction(passingData);
 });

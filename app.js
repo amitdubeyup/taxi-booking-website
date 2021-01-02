@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 const helmet = require('helmet');
 
-const websiteRoutes = require('./app/website-routes/routes-new');
+const websiteRoutes = require('./app/website-routes/routes');
 const apiRoutes = require('./app/api-routes/routes');
 
 app.enable('trust proxy');

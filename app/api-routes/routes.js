@@ -27,6 +27,7 @@ const packageBookingRoutes = require('./package-booking.routes');
 const carDetailsRoutes = require('./car-details.routes');
 const vehicleRoutes = require('./vehicle.routes');
 const routeRoutes = require('./route.routes');
+const paymentRoutes = require('./payment.routes');
 
 routes.use('/jwt', jwtRoutes);
 routes.use('/mail', mailRoutes);
@@ -53,6 +54,7 @@ routes.use('/package-booking', packageBookingRoutes);
 routes.use('/car-details', carDetailsRoutes);
 routes.use('/vehicle', vehicleRoutes);
 routes.use('/route', routeRoutes);
+routes.use('/payment', paymentRoutes);
 
 routes.get('/', function (req, res) {
     res.status(200);

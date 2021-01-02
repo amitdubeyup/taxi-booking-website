@@ -1,20 +1,30 @@
-<html>
-   <head>
-      <title>Show Payment Page</title>
-   </head>
-   <body>
-      <center>
-         <h1>Please do not refresh this page...</h1>
-      </center>
-      <form method="post" action="<%= transaction_url %>/theia/api/v1/showPaymentPage?mid=<%= merchant_id %>&orderId=<%= order_id %>" name="paytm">
-         <table border="1">
-            <tbody>
-               <input type="hidden" name="mid" value="<%= merchant_id %>">
-               <input type="hidden" name="orderId" value="<%= order_id %>">
-               <input type="hidden" name="txnToken" value="<%= transaction_token %>">
-            </tbody>
-         </table>
-         <script type="text/javascript"> document.paytm.submit(); </script>
-      </form>
-   </body>
-</html>
+<button id="rzp-button1">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "<%= key %>",
+    "amount": "<%= amount %>",
+    "currency": "<%= currency %>",
+    "name": "<%= name %>",
+    "description": "<%= description %>",
+    "image": "<%= image %>",
+    "order_id": "<%= order_id %>",
+    "callback_url": "<%= callback_url %>",
+    "prefill": {
+        "name": "<%= customer_name %>",
+        "email": "<%= customer_email %>",
+        "contact": "<%= customer_contact %>"
+    },
+    "notes": {
+        "address": "<%= address %>"
+    },
+    "theme": {
+        "color": "<%= color %>"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>

@@ -661,33 +661,33 @@ function calculateRentalAmount() {
 }
 
 function calculateFinalRentalAmount() {
-    base_fare = 0;
-    driver_charge = 0;
-    gst_charge = 0;
-    total_fare = 0;
+  base_fare = 0;
+  driver_charge = 0;
+  gst_charge = 0;
+  total_fare = 0;
 
-    total_distance = parseInt(($("#package_type").val()).split(',')[1]);
-    fare_per_kilometer = parseInt(rental_vehicle_details['rental_fare']);
-    native_base_fare = total_distance * fare_per_kilometer;
+  total_distance = parseInt(($("#package_type").val()).split(',')[1]);
+  fare_per_kilometer = parseInt(rental_vehicle_details['rental_fare']);
+  native_base_fare = total_distance * fare_per_kilometer;
 
-    base_fare = parseInt(native_base_fare);
-    gst_charge = parseInt(base_fare * 0.05);
-    total_fare = parseInt(base_fare + gst_charge);
+  base_fare = parseInt(native_base_fare);
+  gst_charge = parseInt(base_fare * 0.05);
+  total_fare = parseInt(base_fare + gst_charge);
 
-    $("#distance-value").html(`${total_distance}.00KM`);
-    $("#amount-value").html(`&#8377;${base_fare}.00/-`);
-    $("#tax-value").html(`&#8377;${gst_charge}.00/-`);
-    $("#total-value").html(`&#8377;${total_fare}.00/-`);
+  $("#distance-value").html(`${total_distance}.00KM`);
+  $("#amount-value").html(`&#8377;${base_fare}.00/-`);
+  $("#tax-value").html(`&#8377;${gst_charge}.00/-`);
+  $("#total-value").html(`&#8377;${total_fare}.00/-`);
 
-    if (total_fare > 0) {
-      $("#pricing-section").css('display', 'block');
-      $("#distance-section").css('display', 'block');
-      $("#offer-section").css('display', 'none');
-    } else {
-      $("#pricing-section").css('display', 'none');
-      $("#distance-section").css('display', 'none');
-      $("#offer-section").css('display', 'block');
-    }
+  if (total_fare > 0) {
+    $("#pricing-section").css('display', 'block');
+    $("#distance-section").css('display', 'block');
+    $("#offer-section").css('display', 'none');
+  } else {
+    $("#pricing-section").css('display', 'none');
+    $("#distance-section").css('display', 'none');
+    $("#offer-section").css('display', 'block');
+  }
 }
 
 function submitFormFinal() {
@@ -749,34 +749,34 @@ function getCookie(cname) {
   return "";
 }
 
-// $(window).load(function() {
-//   setTimeout(function() {
-//     const cookie = getCookie('promo');
-//     if ((cookie == '') || (cookie == null) || (cookie == undefined)) {
-//       $.ajax({
-//         type: 'GET',
-//         url: `${url}/api/promo-code/fetch-active`,
-//         dataType: 'json',
-//         success: function(result) {
-//           $('#coupon-section').html(`
-//                         <img src="${result['data']['image']}" alt="Avatar" style="width:100%;">
-//                         <div class="coupon-container" style="background-color:white">
-//                         <h4 class="coupon-title"><b>${result['data']['title']}</b></h4>
-//                         <p class="coupon-description">${result['data']['description']}</p>
-//                         </div>
-//                         <div class="coupon-container">
-//                         <p class="coupon-code">Use Promo Code: <span>${result['data']['code']}</span></p>
-//                         </div>
-//                     `);
-//           $('#coupon_modal').modal('show');
-//           document.cookie = `promo=active;`;
-//           setCookie('promo', 'active', 1);
-//         },
-//         error: function(error) {}
-//       });
-//     }
-//   }, 3000);
-// });
+$(window).load(function () {
+  setTimeout(function () {
+    const cookie = getCookie('promo');
+    if ((cookie == '') || (cookie == null) || (cookie == undefined)) {
+      $.ajax({
+        type: 'GET',
+        url: `${url}/api/promo-code/fetch-active`,
+        dataType: 'json',
+        success: function (result) {
+          $('#coupon-section').html(`
+                        <img src="${result['data']['image']}" alt="Avatar" style="width:100%;">
+                        <div class="coupon-container" style="background-color:white">
+                        <h4 class="coupon-title"><b>${result['data']['title']}</b></h4>
+                        <p class="coupon-description">${result['data']['description']}</p>
+                        </div>
+                        <div class="coupon-container">
+                        <p class="coupon-code">Use Promo Code: <span>${result['data']['code']}</span></p>
+                        </div>
+                    `);
+          $('#coupon_modal').modal('show');
+          document.cookie = `promo=active;`;
+          setCookie('promo', 'active', 1);
+        },
+        error: function (error) { }
+      });
+    }
+  }, 3000);
+});
 
 $("#close_modal").click(function () {
   $('#coupon_modal').modal('hide');

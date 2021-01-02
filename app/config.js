@@ -36,4 +36,24 @@ module.exports = {
   transaction_order_process_url: 'https://securegw.paytm.in/order/process',
   transaction_order_status_url: 'https://securegw.paytm.in/order/status',
   callback_url: 'https://www.nsgtaxi.com/payment-status',
+
+  // Razorpay Credentials
+  // key: 'rzp_test_bLWnHfbTJQWcfw',
+  // secret: 'JR0Uvtg45vuY00NYK5q6HcTa',
+  // name: 'NSGA Travels Pvt. Ltd.',
+  // description: 'We plan for your travel.',
+  // image: 'https://www.nsgtaxi.com/assets/images/company/logo-110-40.png',
+  // url: 'http://localhost:3000/payment-status',
+  // address: `Shop No. 209, Central Arcade, DLF-2, Gurugram, Haryana 122002 - India`,
+  // color: '#F78536'
+
+   // Razorpay Live Credentials
+  key: 'rzp_live_nAYX5ZDKcQwWGF',
+  secret: '13z11vEyS4lyO3jC3v1FJyes',
+  name: 'NSGA Travels Pvt. Ltd.',
+  description: 'We plan for your travel!',
+  image: 'https://www.nsgtaxi.com/assets/images/company/logo-110-40.png',
+  url: 'https://www.nsgtaxi.com/payment-status',
+  address: `Shop No. 209, Central Arcade, DLF-2, Gurugram, Haryana 122002 - India`,
+  color: '#F78536'
 };
