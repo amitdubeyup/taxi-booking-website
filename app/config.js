@@ -47,7 +47,7 @@ module.exports = {
   // address: `Shop No. 209, Central Arcade, DLF-2, Gurugram, Haryana 122002 - India`,
   // color: '#F78536'
 
-   // Razorpay Live Credentials
+  // Razorpay Live Credentials
   key: 'rzp_live_nAYX5ZDKcQwWGF',
   secret: '13z11vEyS4lyO3jC3v1FJyes',
   name: 'NSGA TRAVELS PVT LTD',
