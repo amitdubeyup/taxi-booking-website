@@ -319,17 +319,32 @@ function createOrder(req, res) {
         params['customer_email'] = req.body.customer_email;
         params['customer_contact'] = req.body.customer_contact;
         PaymentCollection.doc(params.document_id).set(params).then((responseTwo) => {
+            const data = {
+                key: config.key,
+                amount: params['amount'],
+                currency: config.currency,
+                name: config.name,
+                description: config.description,
+                image: config.image,
+                order_id: params['id'],
+                callback_url: config.url,
+                customer_name: params['customer_name'],
+                customer_email: params['customer_email'],
+                customer_contact: params['customer_contact'],
+                address: config.address,
+                color: config.color
+            };
             res.status(200);
             return res.json({
                 success: true,
-                message: 'Transaction initiated...',
-                data: params.document_id
+                message: 'Payment initiated...',
+                data: data
             });
         }).catch((error) => {
             res.status(400);
             return res.json({
                 success: false,
-                message: 'Unable to initiate transaction!',
+                message: 'Unable to process payment!',
                 error: error
             });
         });
@@ -337,7 +352,7 @@ function createOrder(req, res) {
         res.status(400);
         return res.json({
             success: false,
-            message: 'Unable to initiate transaction!',
+            message: 'Unable to process payment!',
             error: error
         });
     });

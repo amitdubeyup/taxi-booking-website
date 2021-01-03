@@ -529,45 +529,6 @@ router.get('/payment/*', function (req, res) {
   });
 });
 
-router.get('/payment-initiate/*', function (req, res) {
-  const url_data = (req.originalUrl).split('/').reverse();
-  const document_id = url_data[0] ? url_data[0] : '';
-  PaymentCollection.where('document_id', '==', document_id).where('status', '==', 'created').get().then((paymentResponse) => {
-    if (paymentResponse.empty) {
-      res.render('under-maintenance.ejs');
-    } else {
-      const paymentData = [];
-      paymentResponse.forEach((doc) => {
-        paymentData.push(doc.data());
-      });
-      console.log(paymentData[0]);
-      if (paymentData.length) {
-        res.render('payment-initiate', {
-          base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-          key: config.key,
-          amount: paymentData[0]['amount'],
-          currency: config.currency,
-          name: config.name,
-          description: config.description,
-          image: config.image,
-          order_id: paymentData[0]['id'],
-          callback_url: config.url,
-          customer_name: paymentData[0]['customer_name'],
-          customer_email: paymentData[0]['customer_email'],
-          customer_contact: paymentData[0]['customer_contact'],
-          address: config.address,
-          color: config.color,
-          page: 'index',
-        });
-      } else {
-        res.render('under-maintenance.ejs');
-      }
-    }
-  }).catch((error) => {
-    res.render('under-maintenance.ejs');
-  });
-});
-
 function returnBookingTransactionData(data) {
   return new Promise((resolve, reject) => {
     instance.orders.fetchPayments(data.razorpay_order_id).then((orderResponse) => {

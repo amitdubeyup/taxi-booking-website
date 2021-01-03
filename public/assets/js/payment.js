@@ -51,9 +51,31 @@ function initiateTransaction(passingData) {
         data: passingData,
         dataType: 'json',
         success: function (result) {
+            const data = result['data'];
             $("#loader").css('display', 'none');
-            toastr.success(result['message']);
-            window.location.href = `${page_url}/payment-initiate/${result['data']}`;
+            const options = {
+                key: data['key'],
+                amount: data['amount'],
+                currency: data['currency'],
+                name: data['name'],
+                description: data['description'],
+                image: data['image'],
+                order_id: data['order_id'],
+                callback_url: data['callback_url'],
+                prefill: {
+                    name: data['customer_name'],
+                    email: data['customer_email'],
+                    contact: data['customer_contact']
+                },
+                notes: {
+                    address: data['address']
+                },
+                theme: {
+                    color: data['color']
+                }
+            };
+            const razorpay = new Razorpay(options);
+            razorpay.open();
         },
         error: function (error) {
             $("#loader").css('display', 'none');
@@ -73,7 +95,6 @@ $("#pay-cash-payment").click(() => {
         receipt: $("#document_id").val(),
         notes: 'Booking Payment'
     };
-    console.log(passingData);
     initiateTransaction(passingData);
 });
 
@@ -87,6 +108,5 @@ $("#pay-full-payment").click(() => {
         receipt: $("#document_id").val(),
         notes: 'Booking Payment'
     };
-    console.log(passingData);
     initiateTransaction(passingData);
 });
