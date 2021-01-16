@@ -649,7 +649,8 @@ function updatePaymentStatus(gatewayData) {
   if (gatewayData.order.status == 'captured') {
     payment_status = 'success';
   }
-  const bookingData = gatewayData.booking;
+  
+  const bookingData = Object.assign({}, gatewayData.booking);
   bookingData['payment_gateway'] = 'Razorpay Softwares Pvt. Ltd.';
   bookingData['payment_description'] = 'Booking Payment';
   bookingData['payment_reference_number'] = gatewayData.payment.id;
@@ -661,8 +662,8 @@ function updatePaymentStatus(gatewayData) {
   }).catch((error) => {
     console.log('Unable to update booking after payment!');
   });
-  const paymentData = gatewayData.payment;
-  
+
+  const paymentData = Object.assign({}, gatewayData.payment);
   paymentData['amount'] = parseInt(gatewayData.order.amount/100, 10);
   paymentData['status'] = payment_status;
   paymentData['updated_at'] = gatewayData.order.created_at;

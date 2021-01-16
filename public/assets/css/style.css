@@ -1,7 +1,11 @@
 @font-face {
-  font-family: 'icomoon';
+  font-family: "icomoon";
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
-  src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
+  src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix")
+      format("embedded-opentype"),
+    url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"),
+    url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"),
+    url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -28,7 +32,7 @@ body.nsg-taxi-offcanvas {
 }
 
 a {
-  color: #F78536;
+  color: #f78536;
   -webkit-transition: 0.5s, ease;
   -o-transition: 0.5s, ease;
   transition: 0.5s, ease;
@@ -36,17 +40,24 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #F78536;
+  color: #f78536;
 }
 
-p, ul, ol {
+p,
+ul,
+ol {
   margin-bottom: 1.5em;
   font-size: 16px;
   color: #848484;
   font-family: "Open Sans", Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #5a5a5a;
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 400;
@@ -59,17 +70,17 @@ figure {
 
 ::-webkit-selection {
   color: #fcfcfc;
-  background: #F78536;
+  background: #f78536;
 }
 
 ::-moz-selection {
   color: #fcfcfc;
-  background: #F78536;
+  background: #f78536;
 }
 
 ::selection {
   color: #fcfcfc;
-  background: #F78536;
+  background: #f78536;
 }
 
 #nsg-taxi-header {
@@ -90,7 +101,7 @@ figure {
 
 .header-top {
   padding: 10px 0;
-  background: #F78536;
+  background: #f78536;
 }
 
 .header-top .nsg-taxi-link a {
@@ -127,12 +138,16 @@ figure {
   margin-right: 0;
 }
 
-.header-top .nsg-taxi-social a:hover, .header-top .nsg-taxi-social a:focus, .header-top .nsg-taxi-social a:active {
+.header-top .nsg-taxi-social a:hover,
+.header-top .nsg-taxi-social a:focus,
+.header-top .nsg-taxi-social a:active {
   text-decoration: none;
   color: white !important;
 }
 
-.header-top .nsg-taxi-social a:hover i, .header-top .nsg-taxi-social a:focus i, .header-top .nsg-taxi-social a:active i {
+.header-top .nsg-taxi-social a:hover i,
+.header-top .nsg-taxi-social a:focus i,
+.header-top .nsg-taxi-social a:active i {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
@@ -146,18 +161,21 @@ figure {
   }
 }
 
-.nsg-taxi-cover, .nsg-taxi-hero {
+.nsg-taxi-cover,
+.nsg-taxi-hero {
   position: relative;
   height: 800px;
 }
 
 @media screen and (max-width: 768px) {
-  .nsg-taxi-cover, .nsg-taxi-hero {
+  .nsg-taxi-cover,
+  .nsg-taxi-hero {
     height: 575px !important;
   }
 }
 
-.nsg-taxi-cover .nsg-taxi-overlay, .nsg-taxi-hero .nsg-taxi-overlay {
+.nsg-taxi-cover .nsg-taxi-overlay,
+.nsg-taxi-hero .nsg-taxi-overlay {
   position: absolute !important;
   width: 100%;
   top: 0;
@@ -166,12 +184,37 @@ figure {
   right: 0;
   z-index: 1;
   background: rgba(255, 62, 28, 0.5);
-  background: -moz-linear-gradient(left, rgba(255, 62, 28, 0.5) 0%, rgba(255, 140, 0, 0.5) 100%);
-  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 62, 28, 0.5)), color-stop(100%, rgba(255, 140, 0, 0.5)));
-  background: -webkit-linear-gradient(left, rgba(255, 62, 28, 0.5) 0%, rgba(255, 140, 0, 0.5) 100%);
-  background: -o-linear-gradient(left, rgba(255, 62, 28, 0.5) 0%, rgba(255, 140, 0, 0.5) 100%);
-  background: -ms-linear-gradient(left, rgba(255, 62, 28, 0.5) 0%, rgba(255, 140, 0, 0.5) 100%);
-  background: linear-gradient(to right, rgba(255, 62, 28, 0.5) 0%, rgba(255, 140, 0, 0.5) 100%);
+  background: -moz-linear-gradient(
+    left,
+    rgba(255, 62, 28, 0.5) 0%,
+    rgba(255, 140, 0, 0.5) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(255, 62, 28, 0.5)),
+    color-stop(100%, rgba(255, 140, 0, 0.5))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 62, 28, 0.5) 0%,
+    rgba(255, 140, 0, 0.5) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(255, 62, 28, 0.5) 0%,
+    rgba(255, 140, 0, 0.5) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(255, 62, 28, 0.5) 0%,
+    rgba(255, 140, 0, 0.5) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 62, 28, 0.5) 0%,
+    rgba(255, 140, 0, 0.5) 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3e1c', endColorstr='#ff8c00', GradientType=1);
 }
 
@@ -192,7 +235,7 @@ figure {
 
 .nsg-taxi-cover .btn {
   padding: 1em 2em;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .nsg-taxi-cover.nsg-taxi-cover_2 {
@@ -251,11 +294,13 @@ figure {
   color: #fff;
 }
 
-.nsg-taxi-cover .desc p a:hover, .nsg-taxi-cover .desc p a:focus {
+.nsg-taxi-cover .desc p a:hover,
+.nsg-taxi-cover .desc p a:focus {
   color: #fff !important;
 }
 
-.nsg-taxi-cover .desc p a:hover.btn, .nsg-taxi-cover .desc p a:focus.btn {
+.nsg-taxi-cover .desc p a:hover.btn,
+.nsg-taxi-cover .desc p a:focus.btn {
   border: 2px solid #fff !important;
   background: transparent !important;
 }
@@ -307,30 +352,42 @@ figure {
   font-weight: bold;
 }
 
-.sf-menu a:hover, .sf-menu a:focus {
-  color: #F78536 !important;
+.sf-menu a:hover,
+.sf-menu a:focus {
+  color: #f78536 !important;
 }
 
-.sf-menu li.active a:hover, .sf-menu li.active a:focus {
-  color: #F78536;
+.sf-menu li.active a:hover,
+.sf-menu li.active a:focus {
+  color: #f78536;
 }
 
-.sf-menu li, .sf-menu ul li, .sf-menu ul ul li, .sf-menu li:hover, .sf-menu li.sfHover {
+.sf-menu li,
+.sf-menu ul li,
+.sf-menu ul ul li,
+.sf-menu li:hover,
+.sf-menu li.sfHover {
   background: transparent;
 }
 
-.sf-menu ul li a, .sf-menu ul ul li a {
+.sf-menu ul li a,
+.sf-menu ul ul li a {
   text-transform: none;
   padding: 0.2em 1em !important;
   letter-spacing: 1px;
   font-size: 14px !important;
 }
 
-.sf-menu li:hover a, .sf-menu li.sfHover a, .sf-menu ul li:hover a, .sf-menu ul li.sfHover a, .sf-menu li.active a {
-  color: #F78536;
+.sf-menu li:hover a,
+.sf-menu li.sfHover a,
+.sf-menu ul li:hover a,
+.sf-menu ul li.sfHover a,
+.sf-menu li.active a {
+  color: #f78536;
 }
 
-.sf-menu ul li:hover, .sf-menu ul li.sfHover {
+.sf-menu ul li:hover,
+.sf-menu ul li.sfHover {
   background: transparent;
 }
 
@@ -344,7 +401,7 @@ figure {
 }
 
 .sf-arrows .sf-with-ul:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   right: 1em;
@@ -355,7 +412,9 @@ figure {
   border-top-color: #ccc;
 }
 
-.sf-arrows>li>.sf-with-ul:focus:after, .sf-arrows>li:hover>.sf-with-ul:after, .sf-arrows>.sfHover>.sf-with-ul:after {
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
   border-top-color: #ccc;
 }
 
@@ -366,7 +425,9 @@ figure {
   border-left-color: #ccc;
 }
 
-.sf-arrows ul li>.sf-with-ul:focus:after, .sf-arrows ul li:hover>.sf-with-ul:after, .sf-arrows ul .sfHover>.sf-with-ul:after {
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
   border-left-color: #ccc;
 }
 
@@ -391,11 +452,12 @@ figure {
 }
 
 #nsg-taxi-logo a {
-  color: #F78536;
+  color: #f78536;
 }
 
-#nsg-taxi-logo a:hover, #nsg-taxi-logo a:focus {
-  color: #F78536 !important;
+#nsg-taxi-logo a:hover,
+#nsg-taxi-logo a:focus {
+  color: #f78536 !important;
 }
 
 #nsg-taxi-menu-wrap {
@@ -403,20 +465,20 @@ figure {
   z-index: 2;
   display: block;
   float: right;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 #nsg-taxi-menu-wrap .sf-menu a {
-  padding: 1em .75em;
+  padding: 1em 0.75em;
 }
 
-#nsg-taxi-primary-menu>li>ul li.active>a {
-  color: #F78536 !important;
+#nsg-taxi-primary-menu > li > ul li.active > a {
+  color: #f78536 !important;
 }
 
-#nsg-taxi-primary-menu>li>.sf-with-ul:after {
+#nsg-taxi-primary-menu > li > .sf-with-ul:after {
   border: none !important;
-  font-family: 'icomoon';
+  font-family: "icomoon";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -436,13 +498,13 @@ figure {
   color: rgba(0, 0, 0, 0.5);
 }
 
-#nsg-taxi-primary-menu>li>ul li {
+#nsg-taxi-primary-menu > li > ul li {
   position: relative;
 }
 
-#nsg-taxi-primary-menu>li>ul li>.sf-with-ul:after {
+#nsg-taxi-primary-menu > li > ul li > .sf-with-ul:after {
   border: none !important;
-  font-family: 'icomoon';
+  font-family: "icomoon";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -476,7 +538,7 @@ figure {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-#nsg-taxi-primary-menu .nsg-taxi-sub-menu>li>.nsg-taxi-sub-menu {
+#nsg-taxi-primary-menu .nsg-taxi-sub-menu > li > .nsg-taxi-sub-menu {
   left: 100%;
 }
 
@@ -486,7 +548,7 @@ figure {
   left: 20px;
   width: 0;
   height: 0;
-  content: '';
+  content: "";
 }
 
 #nsg-taxi-primary-menu .nsg-taxi-sub-menu:after {
@@ -499,7 +561,7 @@ figure {
   border-bottom: 8px solid #fff;
   border-bottom: 8px solid white;
   border-left: 8px solid transparent;
-  content: '';
+  content: "";
 }
 
 #nsg-taxi-primary-menu .nsg-taxi-sub-menu .nsg-taxi-sub-menu:before {
@@ -537,14 +599,18 @@ figure {
 }
 
 #nsg-taxi-primary-menu .nsg-taxi-sub-menu a:hover {
-  color: #F78536 !important;
+  color: #f78536 !important;
+}
+
+.form-control {
+  color: #000;
 }
 
 .tabulation {
   width: 100%;
   float: left;
   margin-top: -7em;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fff;
   -webkit-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
   -moz-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
   -ms-box-shadow: 0px 43px 83px -20px rgba(0, 0, 0, 0.41);
@@ -553,7 +619,7 @@ figure {
 }
 
 .tabulation label {
-  color: rgba(0, 0, 0, 0.5);
+  color: #999;
   font-size: 14px;
 }
 
@@ -563,108 +629,115 @@ figure {
   }
 }
 
-.tabulation input[type="text"], .tabulation input[type="number"], .tabulation input[type="time"] {
-  background: rgba(0, 0, 0, 0.05);
-  border: none;
+.tabulation input[type="text"],
+.tabulation input[type="number"],
+.tabulation input[type="time"] {
+  background: #fff;
+  border: 1px solid #f78536;
+  border-left: 5px solid #f78536;
   box-shadow: none;
-  font-weight: bold;
   font-size: 14px;
   padding: 5px 10px !important;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  border-radius: 0;
-  color: #F78536 !important;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 }
 
 .tabulation input[type="date"] {
-  background: rgba(0, 0, 0, 0.05);
-  border: none;
+  background: #fff;
+  border: 1px solid #f78536;
+  border-left: 5px solid #f78536;
   box-shadow: none;
-  font-weight: bold;
   font-size: 14px;
   padding: 5px 5px !important;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  border-radius: 0;
-  color: #F78536 !important;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
   text-transform: uppercase;
 }
 
-select[name="vehicle_type"], select[name="vehicle_name"], select[name="rental_vehicle_type"], select[name="rental_vehicle_name"], select[name="car_type"], select[name="package_type"], select[name="rental_car_type"], select[name="salutation"], select[name="gender"] {
-  background: rgba(0, 0, 0, 0.05);
-  border: none;
+select[name="vehicle_type"],
+select[name="vehicle_name"],
+select[name="rental_vehicle_type"],
+select[name="rental_vehicle_name"],
+select[name="car_type"],
+select[name="package_type"],
+select[name="rental_car_type"],
+select[name="salutation"],
+select[name="gender"] {
+  background: #fff;
+  border: 1px solid #f78536;
+  border-left: 5px solid #f78536;
   box-shadow: none;
-  font-weight: bold;
   font-size: 14px;
   padding: 5px 10px !important;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  border-radius: 0;
-  color: #F78536 !important;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
   outline: none;
 }
 
 .tabulation input[type="text"]::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="text"]::-moz-placeholder {
   /* Firefox 19+ */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="text"]:-ms-input-placeholder {
   /* IE 10+ */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="text"]:-moz-placeholder {
   /* Firefox 18- */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="number"]::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="number"]::-moz-placeholder {
   /* Firefox 19+ */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="number"]:-ms-input-placeholder {
   /* IE 10+ */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="number"]:-moz-placeholder {
   /* Firefox 18- */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="time"]::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="time"]::-moz-placeholder {
   /* Firefox 19+ */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="time"]:-ms-input-placeholder {
   /* IE 10+ */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 .tabulation input[type="time"]:-moz-placeholder {
   /* Firefox 18- */
-  color: #F78536 !important;
+  color: #000 !important;
 }
 
 @media screen and (max-width: 480px) {
@@ -713,7 +786,7 @@ select[name="vehicle_type"], select[name="vehicle_name"], select[name="rental_ve
 
 .nav-tabs .active a {
   border: none !important;
-  background: #F78536 !important;
+  background: #f78536 !important;
   color: #fff !important;
   font-weight: bold;
   -webkit-border-radius: 0;
@@ -722,7 +795,8 @@ select[name="vehicle_type"], select[name="vehicle_name"], select[name="rental_ve
   border-radius: 0;
 }
 
-.nav-tabs:hover a, .nav-tabs:focus a {
+.nav-tabs:hover a,
+.nav-tabs:focus a {
   border: none !important;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -763,25 +837,25 @@ div.cs-select span {
   background: rgba(0, 0, 0, 0.05) !important;
 }
 
-.cs-skin-border>span {
+.cs-skin-border > span {
   border: transparent;
   background: rgba(0, 0, 0, 0.05);
-  color: #F78536;
+  color: #f78536;
 }
 
-.cs-skin-border>span::after {
+.cs-skin-border > span::after {
   font-size: 14px !important;
-  content: '\e94d' !important;
+  content: "\e94d" !important;
   font-family: "icomoon";
 }
 
-.cs-skin-border .cs-selected>span::after {
+.cs-skin-border .cs-selected > span::after {
   font-size: 14px !important;
 }
 
-.cs-skin-border.cs-active>span {
+.cs-skin-border.cs-active > span {
   background: rgba(0, 0, 0, 0.05) !important;
-  color: #F78536;
+  color: #f78536;
 }
 
 .cs-select .cs-options {
@@ -792,12 +866,26 @@ div.cs-select span {
   box-shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.18);
 }
 
-#nsg-taxi-work-section, #nsg-taxi-car, #nsg-taxi-blog-section, #nsg-taxi-features, #nsg-taxi-tours, #nsg-taxi-testimonial, #nsg-taxi-home, .nsg-taxi-content-section {
+#nsg-taxi-work-section,
+#nsg-taxi-car,
+#nsg-taxi-blog-section,
+#nsg-taxi-features,
+#nsg-taxi-tours,
+#nsg-taxi-testimonial,
+#nsg-taxi-home,
+.nsg-taxi-content-section {
   padding: 7em 0em;
 }
 
 @media screen and (max-width: 768px) {
-  #nsg-taxi-work-section, #nsg-taxi-car, #nsg-taxi-blog-section, #nsg-taxi-features, #nsg-taxi-tours, #nsg-taxi-testimonial, #nsg-taxi-home, .nsg-taxi-content-section {
+  #nsg-taxi-work-section,
+  #nsg-taxi-car,
+  #nsg-taxi-blog-section,
+  #nsg-taxi-features,
+  #nsg-taxi-tours,
+  #nsg-taxi-testimonial,
+  #nsg-taxi-home,
+  .nsg-taxi-content-section {
     padding: 3em 0em;
   }
   #nsg-taxi-testimonial {
@@ -816,13 +904,13 @@ div.cs-select span {
 
 .heading-section:after {
   position: absolute;
-  content: '';
+  content: "";
   bottom: 0;
   left: 50%;
   width: 100px;
   margin-left: -50px;
   height: 2px;
-  background: #F78536;
+  background: #f78536;
 }
 
 .heading-section h3 {
@@ -844,7 +932,7 @@ div.cs-select span {
   margin-bottom: 30px;
 }
 
-.nsg-taxi-tours>div {
+.nsg-taxi-tours > div {
   display: block;
   color: #000;
   position: relative;
@@ -855,14 +943,14 @@ div.cs-select span {
   transition: 0.5s;
 }
 
-.nsg-taxi-tours>div img {
+.nsg-taxi-tours > div img {
   position: relative;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 
-.nsg-taxi-tours>div:after {
+.nsg-taxi-tours > div:after {
   opacity: 1;
   visibility: visible;
   content: "";
@@ -878,7 +966,7 @@ div.cs-select span {
   transition: 0.5s;
 }
 
-.nsg-taxi-tours>div .desc {
+.nsg-taxi-tours > div .desc {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -890,7 +978,7 @@ div.cs-select span {
   transition: 0.3s;
 }
 
-.nsg-taxi-tours>div .desc h3 {
+.nsg-taxi-tours > div .desc h3 {
   color: #fff;
   margin: 0;
   padding: 0;
@@ -904,19 +992,19 @@ div.cs-select span {
   transition: 0.3s;
 }
 
-.nsg-taxi-tours>div .desc span {
+.nsg-taxi-tours > div .desc span {
   display: block;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 5px;
 }
 
-.nsg-taxi-tours>div .desc .price {
+.nsg-taxi-tours > div .desc .price {
   font-size: 30px;
   font-weight: bold;
   color: #fff;
 }
 
-.nsg-taxi-tours>div .desc .btn {
+.nsg-taxi-tours > div .desc .btn {
   opacity: 1;
   border: 2px solid #fff !important;
   color: #fff !important;
@@ -924,19 +1012,21 @@ div.cs-select span {
   font-weight: 400 !important;
 }
 
-.nsg-taxi-tours>div .desc .btn:hover, .nsg-taxi-tours>div .desc .btn:focus, .nsg-taxi-tours>div .desc .btn:active {
-  border: 2px solid #F78536 !important;
-  background: #F78536 !important;
+.nsg-taxi-tours > div .desc .btn:hover,
+.nsg-taxi-tours > div .desc .btn:focus,
+.nsg-taxi-tours > div .desc .btn:active {
+  border: 2px solid #f78536 !important;
+  background: #f78536 !important;
   color: #fff !important;
 }
 
-.nsg-taxi-tours>div:hover {
+.nsg-taxi-tours > div:hover {
   -webkit-box-shadow: 0px 18px 71px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 18px 71px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 18px 71px -10px rgba(0, 0, 0, 0.75);
 }
 
-.nsg-taxi-tours>div:hover:after {
+.nsg-taxi-tours > div:hover:after {
   opacity: 1;
   visibility: visible;
   -webkit-box-shadow: inset 0px -34px 98px 8px rgba(0, 0, 0, 0.75);
@@ -948,13 +1038,13 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 768px) {
-  .nsg-taxi-tours>div:hover:after {
+  .nsg-taxi-tours > div:hover:after {
     opacity: 0;
     visibility: hidden;
   }
 }
 
-.nsg-taxi-tours>div:hover img {
+.nsg-taxi-tours > div:hover img {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -962,7 +1052,7 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 768px) {
-  .nsg-taxi-tours>div:hover img {
+  .nsg-taxi-tours > div:hover img {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -o-transform: scale(1);
@@ -988,7 +1078,7 @@ div.cs-select span {
   width: 40%;
   float: left;
   padding: 6px 20px;
-  background: #F78536;
+  background: #f78536;
 }
 
 .flight-book .plane-name .p-flight {
@@ -999,7 +1089,7 @@ div.cs-select span {
 .flight-book .desc {
   width: 60%;
   float: right;
-  background: #00AD7C;
+  background: #00ad7c;
   padding: 6px 20px;
 }
 
@@ -1007,7 +1097,8 @@ div.cs-select span {
   float: left;
 }
 
-.flight-book .desc h4, .flight-book .desc span {
+.flight-book .desc h4,
+.flight-book .desc span {
   color: #fff;
 }
 
@@ -1045,11 +1136,12 @@ div.cs-select span {
 #nsg-taxi-car .car .one-4 {
   width: 40%;
   float: left;
-  background: #F78536;
+  background: #f78536;
   padding: 30px;
 }
 
-#nsg-taxi-car .car .one-4 h3, #nsg-taxi-car .car .one-4 span {
+#nsg-taxi-car .car .one-4 h3,
+#nsg-taxi-car .car .one-4 span {
   color: #fff;
 }
 
@@ -1101,7 +1193,7 @@ div.cs-select span {
   display: table-cell;
   vertical-align: middle;
   font-size: 40px;
-  color: #F78536;
+  color: #f78536;
 }
 
 .feature-left .feature-copy {
@@ -1188,7 +1280,7 @@ div.cs-select span {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
-  background: #00AD7C;
+  background: #00ad7c;
   z-index: 12;
 }
 
@@ -1235,7 +1327,7 @@ div.cs-select span {
   transition: 0.5s;
 }
 
-#nsg-taxi-destination-list li>a {
+#nsg-taxi-destination-list li > a {
   min-height: 220px;
   padding: 2em;
   position: relative;
@@ -1245,7 +1337,7 @@ div.cs-select span {
   z-index: 12;
 }
 
-#nsg-taxi-destination-list li>a:after {
+#nsg-taxi-destination-list li > a:after {
   position: absolute;
   top: 20px;
   bottom: 20px;
@@ -1259,26 +1351,26 @@ div.cs-select span {
   transition: 0.3s;
 }
 
-#nsg-taxi-destination-list li>a .case-studies-summary {
+#nsg-taxi-destination-list li > a .case-studies-summary {
   width: auto;
 }
 
 @media screen and (max-width: 768px) {
-  #nsg-taxi-destination-list li>a .case-studies-summary {
+  #nsg-taxi-destination-list li > a .case-studies-summary {
     bottom: 1em;
     left: 1em;
     right: 1em;
   }
 }
 
-#nsg-taxi-destination-list li>a .case-studies-summary span {
+#nsg-taxi-destination-list li > a .case-studies-summary span {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.7);
 }
 
-#nsg-taxi-destination-list li>a .case-studies-summary h2 {
+#nsg-taxi-destination-list li > a .case-studies-summary h2 {
   color: #fff;
   margin-bottom: 0;
   font-size: 24px;
@@ -1289,7 +1381,7 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 768px) {
-  #nsg-taxi-destination-list li>a .case-studies-summary h2 {
+  #nsg-taxi-destination-list li > a .case-studies-summary h2 {
     font-size: 24px;
   }
 }
@@ -1303,11 +1395,11 @@ div.cs-select span {
   background: rgba(0, 0, 0, 0.3);
 }
 
-#nsg-taxi-destination-list li:hover>a:after {
+#nsg-taxi-destination-list li:hover > a:after {
   opacity: 1;
 }
 
-#nsg-taxi-destination-list li:hover>a .case-studies-summary h2 {
+#nsg-taxi-destination-list li:hover > a .case-studies-summary h2 {
   margin-top: -5px;
 }
 
@@ -1371,7 +1463,7 @@ div.cs-select span {
 
 #nsg-taxi-testimonial {
   position: relative;
-  background: #00AD7C;
+  background: #00ad7c;
 }
 
 #nsg-taxi-testimonial .nsg-taxi-heading h2 {
@@ -1387,7 +1479,9 @@ div.cs-select span {
   color: rgba(255, 255, 255, 0.5);
 }
 
-#nsg-taxi-testimonial .box-testimony a:hover, #nsg-taxi-testimonial .box-testimony a:focus, #nsg-taxi-testimonial .box-testimony a:active {
+#nsg-taxi-testimonial .box-testimony a:hover,
+#nsg-taxi-testimonial .box-testimony a:focus,
+#nsg-taxi-testimonial .box-testimony a:active {
   color: white;
   text-decoration: none;
 }
@@ -1427,14 +1521,14 @@ div.cs-select span {
   width: 56px;
   height: 56px;
   margin-top: -30px;
-  background: #00AD7C;
+  background: #00ad7c;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
 
-#nsg-taxi-testimonial .box-testimony blockquote .quote>span {
+#nsg-taxi-testimonial .box-testimony blockquote .quote > span {
   display: table-cell;
   vertical-align: middle;
 }
@@ -1531,7 +1625,10 @@ div.cs-select span {
   margin-bottom: 0;
 }
 
-#nsg-taxi-services, #nsg-taxi-about, #nsg-taxi-contact, #nsg-taxi-hotel {
+#nsg-taxi-services,
+#nsg-taxi-about,
+#nsg-taxi-contact,
+#nsg-taxi-hotel {
   padding: 7em 0;
 }
 
@@ -1558,14 +1655,18 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 768px) {
-  #nsg-taxi-services, #nsg-taxi-about, #nsg-taxi-contact, #nsg-taxi-hotel, #nsg-taxi-package {
+  #nsg-taxi-services,
+  #nsg-taxi-about,
+  #nsg-taxi-contact,
+  #nsg-taxi-hotel,
+  #nsg-taxi-package {
     padding: 4em 0;
   }
 }
 
 #nsg-taxi-services .nsg-taxi-number {
   font-size: 30px;
-  color: #F78536;
+  color: #f78536;
   position: relative;
   padding-top: 10px;
   font-style: italic;
@@ -1582,7 +1683,7 @@ div.cs-select span {
   height: 3px;
   top: 0;
   left: 0;
-  background: #F78536;
+  background: #f78536;
 }
 
 #nsg-taxi-services .nsg-taxi-icon {
@@ -1604,7 +1705,7 @@ div.cs-select span {
 
 #nsg-taxi-services .nsg-taxi-icon i {
   font-size: 200px;
-  color: #F78536;
+  color: #f78536;
 }
 
 @media screen and (max-width: 768px) {
@@ -1627,7 +1728,7 @@ div.cs-select span {
 
 #nsg-taxi-contact .contact-info li i {
   position: absolute;
-  top: .3em;
+  top: 0.3em;
   left: 0;
   font-size: 22px;
   color: rgba(0, 0, 0, 0.3);
@@ -1654,7 +1755,8 @@ div.cs-select span {
   border-radius: 0px;
 }
 
-#nsg-taxi-contact .form-control:focus, #nsg-taxi-contact .form-control:active {
+#nsg-taxi-contact .form-control:focus,
+#nsg-taxi-contact .form-control:active {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -1666,7 +1768,8 @@ div.cs-select span {
   margin-bottom: 30px;
 }
 
-.nsg-taxi-testimonial, .nsg-taxi-team {
+.nsg-taxi-testimonial,
+.nsg-taxi-team {
   position: relative;
   background: #fff;
   padding: 30px;
@@ -1675,13 +1778,15 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 768px) {
-  .nsg-taxi-testimonial, .nsg-taxi-team {
+  .nsg-taxi-testimonial,
+  .nsg-taxi-team {
     border-right: 0;
     margin-bottom: 80px;
   }
 }
 
-.nsg-taxi-testimonial h2, .nsg-taxi-team h2 {
+.nsg-taxi-testimonial h2,
+.nsg-taxi-team h2 {
   font-size: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1689,14 +1794,16 @@ div.cs-select span {
   margin-bottom: 50px;
 }
 
-.nsg-taxi-testimonial figure, .nsg-taxi-team figure {
+.nsg-taxi-testimonial figure,
+.nsg-taxi-team figure {
   position: relative;
   top: 0px;
   background-size: cover;
   margin-bottom: 20px;
 }
 
-.nsg-taxi-testimonial figure img, .nsg-taxi-team figure img {
+.nsg-taxi-testimonial figure img,
+.nsg-taxi-team figure img {
   width: 130px;
   height: 130px;
   border: 10px solid #fff;
@@ -1707,34 +1814,44 @@ div.cs-select span {
   border-radius: 50%;
 }
 
-.nsg-taxi-testimonial>div, .nsg-taxi-team>div {
+.nsg-taxi-testimonial > div,
+.nsg-taxi-team > div {
   padding: 30px 30px 0 30px;
 }
 
-.nsg-taxi-testimonial>div h3, .nsg-taxi-team>div h3 {
+.nsg-taxi-testimonial > div h3,
+.nsg-taxi-team > div h3 {
   margin-bottom: 0;
   font-size: 20px;
-  color: #F78536;
+  color: #f78536;
 }
 
-.nsg-taxi-testimonial>div .position, .nsg-taxi-team>div .position {
+.nsg-taxi-testimonial > div .position,
+.nsg-taxi-team > div .position {
   color: #d9d9d9;
   margin-bottom: 30px;
 }
 
-.nsg-taxi-testimonial>div, .nsg-taxi-testimonial blockquote, .nsg-taxi-team>div, .nsg-taxi-team blockquote {
+.nsg-taxi-testimonial > div,
+.nsg-taxi-testimonial blockquote,
+.nsg-taxi-team > div,
+.nsg-taxi-team blockquote {
   border: none;
   padding: 0;
   margin-bottom: 20px;
 }
 
-.nsg-taxi-testimonial>div p, .nsg-taxi-testimonial blockquote p, .nsg-taxi-team>div p, .nsg-taxi-team blockquote p {
+.nsg-taxi-testimonial > div p,
+.nsg-taxi-testimonial blockquote p,
+.nsg-taxi-team > div p,
+.nsg-taxi-team blockquote p {
   font-size: 16px;
   line-height: 1.5;
   color: #555555;
 }
 
-.nsg-taxi-testimonial span, .nsg-taxi-team span {
+.nsg-taxi-testimonial span,
+.nsg-taxi-team span {
   font-style: italic;
   color: #b3b3b3;
 }
@@ -1789,7 +1906,7 @@ div.cs-select span {
 }
 
 .nsg-taxi-blog .blog-text span.comment a i {
-  color: #F78536;
+  color: #f78536;
   padding-left: 7px;
 }
 
@@ -1804,7 +1921,7 @@ div.cs-select span {
   color: rgba(0, 0, 0, 0.6);
   font-size: 18px;
   text-transform: capitalize;
-  font-weight: 500
+  font-weight: 500;
 }
 
 .nsg-taxi-blog .blog-text p {
@@ -1813,7 +1930,7 @@ div.cs-select span {
 
 #nsg-taxi-start-project-section {
   padding: 7em 0;
-  background: #F64E8B;
+  background: #f64e8b;
 }
 
 #nsg-taxi-start-project-section h2 {
@@ -1829,7 +1946,9 @@ div.cs-select span {
   }
 }
 
-#nsg-taxi-start-project-section a:hover, #nsg-taxi-start-project-section a:focus, #nsg-taxi-start-project-section a:active {
+#nsg-taxi-start-project-section a:hover,
+#nsg-taxi-start-project-section a:focus,
+#nsg-taxi-start-project-section a:active {
   color: white !important;
 }
 
@@ -1845,16 +1964,18 @@ div.cs-select span {
   }
 }
 
-.nsg-taxi-social-icons>a {
+.nsg-taxi-social-icons > a {
   padding: 4px 10px;
-  color: #F78536;
+  color: #f78536;
 }
 
-.nsg-taxi-social-icons>a i {
+.nsg-taxi-social-icons > a i {
   font-size: 26px;
 }
 
-.nsg-taxi-social-icons>a:hover, .nsg-taxi-social-icons>a:focus, .nsg-taxi-social-icons>a:active {
+.nsg-taxi-social-icons > a:hover,
+.nsg-taxi-social-icons > a:focus,
+.nsg-taxi-social-icons > a:active {
   text-decoration: none;
   color: #5a5a5a;
 }
@@ -1873,7 +1994,9 @@ div.cs-select span {
   color: rgba(255, 255, 255, 0.5);
 }
 
-#footer p a:hover, #footer p a:active, #footer p a:focus {
+#footer p a:hover,
+#footer p a:active,
+#footer p a:focus {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -1888,7 +2011,8 @@ div.cs-select span {
   margin-bottom: 25px;
 }
 
-#footer .nsg-taxi-footer-link li, #footer .nsg-taxi-footer-link ul {
+#footer .nsg-taxi-footer-link li,
+#footer .nsg-taxi-footer-link ul {
   padding: 0;
   margin: 0;
 }
@@ -1903,7 +2027,9 @@ div.cs-select span {
   color: rgba(255, 255, 255, 0.5);
 }
 
-#footer .nsg-taxi-footer-link li a:hover, #footer .nsg-taxi-footer-link li a:active, #footer .nsg-taxi-footer-link li a:focus {
+#footer .nsg-taxi-footer-link li a:hover,
+#footer .nsg-taxi-footer-link li a:active,
+#footer .nsg-taxi-footer-link li a:focus {
   color: #fff !important;
 }
 
@@ -1922,36 +2048,44 @@ div.cs-select span {
 }
 
 .btn.btn-primary {
-  background: #F78536;
+  background: #f78536;
   color: #fff;
   border: none !important;
   border: 2px solid transparent !important;
 }
 
-.btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
   box-shadow: none;
-  background: #F78536;
+  background: #f78536;
   color: #fff !important;
 }
 
-.btn:hover, .btn:active, .btn:focus {
+.btn:hover,
+.btn:active,
+.btn:focus {
   background: #393e46 !important;
   color: #fff;
   outline: none !important;
 }
 
-.btn.btn-default:hover, .btn.btn-default:focus, .btn.btn-default:active {
+.btn.btn-default:hover,
+.btn.btn-default:focus,
+.btn.btn-default:active {
   border-color: transparent;
 }
 
 .btn.btn-outline {
   background: transparent;
-  color: #F78536;
-  border: 2px solid #F78536 !important;
+  color: #f78536;
+  border: 2px solid #f78536 !important;
 }
 
-.btn.btn-outline:hover, .btn.btn-outline:focus, .btn.btn-outline:active {
-  background: #F78536 !important;
+.btn.btn-outline:hover,
+.btn.btn-outline:focus,
+.btn.btn-outline:active {
+  background: #f78536 !important;
   color: #fff !important;
 }
 
@@ -2036,16 +2170,16 @@ div.cs-select span {
 }
 
 #offcanvas-menu ul li a:hover {
-  color: #F78536;
+  color: #f78536;
 }
 
-#offcanvas-menu ul li>.nsg-taxi-sub-menu {
+#offcanvas-menu ul li > .nsg-taxi-sub-menu {
   margin-top: 9px;
   padding-left: 20px;
 }
 
-#offcanvas-menu ul li.active>a {
-  color: #F78536;
+#offcanvas-menu ul li.active > a {
+  color: #f78536;
 }
 
 #offcanvas-menu ul .nsg-taxi-sub-menu {
@@ -2057,15 +2191,19 @@ div.cs-select span {
   text-decoration: none;
 }
 
-.nsg-taxi-nav-toggle.active i::before, .nsg-taxi-nav-toggle.active i::after {
+.nsg-taxi-nav-toggle.active i::before,
+.nsg-taxi-nav-toggle.active i::after {
   background: #fff;
 }
 
-.nsg-taxi-nav-toggle.dark.active i::before, .nsg-taxi-nav-toggle.dark.active i::after {
+.nsg-taxi-nav-toggle.dark.active i::before,
+.nsg-taxi-nav-toggle.dark.active i::after {
   background: #fff;
 }
 
-.nsg-taxi-nav-toggle:hover, .nsg-taxi-nav-toggle:focus, .nsg-taxi-nav-toggle:active {
+.nsg-taxi-nav-toggle:hover,
+.nsg-taxi-nav-toggle:focus,
+.nsg-taxi-nav-toggle:active {
   outline: none;
   border-bottom: none !important;
 }
@@ -2079,15 +2217,16 @@ div.cs-select span {
   width: 30px;
   height: 2px;
   color: #fff;
-  font: bold 14px/.4 Helvetica;
+  font: bold 14px/0.4 Helvetica;
   text-transform: uppercase;
   text-indent: -55px;
   background: #fff;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
-.nsg-taxi-nav-toggle i::before, .nsg-taxi-nav-toggle i::after {
-  content: '';
+.nsg-taxi-nav-toggle i::before,
+.nsg-taxi-nav-toggle i::after {
+  content: "";
   width: 30px;
   height: 2px;
   background: #fff;
@@ -2102,10 +2241,11 @@ div.cs-select span {
   position: relative;
   color: #000;
   background: #000;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
-.nsg-taxi-nav-toggle.dark i::before, .nsg-taxi-nav-toggle.dark i::after {
+.nsg-taxi-nav-toggle.dark i::before,
+.nsg-taxi-nav-toggle.dark i::after {
   background: #000;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -2165,7 +2305,6 @@ div.cs-select span {
   .nsg-taxi-nav-toggle {
     display: block;
     top: 0px;
-    margin-top: 2em;
   }
 }
 
@@ -2574,4 +2713,23 @@ label a {
 optgroup[label] {
   background-color: #ef6437 !important;
   color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  #nsg-taxi-logo,
+  .nsg-taxi-nav-toggle {
+    margin-bottom: 10px;
+  }
+
+  #nsg-taxi-logo {
+    margin-top: 10px;
+  }
+
+  .nsg-taxi-nav-toggle {
+    margin-top: 15px;
+  }
+
+  #nsg-taxi-features {
+    margin-top: 15rem;
+  }
 }
