@@ -13,7 +13,7 @@ module.exports = {
   mail: 'info@nsgtaxi.com',
   google_api_key: 'AIzaSyCJnen-AB1eM6aoGKKLSnA1cyDIQknzD5Q',
 
-  //Testing Credentials
+  //PayTM Testing Credentials
   // request_type: 'Payment',
   // merchant_id: 'nUuswO43569342193043',
   // merchant_key: 'R86OGnmG7ippgq_m',
@@ -25,7 +25,7 @@ module.exports = {
   // transaction_order_status_url: 'https://securegw-stage.paytm.in/order/status',
   // callback_url: 'http://localhost:3000/payment-status',
 
-  //Live Credentials
+  //PayTM Live Credentials
   request_type: 'Payment',
   merchant_id: 'RrjpTX26296194961608',
   merchant_key: 'Oip_i7cYPlwXFmqS',
@@ -37,7 +37,7 @@ module.exports = {
   transaction_order_status_url: 'https://securegw.paytm.in/order/status',
   callback_url: 'https://www.nsgtaxi.com/payment-status',
 
-  // Razorpay Credentials
+  // Razorpay Testing Credentials
   // key: 'rzp_test_bLWnHfbTJQWcfw',
   // secret: 'JR0Uvtg45vuY00NYK5q6HcTa',
   // name: 'NSGA TRAVELS PVT LTD',

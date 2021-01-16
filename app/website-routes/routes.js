@@ -585,7 +585,7 @@ router.post('/payment-status', function (req, res) {
   if (generateValidateSignature(req.body)) {
     returnBookingTransactionData(req.body).then((response) => {
       updatePaymentStatus(response);
-      if (response.order.status == 'authorized') {
+      if ((response.order.status == 'captured') || (response.order.status == 'authorized')) {
         res.render('payment-status', {
           base_url: "https://www.nsgtaxi.com" + req.originalUrl,
           title: 'Payment Status',
@@ -642,12 +642,19 @@ router.post('/payment-status', function (req, res) {
 });
 
 function updatePaymentStatus(gatewayData) {
+  let payment_status = 'failed';
+  if (gatewayData.order.status == 'authorized') {
+    payment_status = 'success';
+  }
+  if (gatewayData.order.status == 'captured') {
+    payment_status = 'success';
+  }
   const bookingData = gatewayData.booking;
   bookingData['payment_gateway'] = 'Razorpay Softwares Pvt. Ltd.';
   bookingData['payment_description'] = 'Booking Payment';
   bookingData['payment_reference_number'] = gatewayData.payment.id;
   bookingData['payment_amount'] = parseInt(gatewayData.order.amount/100, 10);
-  bookingData['payment_status'] = (gatewayData.order.status == 'authorized') ? 'success' : 'failed';
+  bookingData['payment_status'] = payment_status;
   BookingCollection.doc(bookingData.document_id).update(bookingData).then((response) => {
     console.log('Booking updated after payment!');
     Booking.sendBookingSMSEmail(bookingData);
@@ -657,7 +664,7 @@ function updatePaymentStatus(gatewayData) {
   const paymentData = gatewayData.payment;
   
   paymentData['amount'] = parseInt(gatewayData.order.amount/100, 10);
-  paymentData['status'] = (gatewayData.order.status == 'authorized') ? 'success' : 'failed';
+  paymentData['status'] = payment_status;
   paymentData['updated_at'] = gatewayData.order.created_at;
   PaymentCollection.doc(paymentData.document_id).update(paymentData).then((response) => {
     console.log('Payment updated after payment!');
