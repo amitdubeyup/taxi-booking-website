@@ -1,0 +1,407 @@
+<form id="trip_form" autocomplete="off">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="tabulation animate-box">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"
+                        onClick="outstationTaxi()">
+                        <a href="#outstation" aria-controls="outstation" role="tab"
+                            data-toggle="tab">Outstation Taxi</a>
+                    </li>
+                    <li role="presentation" onClick="rentalTaxi()">
+                        <a href="#rental" aria-controls="rental" role="tab"
+                            data-toggle="tab">Rental Taxi</a>
+                    </li>
+                    <input type="hidden" id="booking_type" name="booking_type"
+                        value="outstation" />
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="outstation">
+                        <div class="row">
+                            <div class="col-xxs-12 col-xs-12 mt">
+                                <span class="one-way">
+                                    <input type="checkbox" class="checkbox-input"
+                                        id="one_way_trip" name="one_way_trip"
+                                        onClick="selectTripType()" />
+                                    <label for="one_way_trip"
+                                        class="checkbox-label">One
+                                        Way</label>
+                                </span>
+                                <span class="round-way">
+                                    <input type="checkbox" class="checkbox-input"
+                                        id="round_way_trip" name="round_way_trip"
+                                        onClick="selectTripType()" />
+                                    <label for="round_way_trip"
+                                        class="checkbox-label">Round
+                                        Trip</label>
+                                </span>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12 mt">
+                                <div class="input-field">
+                                    <label for="from">From:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Pickup Location"
+                                        id="pickup_address" name="pickup_address" />
+                                    <input type="hidden" id="pickup_latitude"
+                                        name="pickup_latitude" />
+                                    <input type="hidden" id="pickup_longitude"
+                                        name="pickup_longitude" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12 mt">
+                                <div class="input-field">
+                                    <label for="from">To:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Drop-off location"
+                                        id="drop_off_address"
+                                        name="drop_off_address" />
+                                    <input type="hidden" id="drop_off_latitude"
+                                        name="drop_off_latitude" />
+                                    <input type="hidden" id="drop_off_longitude"
+                                        name="drop_off_longitude" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6 mt alternate"
+                                id="pickup-date-section">
+                                <div class="input-field">
+                                    <label for="date-start">Pickup Date:</label>
+                                    <input type="date" class="form-control"
+                                        id="pickup_date" name="pickup_date"
+                                        onChange="calculateAmount()"
+                                        placeholder="DD/MM/YYYY" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6 mt alternate"
+                                id="drop-off-date-section">
+                                <div class="input-field">
+                                    <label for="date-end">Drop-off Date:</label>
+                                    <input type="date" class="form-control"
+                                        id="drop_off_date" name="drop_off_date"
+                                        onChange="calculateAmount()"
+                                        placeholder="DD/MM/YYYY" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6 mt"
+                                id="pickup-time-section">
+                                <section>
+                                    <label for="class">Pickup Time:</label>
+                                    <input type="time" class="form-control"
+                                        placeholder="Select Pickup Time"
+                                        id="pickup_time" name="pickup_time"
+                                        onChange="calculateAmount()" />
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6"
+                                id="vehicle-type-section">
+                                <section>
+                                    <label for="class">Vehicle Type:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Vehicle Type"
+                                        id="vehicle_type" name="vehicle_type"
+                                        onChange="selectVehicleType()">
+                                        <option value="">Select One</option>
+                                        <% Object.keys(total_cars).forEach((key)=> {%>
+                                            <option
+                                                value="<%= JSON.stringify(total_cars[key]) %>">
+                                                <%= key %>
+                                            </option>
+                                        <% }); %>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12"
+                                id="vehicle-name-section">
+                                <section>
+                                    <label for="class">Vehicle Name:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Vehicle Name"
+                                        id="vehicle_name" name="vehicle_name"
+                                        onChange="selectVehicleName()">
+                                        <option value="">Select One</option>
+                                    </select>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="rental">
+                        <div class="row">
+                            <div class="col-xxs-12 col-xs-12 mt">
+                                <div class="input-field">
+                                    <label for="from">Pickup Address:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Pickup Address"
+                                        id="rental_pickup_address"
+                                        name="rental_pickup_address" />
+                                    <input type="hidden" id="rental_pickup_latitude"
+                                        name="rental_pickup_latitude" />
+                                    <input type="hidden"
+                                        id="rental_pickup_longitude"
+                                        name="rental_pickup_longitude" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6 mt alternate">
+                                <div class="input-field">
+                                    <label for="date-start">Pickup Date:</label>
+                                    <input type="date" class="form-control"
+                                        id="rental_pickup_date"
+                                        name="rental_pickup_date"
+                                        placeholder="DD/MM/YYYY" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6 mt">
+                                <section>
+                                    <label for="class">Pickup Time:</label>
+                                    <input type="time" class="form-control"
+                                        id="rental_pickup_time"
+                                        name="rental_pickup_time"
+                                        placeholder="Select Pickup Time" />
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6 mt">
+                                <section>
+                                    <label for="class">Package Type:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Package Type"
+                                        id="package_type" name="package_type"
+                                        onChange="calculateRentalAmount()">
+                                        <option value="1,10">1 Hour - 10 KM</option>
+                                        <option value="2,20">2 Hour - 20 KM</option>
+                                        <option value="3,30">3 Hour - 30 KM</option>
+                                        <option value="4,40">4 Hour - 40 KM</option>
+                                        <option value="5,50">5 Hour - 50 KM</option>
+                                        <option value="6,60">6 Hour - 60 KM</option>
+                                        <option value="7,70">7 Hour - 70 KM</option>
+                                        <option value="8,80">8 Hour - 80 KM</option>
+                                        <option value="9,90">9 Hour - 90 KM</option>
+                                        <option value="10,100">10 Hour - 100 KM
+                                        </option>
+                                        <option value="11,110">11 Hour - 110 KM
+                                        </option>
+                                        <option value="12,120">12 Hour - 120 KM
+                                        </option>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-6"
+                                id="vehicle-type-section">
+                                <section>
+                                    <label for="class">Vehicle Type:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Vehicle Type"
+                                        id="rental_vehicle_type"
+                                        name="rental_vehicle_type"
+                                        onChange="selectRentalVehicleType()">
+                                        <option value="">Select One</option>
+                                        <% Object.keys(total_cars).forEach((key)=> {
+                                            %>
+                                            <option
+                                                value="<%= JSON.stringify(total_cars[key]) %>">
+                                                <%= key %>
+                                            </option>
+                                            <% }); %>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12"
+                                id="vehicle-name-section">
+                                <section>
+                                    <label for="class">Vehicle Name:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Vehicle Name"
+                                        id="rental_vehicle_name"
+                                        name="rental_vehicle_name"
+                                        onChange="selectRentalVehicleName()">
+                                        <option value="">Select One</option>
+                                    </select>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pricing-section"
+            id="pricing-section">
+            <div class="tabulation animate-box">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#information" aria-controls="information"
+                            role="tab" data-toggle="tab">Personal Details</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="information">
+                        <div class="row">
+                            <div class="col-xxs-12 col-xs-4">
+                                <div class="input-field">
+                                    <label for="class">Salutation:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Salutation"
+                                        id="salutation" name="salutation">
+                                        <option title="salutation" value="Mr."
+                                            selected>Mr.
+                                        </option>
+                                        <option title="salutation" value="Mrs.">Mrs.
+                                        </option>
+                                        <option title="salutation" value="Ms.">Ms.
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-4 mt">
+                                <div class="input-field">
+                                    <label for="from">First Name:</label>
+                                    <input type="text"
+                                        class="form-control text-capitalize"
+                                        placeholder="First Name" id="first_name"
+                                        name="first_name" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-4 mt">
+                                <div class="input-field">
+                                    <label for="from">Last Name:</label>
+                                    <input type="text"
+                                        class="form-control text-capitalize"
+                                        placeholder="Last Name" id="last_name"
+                                        name="last_name" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-4">
+                                <div class="input-field">
+                                    <label for="class">Gender:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Gender" id="gender"
+                                        name="gender">
+                                        <option title="gender" value="Male"
+                                            selected>Male
+                                        </option>
+                                        <option title="gender" value="Female">Female
+                                        </option>
+                                        <option title="gender" value="Other">Other
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-4 mt">
+                                <div class="input-field">
+                                    <label for="from">Mobile:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Mobile" id="mobile"
+                                        name="mobile" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-4 mt">
+                                <div class="input-field">
+                                    <label for="from">Email:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Email" id="email"
+                                        name="email" />
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 distance">
+                                <div class="input-field">
+                                    <div class="left distance-text">Distance</div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 distance">
+                                <div class="input-field">
+                                    <div class="right distance-value"
+                                        id="distance-value">
+                                        0.00KM
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
+                                <div class="input-field">
+                                    <div class="left">Base Fare</div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
+                                <div class="input-field">
+                                    <div class="right" id="amount-value">
+                                        &#8377;0.00/-
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6">
+                                <div class="input-field">
+                                    <div class="left">GST Charge(5%)</div>
+                                </div>
+                            </div>
+                            <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6">
+                                <div class="input-field">
+                                    <div class="right" id="tax-value">&#8377;0.00/-
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
+                                <div class="input-field">
+                                    <div class="left">Total Fare</div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
+                                <div class="input-field">
+                                    <div class="right amount-right"
+                                        id="total-value">
+                                        &#8377;0.00/-</div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
+                                <div class="input-field">
+                                    <div class="fare-note" id="fare-note">
+                                        <strong>Note:</strong> If the car travels
+                                        between
+                                        09:00 PM to 06:00 AM, then ₹250 will be
+                                        charged.
+                                        This charge should be paid directly to the
+                                        driver.
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
+                                <div class="input-field">
+                                    <input type="checkbox" class="checkbox-input"
+                                        id="terms_and_conditions"
+                                        name="terms_and_conditions"
+                                        onClick="acceptTermsConditions()" />
+                                    <label for="terms_and_conditions"
+                                        class="checkbox-label">
+                                        I read and accept <a hreflang="en"
+                                            href="/terms-and-conditions"
+                                            target="_blank" class="terms-link">Terms
+                                            & Conditions.</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div
+                                class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input type="submit"
+                                    class="btn btn-primary btn-block book-now"
+                                    value="Book Now">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-sm-push-1 col-md-7 col-md-push-1 offer-section"
+            id="offer-section">
+            <div class="desc2 animate-box">
+                <h2>
+                    <%=page_offer_title%>
+                </h2>
+                <h3>
+                    <%=page_offer_description%>
+                </h3>
+            </div>
+        </div>
+    </div>
+</form>

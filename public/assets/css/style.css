@@ -447,7 +447,7 @@ figure {
 }
 
 #nsg-taxi-logo {
-  margin-top: 35px;
+  /* margin-top: 35px; */
   float: left;
 }
 
@@ -465,7 +465,7 @@ figure {
   z-index: 2;
   display: block;
   float: right;
-  margin-top: 25px;
+  /* margin-top: 25px; */
 }
 
 #nsg-taxi-menu-wrap .sf-menu a {
@@ -573,6 +573,11 @@ figure {
   top: 7px;
   right: 100%;
   border: none !important;
+}
+
+#nsg-taxi-primary-menu > li {
+  border-right: 1px solid orange;
+  padding: 0 15px;
 }
 
 .site-header.has-image #primary-menu .sub-menu {
@@ -874,7 +879,7 @@ div.cs-select span {
 #nsg-taxi-testimonial,
 #nsg-taxi-home,
 .nsg-taxi-content-section {
-  padding: 7em 0em;
+  padding: 4em 0em;
 }
 
 @media screen and (max-width: 768px) {
@@ -893,13 +898,34 @@ div.cs-select span {
   }
 }
 
+.login-btn {
+  background-color: orange;
+  border-right: none;
+  color: white;
+}
+
+#nsg-taxi-features > .container > .row > .features-box-shadow {
+  height: 200px;
+  width: 390px;
+  padding: 1rem;
+}
+
+#nsg-taxi-features > .container > .row > .features-box-shadow:hover {
+  box-shadow: -1px 1px 10px -1px;
+  transition: ease-in-out .3s;
+}
+
+#nsg-taxi-features > .container > .row > .animate-box > .feature-left > .feature-copy > p {
+  text-align: center;
+}
+
 .nsg-taxi-section-gray {
   background: rgba(0, 0, 0, 0.04);
 }
 
 .heading-section {
   padding-bottom: 1em;
-  margin-bottom: 5em;
+  margin-bottom: 3em;
 }
 
 .heading-section:after {
@@ -1167,7 +1193,7 @@ div.cs-select span {
 .feature-left {
   float: left;
   width: 100%;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   position: relative;
 }
 
@@ -1555,7 +1581,7 @@ div.cs-select span {
 }
 
 #nsg-taxi-features .feature-left {
-  margin-bottom: 40px;
+  padding: 15px;
 }
 
 @media screen and (max-width: 992px) {
@@ -1982,7 +2008,7 @@ div.cs-select span {
 
 #footer {
   background: #ef6437;
-  padding: 60px 0 40px;
+  padding: 50px 0 10px;
 }
 
 #footer p {
@@ -2000,9 +2026,9 @@ div.cs-select span {
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
-#footer .nsg-taxi-footer-link {
+/* #footer .nsg-taxi-footer-link {
   padding-bottom: 30px;
-}
+} */
 
 #footer .nsg-taxi-footer-link h3 {
   color: #fff;
@@ -2336,7 +2362,7 @@ div.cs-select span {
 }
 
 .row-bottom-padded-md {
-  padding-bottom: 4em;
+  padding-bottom: 3em;
 }
 
 @media screen and (max-width: 768px) {

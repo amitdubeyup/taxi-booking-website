@@ -1,12 +1,12 @@
-<header id="nsg-taxi-header-section">
+<header id="nsg-taxi-header-section" style="padding: 1rem;">
     <div class="container">
         <div class="nav-header">
             <a href="javascipt:void(0)" class="js-nsg-taxi-nav-toggle nsg-taxi-nav-toggle dark"><i></i></a>
-            <h1 id="nsg-taxi-logo">
+            <!-- <h1 id="nsg-taxi-logo"> -->
                 <a href="/">
-                    <img src="/assets/images/company/logo-110-40.png" alt="NSG TAXI LOGO" />
+                    <img src="/assets/images/company/logo-110-40.png" alt="NSG TAXI LOGO" style="margin-top: .8rem;"/>
                 </a>
-            </h1>
+            <!-- </h1> -->
             <nav id="nsg-taxi-menu-wrap" role="navigation">
                 <ul class="sf-menu" id="nsg-taxi-primary-menu">
                     <li class="<%= (page == "index") ? 'active' : ''; %>"><a href="/">Home</a></li>
@@ -15,8 +15,8 @@
                     <li class="<%= (page == "about") ? 'active' : ''; %>"><a href="/about">About</a></li>
                     <li class="<%= (page == "contact") ? 'active' : ''; %>"><a href="/contact">Contact</a></li>
                     <li class="<%= (page == "blogs") ? 'active' : ''; %>"><a href="/blogs">Blogs</a></li>
-                    <li class="<%= (page == "login") ? 'active' : ''; %>"><a href="https://www.dashboard.nsgtaxi.com"
-                            target="_blank">Login</a></li>
+                    <li style="border-right: none;" class="<%= (page == "login") ? 'active' : ''; %>"><a href="https://www.dashboard.nsgtaxi.com"
+                            target="_blank" class="login-btn" style="color: white;">Login</a></li>
                 </ul>
             </nav>
         </div>
