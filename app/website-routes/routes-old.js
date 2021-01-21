@@ -23,7 +23,7 @@ router.get('/', function (req, res) {
     });
     DigitalMarketingCollection.doc('index_page').get().then((pageDataResponse) => {
       if (!pageDataResponse.exists) {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       } else {
         const pageData = pageDataResponse.data();
         CarDetailsCollection.get().then((carDetailsSnapshot) => {
@@ -44,14 +44,14 @@ router.get('/', function (req, res) {
             total_routes: routeData
           });
         }).catch((error) => {
-          res.render('under-maintenance.ejs');
+          res.redirect('/');;
         });
       }
     }).catch((error) => {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     });
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -86,10 +86,10 @@ router.get('/taxi-booking/*', function (req, res) {
         total_routes: routeData
       });
     }).catch((error) => {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     });
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -98,7 +98,7 @@ router.get('/about', function (req, res) {
 
   DigitalMarketingCollection.doc('about_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('about', {
@@ -110,14 +110,14 @@ router.get('/about', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/contact', function (req, res) {
   DigitalMarketingCollection.doc('contact_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('contact', {
@@ -129,14 +129,14 @@ router.get('/contact', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/blogs', function (req, res) {
   DigitalMarketingCollection.doc('blog_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       BlogCollection.get().then((snapshot) => {
@@ -155,11 +155,11 @@ router.get('/blogs', function (req, res) {
           page: 'blogs',
         });
       }).catch((error) => {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -167,7 +167,7 @@ router.get('/blog-details/*', function (req, res) {
   const page_url = ((req.originalUrl).split('/').reverse())[0];
   BlogCollection.where('page_url', '==', page_url).get().then((response) => {
     if (response.empty) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const blogData = [];
       response.forEach((doc) => {
@@ -192,14 +192,14 @@ router.get('/blog-details/*', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/customer-agreement', function (req, res) {
   DigitalMarketingCollection.doc('customer_agreement_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('customer-agreement', {
@@ -211,14 +211,14 @@ router.get('/customer-agreement', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/vendor-agreement', function (req, res) {
   DigitalMarketingCollection.doc('vendor_agreement_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('vendor-agreement', {
@@ -230,14 +230,14 @@ router.get('/vendor-agreement', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/hotels', function (req, res) {
   DigitalMarketingCollection.doc('hotel_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       HotelCollection.get().then((snapshot) => {
@@ -256,11 +256,11 @@ router.get('/hotels', function (req, res) {
           page: 'hotels',
         });
       }).catch((error) => {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -270,7 +270,7 @@ router.get('/hotel-booking/*', function (req, res) {
   const hotel_location = url_data[0] ? url_data[0] : '';
   HotelCollection.where('page_url', '==', page_url).where('hotel_location', '==', hotel_location).get().then((hotelResponse) => {
     if (hotelResponse.empty) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const hotelData = [];
       hotelResponse.forEach((doc) => {
@@ -303,18 +303,18 @@ router.get('/hotel-booking/*', function (req, res) {
           page: 'hotels',
         });
       } else {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       }
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/hotel-agreement', function (req, res) {
   DigitalMarketingCollection.doc('hotel_agreement_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('hotel-agreement', {
@@ -326,14 +326,14 @@ router.get('/hotel-agreement', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/packages', function (req, res) {
   DigitalMarketingCollection.doc('package_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       PackageCollection.get().then((snapshot) => {
@@ -352,11 +352,11 @@ router.get('/packages', function (req, res) {
           page: 'packages',
         });
       }).catch((error) => {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -366,7 +366,7 @@ router.get('/package-booking/*', function (req, res) {
   const package_location = url_data[0] ? url_data[0] : '';
   PackageCollection.where('page_url', '==', page_url).where('package_location', '==', package_location).get().then((packageResponse) => {
     if (packageResponse.empty) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const packageData = [];
       packageResponse.forEach((doc) => {
@@ -396,18 +396,18 @@ router.get('/package-booking/*', function (req, res) {
           page: 'packages'
         });
       } else {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       }
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/package-agreement', function (req, res) {
   DigitalMarketingCollection.doc('package_agreement_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('package-agreement', {
@@ -419,14 +419,14 @@ router.get('/package-agreement', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/privacy-policy', function (req, res) {
   DigitalMarketingCollection.doc('privacy_policy_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('privacy-policy', {
@@ -438,14 +438,14 @@ router.get('/privacy-policy', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/terms-and-conditions', function (req, res) {
   DigitalMarketingCollection.doc('terms_and_conditions_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('terms-and-conditions', {
@@ -457,14 +457,14 @@ router.get('/terms-and-conditions', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
 router.get('/cancellation-and-refund-policy', function (req, res) {
   DigitalMarketingCollection.doc('cancellation_and_refund_policy_page').get().then((response) => {
     if (!response.exists) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const pageData = response.data();
       res.render('cancellation-and-refund-policy', {
@@ -476,7 +476,7 @@ router.get('/cancellation-and-refund-policy', function (req, res) {
       });
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -486,7 +486,7 @@ router.get('/payment/*', function (req, res) {
   const document_id = url_data[0] ? url_data[0] : '';
   BookingCollection.where('document_id', '==', document_id).where('payment_status', '==', null).get().then((bookingResponse) => {
     if (bookingResponse.empty) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const bookingData = [];
       bookingResponse.forEach((doc) => {
@@ -520,11 +520,11 @@ router.get('/payment/*', function (req, res) {
           page: 'index',
         });
       } else {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       }
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -533,7 +533,7 @@ router.get('/payment-initiate/*', function (req, res) {
   const document_id = url_data[0] ? url_data[0] : '';
   TransactionCollection.where('document_id', '==', document_id).where('payment_transaction_id', '==', null).get().then((transactionResponse) => {
     if (transactionResponse.empty) {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     } else {
       const transactionData = [];
       transactionResponse.forEach((doc) => {
@@ -551,11 +551,11 @@ router.get('/payment-initiate/*', function (req, res) {
           page: 'index',
         });
       } else {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       }
     }
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 
@@ -840,7 +840,7 @@ router.get('/*', function (req, res) {
     });
     DigitalMarketingCollection.doc('index_page').get().then((pageDataResponse) => {
       if (!pageDataResponse.exists) {
-        res.render('under-maintenance.ejs');
+        res.redirect('/');;
       } else {
         const pageData = pageDataResponse.data();
         CarDetailsCollection.get().then((carDetailsSnapshot) => {
@@ -861,14 +861,14 @@ router.get('/*', function (req, res) {
             total_routes: routeData
           });
         }).catch((error) => {
-          res.render('under-maintenance.ejs');
+          res.redirect('/');;
         });
       }
     }).catch((error) => {
-      res.render('under-maintenance.ejs');
+      res.redirect('/');;
     });
   }).catch((error) => {
-    res.render('under-maintenance.ejs');
+    res.redirect('/');;
   });
 });
 // Handle 404 Page End

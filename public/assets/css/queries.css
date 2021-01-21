@@ -1,0 +1,313 @@
+@media screen and (max-width: 768px) {
+    .header-top .nsg-taxi-link {
+      text-align: center;
+    }
+  }
+
+@media screen and (max-width: 768px) {
+.header-top .nsg-taxi-social {
+    text-align: center !important;
+}
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-cover,
+    .nsg-taxi-hero {
+      height: 575px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-cover {
+      height: inherit;
+      padding: 3em 0;
+    }
+    .nsg-taxi-cover .desc {
+      margin-top: -100px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-cover.nsg-taxi-cover_2 {
+      height: inherit;
+      padding: 3em 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-cover .desc {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-cover .desc h2 {
+      font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-cover .desc .desc2 {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-tabs a {
+      font-weight: normal;
+      font-size: 13px;
+      padding: 15px 10px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-tours > div:hover:after {
+      opacity: 0;
+      visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nsg-taxi-tours > div:hover img {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .feature-left .icon {
+      width: 10%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .feature-left .icon {
+      width: 15%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tabulation label {
+      width: 40%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tabulation input[type="text"] {
+      width: 55%;
+      float: right;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .tabulation .cs-select {
+      width: 55%;
+      float: right;
+    }
+}
+
+@media screen and (max-width: 829px) {
+    .cs-skin-border {
+      max-width: 829px !important;
+    }
+  }
+  
+  @media screen and (max-width: 30em) {
+    .cs-skin-border {
+      font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nsg-taxi-work-section,
+    #nsg-taxi-car,
+    #nsg-taxi-blog-section,
+    #nsg-taxi-features,
+    #nsg-taxi-tours,
+    #nsg-taxi-testimonial,
+    #nsg-taxi-home,
+    .nsg-taxi-content-section {
+      padding: 3em 0em;
+    }
+    #nsg-taxi-testimonial {
+      padding: 3em 0em 0em 0em;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .feature-left .feature-copy {
+      width: 90%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .feature-left .feature-copy {
+      width: 85%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .feature-left .feature-copy {
+      width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #nsg-taxi-destination-list li {
+      margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nsg-taxi-destination-list li .title-bg h2 {
+      font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nsg-taxi-destination-list li > a .case-studies-summary {
+      bottom: 1em;
+      left: 1em;
+      right: 1em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nsg-taxi-destination-list li > a .case-studies-summary h2 {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #nsg-taxi-destination-list li.two-third {
+      width: 49%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #nsg-taxi-destination-list li.two-third {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #nsg-taxi-destination-list li.one-third {
+      width: 49%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #nsg-taxi-destination-list li.one-third {
+      width: 100%;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+    #nsg-taxi-destination-list li.one-forth {
+      width: 49%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #nsg-taxi-destination-list li.one-forth {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    #nsg-taxi-destination-list li.one-half {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    #nsg-taxi-features .feature-left {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    #nsg-taxi-features .feature-left .icon {
+      width: 10%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    #nsg-taxi-features .feature-left .icon {
+      width: 15%;
+    }
+    #nsg-taxi-features {
+      padding: 3em 0;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #nsg-taxi-features .feature-left .feature-copy {
+      width: 90%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    #nsg-taxi-features .feature-left .feature-copy {
+      width: 85%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #nsg-taxi-features .feature-left .feature-copy {
+      width: 80%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nsg-taxi-services,
+    #nsg-taxi-about,
+    #nsg-taxi-contact,
+    #nsg-taxi-hotel,
+    #nsg-taxi-package {
+      padding: 4em 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #nsg-taxi-services .nsg-taxi-icon {
+      margin-top: 0px;
+      float: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  #nsg-taxi-services .nsg-taxi-icon i {
+    font-size: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nsg-taxi-testimonial,
+  .nsg-taxi-team {
+    border-right: 0;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nsg-taxi-blog {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #nsg-taxi-start-project-section h2 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #map {
+    height: 200px;
+  }
+}

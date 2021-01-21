@@ -36,6 +36,7 @@
                                         Trip</label>
                                 </span>
                             </div>
+                            <% if (base_url == "https://www.nsgtaxi.com/") { %>
                             <div class="col-xxs-12 col-xs-12 mt">
                                 <div class="input-field">
                                     <label for="from">From:</label>
@@ -61,6 +62,33 @@
                                         name="drop_off_longitude" />
                                 </div>
                             </div>
+                            <% } else { %>
+                                <div class="col-xxs-12 col-xs-12 mt">
+                                    <div class="input-field">
+                                        <label for="from">From:</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Pickup Location"
+                                            id="pickup_address" name="pickup_address" value="<%= from %>"/>
+                                        <input type="hidden" id="pickup_latitude"
+                                            name="pickup_latitude" />
+                                        <input type="hidden" id="pickup_longitude"
+                                            name="pickup_longitude" />
+                                    </div>
+                                </div>
+                                <div class="col-xxs-12 col-xs-12 mt">
+                                    <div class="input-field">
+                                        <label for="from">To:</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Drop-off location"
+                                            id="drop_off_address"
+                                            name="drop_off_address" value="<%= to %>"/>
+                                        <input type="hidden" id="drop_off_latitude"
+                                            name="drop_off_latitude" />
+                                        <input type="hidden" id="drop_off_longitude"
+                                            name="drop_off_longitude" />
+                                    </div>
+                                </div>
+                            <% } %>
                             <div class="col-xxs-12 col-xs-6 mt alternate"
                                 id="pickup-date-section">
                                 <div class="input-field">
