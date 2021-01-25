@@ -12,6 +12,7 @@ module.exports = {
   token_expire: '30d',
   mail: 'info@nsgtaxi.com',
   google_api_key: 'AIzaSyCJnen-AB1eM6aoGKKLSnA1cyDIQknzD5Q',
+  google_server_key: 'AIzaSyCnuv7piwyIesoSSUE7Aj3H-siKcEQUWjg',
 
   //PayTM Testing Credentials
   // request_type: 'Payment',

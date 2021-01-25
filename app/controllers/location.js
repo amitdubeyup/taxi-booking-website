@@ -46,7 +46,7 @@ function getIpLocation(req, res) {
 function getLocationDetails(req, res) {
     axios({
         method: 'GET',
-        url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${req.params.latlng}&key=${config.google_api_key}`,
+        url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${req.params.latlng}&key=${config.google_server_key}`,
         headers: { 'content-type': 'application/json' },
     })
         .then(response => {
@@ -96,7 +96,7 @@ function getLatLongFromPostalCode(req, res) {
     } else {
         axios({
             method: 'GET',
-            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${postalData}&key=${config.google_api_key}`,
+            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${postalData}&key=${config.google_server_key}`,
         })
             .then(response => {
                 if (response.status === 200 && response.statusText === 'OK') {
@@ -146,7 +146,7 @@ function getCustomLatLongFromPostalCode(value) {
         } else {
             axios({
                 method: 'GET',
-                url: `https://maps.googleapis.com/maps/api/geocode/json?address=${postalData}&key=${config.google_api_key}`,
+                url: `https://maps.googleapis.com/maps/api/geocode/json?address=${postalData}&key=${config.google_server_key}`,
             })
                 .then(response => {
                     if (response.status === 200 && response.statusText === 'OK') {
@@ -184,7 +184,7 @@ function getCustomLatLongFromPostalCode(value) {
 function getDistanceBetweenLatLng(req, res) {
     axios({
         method: 'GET',
-        url: `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${req.body.latitudeOne},${req.body.longitudeOne}&destinations=${req.body.latitudeTwo},${req.body.longitudeTwo}&key=AIzaSyA7Yex8yK4j0xtvDo5G4TMj5ynu8LNZe_g`,
+        url: `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${req.body.latitudeOne},${req.body.longitudeOne}&destinations=${req.body.latitudeTwo},${req.body.longitudeTwo}&key=${config.google_server_key}`,
     }).then(response => {
         if (response.status === 200 && response.statusText === 'OK') {
             const receivedData = JSON.parse(JSON.stringify(response.data));
