@@ -40,7 +40,7 @@ var driver_charge = 0;
 var gst_charge = 0;
 var total_fare = 0;
 
-var url = 'https://www.nsgtaxi.com';
+var url = window.location.origin;
 
 var map;
 var directionsDisplay;
@@ -395,7 +395,7 @@ $("#trip_form").submit(function (e) {
   }
 });
 
-$("#feature_trip_form").submit( function (e) {
+$("#feature_trip_form").submit(function (e) {
   e.preventDefault();
 }).validate({
   rules: {
@@ -438,7 +438,7 @@ $("#feature_trip_form").submit( function (e) {
               $("#otp_modal").modal('show');
             }
           },
-          error: function(error) {
+          error: function (error) {
             $("#custom-loader").css('display', 'none');
             const message = error['responseJSON'] ? error['responseJSON']['message'] : 'Oops, something went wrong!';
             toastr.error(message);
@@ -915,7 +915,7 @@ function selectFeatureVehicleType() {
   car_type = x[0]['car_type']
   var a = document.getElementById('proceed-link');
   a.href = "/featured-trip/?type=" + car_type;
-  
+
   if (car_type == "HATCHBACK") {
     $("#suv_base_fare").css('display', 'none');
     $("#sedan_base_fare").css('display', 'none');
