@@ -40,7 +40,7 @@ var driver_charge = 0;
 var gst_charge = 0;
 var total_fare = 0;
 
-var url = window.location.origin;
+var url = 'https://www.nsgtaxi.com';
 
 var map;
 var directionsDisplay;
@@ -395,6 +395,64 @@ $("#trip_form").submit(function (e) {
   }
 });
 
+$("#feature_trip_form").submit( function (e) {
+  e.preventDefault();
+}).validate({
+  rules: {
+    pickup_address: {
+      required: 1,
+    },
+    drop_off_address: {
+      required: 1,
+    }
+  },
+  messages: {
+    pickup_address: {
+      required: "Please enter pickup address",
+    },
+    drop_off_address: {
+      required: "Please enter drop off address",
+    }
+  },
+  submitHandler: function (form) {
+    if ($("#feature_trip_form").valid()) {
+      const formDataArr = $("#feature_trip_form").serializeArray();
+      const formData = {};
+      for (i in formDataArr) {
+        formData[formDataArr[i]['name']] = formDataArr[i]['value']
+      }
+      if (terms_and_conditions) {
+        $("#custom-loader").css('display', 'block');
+        $.ajax({
+          type: 'POST',
+          url: `${url}/api/user/verify-booking-user`,
+          data: formData,
+          dataType: 'json',
+          success: function (result) {
+            $("#custom-loader").css('display', 'none');
+            if (result['success']) {
+              localStorage.setItem('token', result['token']);
+              submitFeatureTripForm();
+            } else {
+              toastr.success(result['message']);
+              $("#otp_modal").modal('show');
+            }
+          },
+          error: function(error) {
+            $("#custom-loader").css('display', 'none');
+            const message = error['responseJSON'] ? error['responseJSON']['message'] : 'Oops, something went wrong!';
+            toastr.error(message);
+          }
+        });
+      } else {
+        toastr.error('Please read and accept terms & conditions.');
+      }
+    } else {
+      $("#feature_trip_form").validate();
+    }
+  }
+});
+
 function selectTripType() {
   if (one_way_trip) {
     one_way_trip = 0;
@@ -513,6 +571,7 @@ $("#submit-otp").click(function () {
 });
 
 function selectVehicleType() {
+  console.log('vehicle type');
   const one_way_trip = parseInt($("#one_way_trip").val());
   const round_way_trip = parseInt($("#round_way_trip").val());
   const vehicle_type = $("#vehicle_type").val() ? JSON.parse($("#vehicle_type").val()) : [];
@@ -531,12 +590,16 @@ function selectVehicleType() {
 }
 
 function selectVehicleName() {
+  console.log('vehicle name');
   vehicle_details = $("#vehicle_name").val() ? JSON.parse($("#vehicle_name").val()) : null;
+  console.log(vehicle_details)
   rental_vehicle_details = vehicle_details;
   calculateAmount();
 }
 
 function calculateAmount() {
+  console.log('calculate amount');
+
   if (vehicle_details) {
     const pickup_address = $("#pickup_address").val();
     const drop_off_address = $("#drop_off_address").val();
@@ -545,8 +608,11 @@ function calculateAmount() {
     const pickup_date = $("#pickup_date").val();
     const drop_off_date = $("#drop_off_date").val();
     const pickup_time = $("#pickup_time").val();
+    console.log("hey");
     if (pickup_address && drop_off_address && pickup_date && drop_off_date && pickup_time) {
+      console.log('hello');
       if (one_way_trip) {
+        console.log("hi");
         calculateFinalAmount(1);
       }
       if (round_way_trip) {
@@ -616,10 +682,12 @@ function calculateFinalAmount(trip_type) {
   $("#total-value").html(`&#8377;${total_fare}.00/-`);
 
   if (total_fare > 0) {
+    console.log("yes");
     $("#pricing-section").css('display', 'block');
     $("#distance-section").css('display', 'block');
     $("#offer-section").css('display', 'none');
   } else {
+    console.log("no");
     $("#pricing-section").css('display', 'none');
     $("#distance-section").css('display', 'none');
     $("#offer-section").css('display', 'block');
@@ -648,7 +716,9 @@ function selectRentalVehicleType() {
 
 function selectRentalVehicleName() {
   rental_vehicle_details = $("#rental_vehicle_name").val() ? JSON.parse($("#rental_vehicle_name").val()) : null;
+  console.log(rental_vehicle_details);
   vehicle_details = rental_vehicle_details;
+  console.log(vehicle_details);
   calculateRentalAmount();
 }
 
@@ -726,6 +796,39 @@ function submitFormFinal() {
   }
 }
 
+function submitFeatureTripForm() {
+  console.log(total_fare);
+  if ($("#feature_trip_form").valid() && (total_fare > 0)) {
+    const arr = $("#feature_trip_form").serializeArray();
+    var formData = {};
+    for (i in arr) {
+      formData[arr[i]['name']] = arr[i]['value']
+    }
+    formData['actual_distance'] = total_distance;
+    formData['base_fare'] = actual_amount;
+    formData['gst_charge'] = gst_charge;
+    formData['total_fare'] = total_fare;
+    $("#custom-loader").css('display', 'block');
+    $.ajax({
+      type: 'POST',
+      url: `${url}/api/booking/add`,
+      data: formData,
+      dataType: 'json',
+      success: function (result) {
+        $("#custom-loader").css('display', 'none');
+        window.location.href = `${url}/payment/${result['data']['document_id']}`;
+      },
+      error: function (error) {
+        $("#custom-loader").css('display', 'none');
+        const message = error['responseJSON'] ? error['responseJSON']['message'] : 'Unable to book, Please try again!';
+        toastr.error(message);
+      }
+    });
+  } else {
+    $("#feature_trip_form").validate();
+  }
+}
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -796,4 +899,74 @@ function rentalTaxi() {
   $("#offer-section").css('display', 'block');
   $("#booking_type").val('rental');
   calculateRentalAmount();
+}
+
+
+$("#hatch_base_fare").css('display', 'none');
+$("#sedan_base_fare").css('display', 'none');
+$("#suv_base_fare").css('display', 'none');
+
+function selectFeatureVehicleType() {
+  $("#pricing-section").css('display', 'block');
+  $("#offer-section").css('display', 'none');
+  $("#personal-detail-section").css('display', 'none');
+
+  var x = JSON.parse($("#rental_vehicle_name").val());
+  car_type = x[0]['car_type']
+  var a = document.getElementById('proceed-link');
+  a.href = "/featured-trip/?type=" + car_type;
+  
+  if (car_type == "HATCHBACK") {
+    $("#suv_base_fare").css('display', 'none');
+    $("#sedan_base_fare").css('display', 'none');
+    $("#hatch_base_fare").css('display', 'block');
+
+    $("#feature_trip-vehicle #hatchback").css('display', 'block');
+    $("#feature_trip-vehicle #sedan").css('display', 'none');
+    $("#feature_trip-vehicle #suv").css('display', 'none');
+
+    var amount = $("#hatch_base_fare #amount-value").text();
+    actual_amount = parseInt(amount.slice(78, -75));
+    fare_with_gst = parseInt(actual_amount * 0.05);
+    $("#tax-value").html("&#8377;" + fare_with_gst + "/-");
+    total_fare = parseInt(fare_with_gst + actual_amount);
+    $("#total-value").html("&#8377;" + total_fare + "/-");
+
+  } else if (car_type == "SEDAN") {
+    $("#hatch_base_fare").css('display', 'none');
+    $("#suv_base_fare").css('display', 'none');
+    $("#sedan_base_fare").css('display', 'block');
+
+    $("#feature_trip-vehicle #hatchback").css('display', 'none');
+    $("#feature_trip-vehicle #sedan").css('display', 'block');
+    $("#feature_trip-vehicle #suv").css('display', 'none');
+
+    var amount = $("#sedan_base_fare #amount-value").text();
+    actual_amount = parseInt(amount.slice(78, -75));
+    fare_with_gst = parseInt(actual_amount * 0.05);
+    $("#tax-value").html("&#8377;" + fare_with_gst + "/-");
+    total_fare = parseInt(fare_with_gst + actual_amount);
+    $("#total-value").html("&#8377;" + total_fare + "/-");
+
+  } else {
+    $("#hatch_base_fare").css('display', 'none');
+    $("#sedan_base_fare").css('display', 'none');
+    $("#suv_base_fare").css('display', 'block');
+
+    $("#feature_trip-vehicle #hatchback").css('display', 'none');
+    $("#feature_trip-vehicle #sedan").css('display', 'none');
+    $("#feature_trip-vehicle #suv").css('display', 'block');
+
+    var amount = $("#suv_base_fare #amount-value").text();
+    actual_amount = parseInt(amount.slice(78, -75));
+    fare_with_gst = parseInt(actual_amount * 0.05);
+    $("#tax-value").html("&#8377;" + fare_with_gst + "/-");
+    total_fare = parseInt(fare_with_gst + actual_amount);
+    $("#total-value").html("&#8377;" + total_fare + "/-");
+  }
+}
+
+function proceed() {
+  $("#pricing-section").css('display', 'none');
+  $("#personal-detail-section").css('display', 'block');
 }

@@ -97,8 +97,9 @@
 
 @media screen and (max-width: 480px) {
     .tabulation input[type="text"] {
-      width: 55%;
+      width: 100%;
       float: right;
+      margin-bottom: 1rem;
     }
   }
   

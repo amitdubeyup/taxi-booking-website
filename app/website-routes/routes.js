@@ -76,7 +76,11 @@ router.get('/taxi-booking/*', function (req, res) {
       carDetailsSnapshot.forEach((doc) => {
         carDetailsData.push(doc.data());
       });
-      res.render('index', {
+      const featuredCarDetails = [];
+      featuredCarDetails.push(carDetailsData[37]);
+      featuredCarDetails.push(carDetailsData[39]);
+      featuredCarDetails.push(carDetailsData[48]);
+      res.render('one-way-booking', {
         api_key: config.google_api_key,
         base_url: "https://www.nsgtaxi.com" + req.originalUrl,
         title: pageData.page_title,
@@ -87,17 +91,78 @@ router.get('/taxi-booking/*', function (req, res) {
         page: 'index',
         total_cars: _.groupBy(_.sortBy(carDetailsData, 'car_type'), 'car_type'),
         total_routes: routeData,
-        from: "From",
-        to: "To"
+        from: pageData.from_name,
+        to: pageData.to_name,
+        route_name: pageData.route_name,
+        sedan_base_fare: pageData.sedan_base_fare,
+        sedan_state_tax: pageData.sedan_state_tax,
+        hatch_base_fare: pageData.hatchback_base_fare,
+        hatch_state_tax : pageData.hatchback_state_tax,
+        suv_base_fare: pageData.suv_base_fare,
+        suv_state_tax: pageData.suv_state_tax,
+        distance: pageData.distance,
+        toll_amount: pageData.toll_amount,
+        car_details: _.groupBy(_.sortBy(featuredCarDetails, 'car_type'), 'car_type')
       });
     }).catch((error) => {
-      res.redirect('/');;
+      res.render('/');
     });
   }).catch((error) => {
-    res.redirect('/');;
+    res.render('/');
   });
 });
 
+router.get('/featured-trip', function(req, res) {
+  const from = req.query.from;
+  const to = req.query.to;
+  const type = req.query.type;
+  console.log({from, to});
+  RouteCollection.get().then((routeSnapShot) => {
+    const routeData = [];
+    routeSnapShot.forEach((doc) => {
+      routeData.push(doc.data());
+    });
+    DigitalMarketingCollection.doc('index_page').get().then((pageDataResponse) => {
+      if (!pageDataResponse.exists) {
+        res.render('/');
+      } else {
+        const pageData = pageDataResponse.data();
+        CarDetailsCollection.get().then((carDetailsSnapshot) => {
+          const carDetailsData = [];
+          carDetailsSnapshot.forEach((doc) => {
+            carDetailsData.push(doc.data());
+          });
+          const featuredCarDetails = [];
+          featuredCarDetails.push(carDetailsData[37]);
+          featuredCarDetails.push(carDetailsData[39]);
+          featuredCarDetails.push(carDetailsData[48]);
+          res.render('index', {
+            api_key: config.google_api_key,
+            base_url: "https://www.nsgtaxi.com" + req.originalUrl,
+            title: pageData.title,
+            description: pageData.description,
+            keywords: pageData.keywords,
+            page_offer_title: pageData.page_offer_title,
+            page_offer_description: pageData.page_offer_description,
+            page: 'index',
+            total_cars: _.groupBy(_.sortBy(carDetailsData, 'car_type'), 'car_type'),
+            total_routes: routeData,
+            from: from,
+            to: to,
+            type: type,
+            car_details: _.groupBy(_.sortBy(featuredCarDetails, 'car_type'), 'car_type')
+          });
+        }).catch((error) => {
+          res.render('/');
+        });
+      }
+    }).catch((error) => {
+      res.render('/');
+    });
+  }).catch((error) => {
+    res.render('/');
+  });
+});
 
 router.get('/about', function (req, res) {
 

@@ -823,6 +823,22 @@ div.cs-select span {
   color: #f78536;
 }
 
+.feature_trip--price {
+  background: #f78536;
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+.feature_trip--vehicle {
+  height: 7rem;
+}
+
+.feature-trips--prices {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
 .feature-desc-extra {
   display: none;
 }

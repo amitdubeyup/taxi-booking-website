@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <%include ./includes/head-meta-tag.ejs %>
+        <%include ./includes/head-link-tag.ejs %>
+        <link rel="stylesheet" href="/assets/css/package.css">
+        <%include ./includes/head-script-tag.ejs %>
+    </head>
+
+    <body>
+        <% include ./includes/body-no-script-tag.ejs %>
+        <div id="nsg-taxi-wrapper">
+            <div id="nsg-taxi-page">
+                <% include ./includes/header.ejs %>
+                <div class="nsg-taxi-hero">
+                    <div class="nsg-taxi-overlay"></div>
+                    <div class="nsg-taxi-cover" data-stellar-background-ratio="0.5"
+                        style="background-image: url('/assets/images/cover_bg_1.jpg');">
+                        <div class="desc" style="margin: -15rem 0;">
+                            <div class="container">
+                                <form id="feature_trip_form" autocomplete="off">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                            <div class="tabulation">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li role="presentation" class="active"
+                                                        onClick="outstationTaxi()">
+                                                        <a href="#outstation" aria-controls="outstation" role="tab"
+                                                            data-toggle="tab">Outstation Taxi</a>
+                                                    </li>
+                                                    <input type="hidden" id="booking_type" name="booking_type"
+                                                        value="outstation" />
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="">
+                                                        <div role="tabpanel" class="tab-pane active" id="outstation">
+                                                            <div class="row">
+                                                                <div class="col-xxs-12 col-xs-12 mt">
+                                                                    <div class="input-field">
+                                                                        <label for="from">From:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Pickup Location"
+                                                                            id="pickup_address" name="pickup_address" value="<%= from %>"/>
+                                                                        <input type="hidden" id="pickup_latitude"
+                                                                            name="pickup_latitude" />
+                                                                        <input type="hidden" id="pickup_longitude"
+                                                                            name="pickup_longitude" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xxs-12 col-xs-12 mt">
+                                                                    <div class="input-field">
+                                                                        <label for="from">To:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Drop-off location"
+                                                                            id="drop_off_address"
+                                                                            name="drop_off_address" value="<%= to %>"/>
+                                                                        <input type="hidden" id="drop_off_latitude"
+                                                                            name="drop_off_latitude" />
+                                                                        <input type="hidden" id="drop_off_longitude"
+                                                                            name="drop_off_longitude" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xxs-12 col-xs-12 mt">
+                                                                    <div class="input-field">
+                                                                        <label for="vehicle_type">Vehicle Type</label>
+                                                                        <select id="rental_vehicle_name"
+                                                                        name="rental_vehicle_name"
+                                                                        onChange="selectFeatureVehicleType()" class="form-control">
+                                                                            <option value="" selected disabled>Please select a Vehicle type</option>
+                                                                            <% Object.keys(car_details).forEach((key)=> {%>
+                                                                                <option
+                                                                                    value="<%= JSON.stringify(car_details[key]) %>">
+                                                                                    <%= key %>
+                                                                                </option>
+                                                                            <% }); %>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <div class="row feature-trips--prices mt alternate" style="">
+                                                                    <a href="" class="feature_trip--price" id="feature_trip--hatchback">
+                                                                        <img src="../assets/images/sedan-car-model.svg" class="feature_trip--vehicle" alt="">
+                                                                    </a>
+                                                                    <button class="feature_trip--price" id="feature_trip--sedan" type="menu">
+                                                                        <img src="../assets/images/minivan-car.svg" class="feature_trip--vehicle" alt="">
+                                                                    </button>
+                                                                    <div class="feature_trip--price" id="feature_trip--suv">
+                                                                        <img src="../assets/images/jeep.svg" class="feature_trip--vehicle" alt="">
+                                                                    </div>
+                                                                </div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- TRIP DETAILS -->
+                                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pricing-section"
+                                            id="pricing-section">
+                                            <div class="tabulation animate-box">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li role="presentation" class="active">
+                                                        <a href="#trip_details" aria-controls="information"
+                                                            role="tab" data-toggle="tab">Trip Details</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content" style="padding: 10px 30px;">
+                                                    <div role="tabpanel" class="tab-pane active" id="information" style="padding: 0 15px;">
+                                                        <div class="row">
+                                                            <!-- <div class="container"> -->
+                                                                <div class="col-xxs-12 col-xs-12" id="feature_trip-vehicle">
+                                                                    <div class="text-center" id="hatchback">
+                                                                        <img src="../assets/images/minivan-car.svg" class="feature_trip--price feature_trip--vehicle" alt="">
+                                                                    </div>
+                                                                    <div class="text-center" id="sedan">
+                                                                        <img src="../assets/images/sedan-car-model.svg" class="feature_trip--price feature_trip--vehicle" alt="">
+                                                                    </div>
+                                                                    <div class="text-center" id="suv">
+                                                                        <img src="../assets/images/jeep.svg" class="feature_trip--price feature_trip--vehicle" alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 distance">
+                                                                    <div class="input-field">
+                                                                        <div class="left distance-text">Distance</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 distance">
+                                                                    <div class="input-field">
+                                                                        <div class="right distance-value"
+                                                                            id="distance-value">
+                                                                            <%= distance %>KM
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
+                                                                    <div class="input-field">
+                                                                        <div class="left">Base Fare</div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
+                                                                    <div class="input-field" id="hatch_base_fare">
+                                                                        <div class="right" id="amount-value">
+                                                                            &#8377;<%= hatch_base_fare %>/-
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="input-field" id="sedan_base_fare">
+                                                                        <div class="right" id="amount-value">
+                                                                            &#8377;<%= sedan_base_fare %>/-
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="input-field" id="suv_base_fare">
+                                                                        <div class="right" id="amount-value">
+                                                                            &#8377;<%= suv_base_fare %>/-
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6">
+                                                                    <div class="input-field">
+                                                                        <div class="left">GST Charge(5%)</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6">
+                                                                    <div class="input-field">
+                                                                        <div class="right" id="tax-value">
+                                                                            &#8377; /-
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
+                                                                    <div class="input-field">
+                                                                        <div class="left">Total Fare</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
+                                                                    <div class="input-field">
+                                                                        <div class="right amount-right"
+                                                                            id="total-value">
+                                                                            &#8377;0.00/-</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
+                                                                    <div class="input-field">
+                                                                        <div class="fare-note" id="fare-note">
+                                                                            <strong>Note:</strong> If the car travels
+                                                                            between
+                                                                            09:00 PM to 06:00 AM, then ₹250 will be
+                                                                            charged.
+                                                                            This charge should be paid directly to the
+                                                                            driver.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12" id="proceed-btn">
+                                                                    <!-- <button type="button" class="btn btn-primary btn-block">Proceed</button> -->
+                                                                    <a href="/featured-trip/?type=" id="proceed-link" class="btn btn-primary btn-block">Proceed</a>
+                                                                </div>
+                                                            <!-- </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- PERSONAL DETAILS -->
+                                        <div class="col-xxs-12 col-sm-12 col-md-7 col-lg-7 pricing-section" id="personal-detail-section">
+                                            <div class="tabulation animate-box">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li role="presentation" class="active">
+                                                        <a href="#information" aria-controls="information"
+                                                            role="tab" data-toggle="tab">Personal Details</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane active" id="information">
+                                                        <div class="row">
+                                                            <div class="col-xxs-12 col-xs-4">
+                                                                <div class="input-field">
+                                                                    <label for="class">Salutation:</label>
+                                                                    <select class="form-control"
+                                                                        placeholder="Select Salutation"
+                                                                        id="salutation" name="salutation">
+                                                                        <option title="salutation" value="Mr."
+                                                                            selected>Mr.
+                                                                        </option>
+                                                                        <option title="salutation" value="Mrs.">Mrs.
+                                                                        </option>
+                                                                        <option title="salutation" value="Ms.">Ms.
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxs-12 col-xs-4 mt">
+                                                                <div class="input-field">
+                                                                    <label for="from">First Name:</label>
+                                                                    <input type="text"
+                                                                        class="form-control text-capitalize"
+                                                                        placeholder="First Name" id="first_name"
+                                                                        name="first_name" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxs-12 col-xs-4 mt">
+                                                                <div class="input-field">
+                                                                    <label for="from">Last Name:</label>
+                                                                    <input type="text"
+                                                                        class="form-control text-capitalize"
+                                                                        placeholder="Last Name" id="last_name"
+                                                                        name="last_name" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxs-12 col-xs-4">
+                                                                <div class="input-field">
+                                                                    <label for="class">Gender:</label>
+                                                                    <select class="form-control"
+                                                                        placeholder="Select Gender" id="gender"
+                                                                        name="gender">
+                                                                        <option title="gender" value="Male"
+                                                                            selected>Male
+                                                                        </option>
+                                                                        <option title="gender" value="Female">Female
+                                                                        </option>
+                                                                        <option title="gender" value="Other">Other
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxs-12 col-xs-4 mt">
+                                                                <div class="input-field">
+                                                                    <label for="from">Mobile:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Mobile" id="mobile"
+                                                                        name="mobile" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxs-12 col-xs-4 mt">
+                                                                <div class="input-field">
+                                                                    <label for="from">Email:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Email" id="email"
+                                                                        name="email" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
+                                                                <div class="input-field">
+                                                                    <input type="checkbox" class="checkbox-input"
+                                                                        id="terms_and_conditions"
+                                                                        name="terms_and_conditions"
+                                                                        onClick="acceptTermsConditions()" />
+                                                                    <label for="terms_and_conditions"
+                                                                        class="checkbox-label">
+                                                                        I read and accept <a hreflang="en"
+                                                                            href="/terms-and-conditions"
+                                                                            target="_blank" class="terms-link">Terms
+                                                                            & Conditions.</a>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <button class="btn btn-primary btn-block col-xxs-12 col-md-4">Previous</button>
+                                                                <input type="submit"
+                                                                    class="btn btn-primary btn-block book-now col-xxs-12 col-md-4"
+                                                                    value="Book Now">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                        <div class="col-sm-12 col-sm-push-1 col-md-7 col-md-push-1 offer-section"
+                                            id="offer-section">
+                                            <div class="desc2 animate-box">
+                                                <h2>
+                                                    <%=page_offer_title%>
+                                                </h2>
+                                                <h3>
+                                                    <%=page_offer_description%>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% include ./includes/footer.ejs %>
+            </div>
+        </div>
+        <script type="text/javascript"
+			src="//maps.googleapis.com/maps/api/js?key=AIzaSyCJnen-AB1eM6aoGKKLSnA1cyDIQknzD5Q&libraries=places"></script>
+        <% include ./includes/footer-script.ejs %>
+        <script src="/public/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.validation.js"></script>
+			<script src="/assets/js/additional-method.js"></script>
+			<script src="/assets/js/booking.js"></script>
+    </body>
+</html>

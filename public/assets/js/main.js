@@ -8,9 +8,6 @@ webshims.polyfill('forms forms-ext');
 
 	'use strict';
 
-
-
-	// iPad and iPod detection	
 	var isiPad = function () {
 		return (navigator.platform.indexOf("iPad") != -1);
 	};
@@ -22,7 +19,6 @@ webshims.polyfill('forms forms-ext');
 		);
 	};
 
-	// Main Menu Superfish
 	var mainMenu = function () {
 
 		$('#nsg-taxi-primary-menu').superfish({
@@ -37,15 +33,11 @@ webshims.polyfill('forms forms-ext');
 
 	};
 
-	// Parallax
 	var parallax = function () {
 		if (!isiPad() || !isiPhone()) {
 			$(window).stellar();
 		}
 	};
-
-
-	// Offcanvas and cloning of the main menu
 	var offcanvas = function () {
 
 		var $clone = $('#nsg-taxi-menu-wrap').clone();
@@ -59,7 +51,6 @@ webshims.polyfill('forms forms-ext');
 
 		$('#nsg-taxi-page').prepend($clone);
 
-		// click the burger
 		$('.js-nsg-taxi-nav-toggle').on('click', function () {
 
 			if ($('body').hasClass('nsg-taxi-offcanvas')) {
@@ -67,8 +58,6 @@ webshims.polyfill('forms forms-ext');
 			} else {
 				$('body').addClass('nsg-taxi-offcanvas');
 			}
-			// event.preventDefault();
-
 		});
 
 		$('#offcanvas-menu').css('height', $(window).height());
@@ -89,9 +78,6 @@ webshims.polyfill('forms forms-ext');
 
 	}
 
-
-
-	// Click outside of the Mobile Menu
 	var mobileMenuOutsideClick = function () {
 		$(document).click(function (e) {
 			var container = $("#offcanvas-menu, .js-nsg-taxi-nav-toggle");
@@ -102,9 +88,6 @@ webshims.polyfill('forms forms-ext');
 			}
 		});
 	};
-
-
-	// Animations
 
 	var contentWayPoint = function () {
 		var i = 0;
@@ -143,7 +126,6 @@ webshims.polyfill('forms forms-ext');
 		}
 	};
 
-	// Document on load.
 	$(function () {
 		mainMenu();
 		parallax();
@@ -152,6 +134,12 @@ webshims.polyfill('forms forms-ext');
 		contentWayPoint();
 		stickyBanner();
 	});
-
-
 }());
+
+var arr = document.querySelectorAll(".feature-copy p");
+const new_arr = [];
+
+for (let i = 0; i < arr.length; i++) {
+	temp = arr[i];
+	new_arr.push(temp.toString().slice(0, -10));
+}

@@ -36,7 +36,7 @@
                                         Trip</label>
                                 </span>
                             </div>
-                            <% if (base_url == "https://www.nsgtaxi.com/") { %>
+                            <% if (base_url == "https://www.nsgtaxi.com/" ) { %>
                             <div class="col-xxs-12 col-xs-12 mt">
                                 <div class="input-field">
                                     <label for="from">From:</label>
@@ -67,8 +67,8 @@
                                     <div class="input-field">
                                         <label for="from">From:</label>
                                         <input type="text" class="form-control"
-                                            placeholder="Pickup Location"
-                                            id="pickup_address" name="pickup_address" value="<%= from %>"/>
+                                            placeholder="Enter your proper Pickup Location"
+                                            id="pickup_address" name="pickup_address" />
                                         <input type="hidden" id="pickup_latitude"
                                             name="pickup_latitude" />
                                         <input type="hidden" id="pickup_longitude"
@@ -79,16 +79,16 @@
                                     <div class="input-field">
                                         <label for="from">To:</label>
                                         <input type="text" class="form-control"
-                                            placeholder="Drop-off location"
+                                            placeholder="Enter your proper Drop-off location"
                                             id="drop_off_address"
-                                            name="drop_off_address" value="<%= to %>"/>
+                                            name="drop_off_address" />
                                         <input type="hidden" id="drop_off_latitude"
                                             name="drop_off_latitude" />
                                         <input type="hidden" id="drop_off_longitude"
                                             name="drop_off_longitude" />
                                     </div>
                                 </div>
-                            <% } %>
+                                <% } %>
                             <div class="col-xxs-12 col-xs-6 mt alternate"
                                 id="pickup-date-section">
                                 <div class="input-field">
@@ -119,6 +119,7 @@
                                         onChange="calculateAmount()" />
                                 </section>
                             </div>
+                            <% if (base_url == "https://www.nsgtaxi.com/") { %>
                             <div class="col-xxs-12 col-xs-6"
                                 id="vehicle-type-section">
                                 <section>
@@ -149,8 +150,46 @@
                                     </select>
                                 </section>
                             </div>
+                            <% } else { %>
+                                <div class="col-xxs-12 col-xs-6"
+                                id="vehicle-type-section">
+                                <section>
+                                    <label for="class">Vehicle Type:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Vehicle Type"
+                                        id="vehicle_type" name="vehicle_type"
+                                        onChange="selectVehicleType()">
+                                        <option value="" selected>Please select one</option>
+                                        <% Object.keys(car_details).forEach((key) => { %>
+                                            <% if (key == type) { %>
+                                            <option value="<%= JSON.stringify(car_details[key]) %>"><%= key %></option>
+                                            <% } %>
+                                        <% }); %>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12"
+                                id="vehicle-name-section">
+                                <section>
+                                    <label for="class">Vehicle Name:</label>
+                                    <select class="form-control"
+                                        placeholder="Select Vehicle Name"
+                                        id="vehicle_name" name="vehicle_name"
+                                        onChange="selectVehicleName()">
+                                        <option value="" selected>Please select one</option>
+                                        <% Object.keys(car_details).forEach((key) => { %>
+                                            <% if (key == type) { %>
+                                            <option value="<%= JSON.stringify(car_details[key]) %>"><%= car_details[key][0]['car_name'] %></option>
+                                            <!-- <option value="<%= JSON.stringify(car_details[key]) %>">Hyundai Xcent</option> -->
+                                            <% } %>
+                                        <% }); %>
+                                    </select>
+                                </section>
+                            </div>
+                            <% } %>
                         </div>
                     </div>
+                    <!-- OUTSTATION END -->
                     <div role="tabpanel" class="tab-pane" id="rental">
                         <div class="row">
                             <div class="col-xxs-12 col-xs-12 mt">
@@ -245,7 +284,9 @@
                             </div>
                         </div>
                     </div>
+                    <!-- RENTAL END -->
                 </div>
+                <!-- TAB CONTENT END -->
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pricing-section"
