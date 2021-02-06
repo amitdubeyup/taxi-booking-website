@@ -69,14 +69,6 @@ router.get("/", function (req, res) {
     .catch((error) => {
       res.render("under-maintenance.ejs");
     });
-<<<<<<< Updated upstream
-    DigitalMarketingCollection.doc('index_page').get().then((pageDataResponse) => {
-      if (!pageDataResponse.exists) {
-        res.redirect('/');;
-      } else {
-        const pageData = pageDataResponse.data();
-        CarDetailsCollection.get().then((carDetailsSnapshot) => {
-=======
 });
 
 router.get("/taxi-booking/*", function (req, res) {
@@ -95,7 +87,6 @@ router.get("/taxi-booking/*", function (req, res) {
       });
       CarDetailsCollection.get()
         .then((carDetailsSnapshot) => {
->>>>>>> Stashed changes
           const carDetailsData = [];
           carDetailsSnapshot.forEach((doc) => {
             carDetailsData.push(doc.data());
@@ -108,24 +99,6 @@ router.get("/taxi-booking/*", function (req, res) {
             keywords: pageData.page_keywords,
             page_offer_title: pageData.page_offer_title,
             page_offer_description: pageData.page_offer_description,
-<<<<<<< Updated upstream
-            page: 'index',
-            total_cars: _.groupBy(_.sortBy(carDetailsData, 'car_type'), 'car_type'),
-            total_routes: routeData,
-            from: "From",
-            to: "To"
-          });
-        }).catch((error) => {
-          res.redirect('/');;
-        });
-      }
-    }).catch((error) => {
-      res.redirect('/');;
-    });
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-=======
             page: "index",
             total_cars: _.groupBy(
               _.sortBy(carDetailsData, "car_type"),
@@ -141,7 +114,6 @@ router.get("/taxi-booking/*", function (req, res) {
     .catch((error) => {
       res.render("under-maintenance.ejs");
     });
->>>>>>> Stashed changes
 });
 
 router.get("/about", function (req, res) {
@@ -164,149 +136,6 @@ router.get("/about", function (req, res) {
     .catch((error) => {
       res.render("under-maintenance.ejs");
     });
-<<<<<<< Updated upstream
-    CarDetailsCollection.get().then((carDetailsSnapshot) => {
-      const carDetailsData = [];
-      carDetailsSnapshot.forEach((doc) => {
-        carDetailsData.push(doc.data());
-      });
-      const featuredCarDetails = [];
-      featuredCarDetails.push(carDetailsData[37]);
-      featuredCarDetails.push(carDetailsData[39]);
-      featuredCarDetails.push(carDetailsData[48]);
-      res.render('one-way-booking', {
-        api_key: config.google_api_key,
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.page_title,
-        description: pageData.page_description,
-        keywords: pageData.page_keywords,
-        page_offer_title: pageData.page_offer_title,
-        page_offer_description: pageData.page_offer_description,
-        page: 'index',
-        total_cars: _.groupBy(_.sortBy(carDetailsData, 'car_type'), 'car_type'),
-        total_routes: routeData,
-        from: pageData.from_name,
-        to: pageData.to_name,
-        route_name: pageData.route_name,
-        sedan_base_fare: pageData.sedan_base_fare,
-        sedan_state_tax: pageData.sedan_state_tax,
-        hatch_base_fare: pageData.hatchback_base_fare,
-        hatch_state_tax : pageData.hatchback_state_tax,
-        suv_base_fare: pageData.suv_base_fare,
-        suv_state_tax: pageData.suv_state_tax,
-        distance: pageData.distance,
-        toll_amount: pageData.toll_amount,
-        car_details: _.groupBy(_.sortBy(featuredCarDetails, 'car_type'), 'car_type')
-      });
-    }).catch((error) => {
-      res.render('/');
-    });
-  }).catch((error) => {
-    res.render('/');
-  });
-});
-
-router.get('/featured-trip', function(req, res) {
-  const from = req.query.from;
-  const to = req.query.to;
-  const type = req.query.type;
-  console.log({from, to});
-  RouteCollection.get().then((routeSnapShot) => {
-    const routeData = [];
-    routeSnapShot.forEach((doc) => {
-      routeData.push(doc.data());
-    });
-    DigitalMarketingCollection.doc('index_page').get().then((pageDataResponse) => {
-      if (!pageDataResponse.exists) {
-        res.render('/');
-      } else {
-        const pageData = pageDataResponse.data();
-        CarDetailsCollection.get().then((carDetailsSnapshot) => {
-          const carDetailsData = [];
-          carDetailsSnapshot.forEach((doc) => {
-            carDetailsData.push(doc.data());
-          });
-          const featuredCarDetails = [];
-          featuredCarDetails.push(carDetailsData[37]);
-          featuredCarDetails.push(carDetailsData[39]);
-          featuredCarDetails.push(carDetailsData[48]);
-          res.render('index', {
-            api_key: config.google_api_key,
-            base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-            title: pageData.title,
-            description: pageData.description,
-            keywords: pageData.keywords,
-            page_offer_title: pageData.page_offer_title,
-            page_offer_description: pageData.page_offer_description,
-            page: 'index',
-            total_cars: _.groupBy(_.sortBy(carDetailsData, 'car_type'), 'car_type'),
-            total_routes: routeData,
-            from: from,
-            to: to,
-            type: type,
-            car_details: _.groupBy(_.sortBy(featuredCarDetails, 'car_type'), 'car_type')
-          });
-        }).catch((error) => {
-          res.render('/');
-        });
-      }
-    }).catch((error) => {
-      res.render('/');
-    });
-  }).catch((error) => {
-    res.render('/');
-  });
-});
-
-router.get('/about', function (req, res) {
-
-  DigitalMarketingCollection.doc('about_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('about', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'about',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/contact', function (req, res) {
-  DigitalMarketingCollection.doc('contact_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('contact', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'contact',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/blogs', function (req, res) {
-  DigitalMarketingCollection.doc('blog_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      BlogCollection.get().then((snapshot) => {
-        let blogData = [];
-        snapshot.forEach((doc) => {
-=======
 });
 
 router.get("/contact", function (req, res) {
@@ -376,7 +205,6 @@ router.get("/blog-details/*", function (req, res) {
       } else {
         const blogData = [];
         response.forEach((doc) => {
->>>>>>> Stashed changes
           blogData.push(doc.data());
         });
         res.render("blog-detail", {
@@ -396,97 +224,6 @@ router.get("/blog-details/*", function (req, res) {
           moment: moment,
           page: "blogs",
         });
-<<<<<<< Updated upstream
-      }).catch((error) => {
-        res.redirect('/');;
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/blog-details/*', function (req, res) {
-  const page_url = ((req.originalUrl).split('/').reverse())[0];
-  BlogCollection.where('page_url', '==', page_url).get().then((response) => {
-    if (response.empty) {
-      res.redirect('/');;
-    } else {
-      const blogData = [];
-      response.forEach((doc) => {
-        blogData.push(doc.data());
-      });
-      res.render('blog-detail', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: blogData[0].page_title,
-        description: blogData[0].page_description,
-        keywords: blogData[0].page_keywords,
-        document_id: blogData[0].document_id,
-        page_url: blogData[0].page_url,
-        blog_heading: blogData[0].blog_heading,
-        blog_description: blogData[0].blog_description,
-        blog_content: blogData[0].blog_content,
-        blog_image: blogData[0].blog_image,
-        blog_image_name: blogData[0].blog_image_name,
-        created_at: blogData[0].created_at,
-        updated_at: blogData[0].updated_at,
-        moment: moment,
-        page: 'blogs',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/customer-agreement', function (req, res) {
-  DigitalMarketingCollection.doc('customer_agreement_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('customer-agreement', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'customer-agreement',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/vendor-agreement', function (req, res) {
-  DigitalMarketingCollection.doc('vendor_agreement_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('vendor-agreement', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'vendor-agreement',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/hotels', function (req, res) {
-  DigitalMarketingCollection.doc('hotel_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      HotelCollection.get().then((snapshot) => {
-        let hotelData = [];
-        snapshot.forEach((doc) => {
-=======
       }
     })
     .catch((error) => {
@@ -586,7 +323,6 @@ router.get("/hotel-booking/*", function (req, res) {
       } else {
         const hotelData = [];
         hotelResponse.forEach((doc) => {
->>>>>>> Stashed changes
           hotelData.push(doc.data());
         });
         if (hotelData.length) {
@@ -640,92 +376,6 @@ router.get("/hotel-agreement", function (req, res) {
           keywords: pageData.keywords,
           page: "hotel-agreement",
         });
-<<<<<<< Updated upstream
-      }).catch((error) => {
-        res.redirect('/');;
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/hotel-booking/*', function (req, res) {
-  const url_data = (req.originalUrl).split('/').reverse();
-  const page_url = url_data[1] ? url_data[1] : '';
-  const hotel_location = url_data[0] ? url_data[0] : '';
-  HotelCollection.where('page_url', '==', page_url).where('hotel_location', '==', hotel_location).get().then((hotelResponse) => {
-    if (hotelResponse.empty) {
-      res.redirect('/');;
-    } else {
-      const hotelData = [];
-      hotelResponse.forEach((doc) => {
-        hotelData.push(doc.data());
-      });
-      if (hotelData.length) {
-        res.render('hotel-booking', {
-          base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-          title: hotelData[0]['page_title'],
-          description: hotelData[0]['page_description'],
-          keywords: hotelData[0]['page_keywords'],
-          document_id: hotelData[0]['document_id'],
-          page_url: hotelData[0]['page_url'],
-          owner_mobile: hotelData[0]['owner_mobile'],
-          hotel_name: hotelData[0]['hotel_name'],
-          hotel_type: hotelData[0]['hotel_type'],
-          hotel_room_type: hotelData[0]['hotel_room_type'],
-          hotel_rating: hotelData[0]['hotel_rating'],
-          hotel_location: hotelData[0]['hotel_location'],
-          hotel_rooms: hotelData[0]['hotel_rooms'],
-          hotel_services: hotelData[0]['hotel_services'],
-          hotel_amount: hotelData[0]['hotel_amount'],
-          hotel_description: hotelData[0]['hotel_description'],
-          hotel_quotation: hotelData[0]['hotel_quotation'],
-          hotel_image: hotelData[0]['hotel_image'],
-          hotel_image_name: hotelData[0]['hotel_image_name'],
-          hotel_image_collections: hotelData[0]['hotel_image_collections'],
-          created_at: hotelData[0]['created_at'],
-          updated_at: hotelData[0]['updated_at'],
-          page: 'hotels',
-        });
-      } else {
-        res.redirect('/');;
-      }
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/hotel-agreement', function (req, res) {
-  DigitalMarketingCollection.doc('hotel_agreement_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('hotel-agreement', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'hotel-agreement',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/packages', function (req, res) {
-  DigitalMarketingCollection.doc('package_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      PackageCollection.get().then((snapshot) => {
-        let packageData = [];
-        snapshot.forEach((doc) => {
-=======
       }
     })
     .catch((error) => {
@@ -781,7 +431,6 @@ router.get("/package-booking/*", function (req, res) {
       } else {
         const packageData = [];
         packageResponse.forEach((doc) => {
->>>>>>> Stashed changes
           packageData.push(doc.data());
         });
         if (packageData.length) {
@@ -833,31 +482,6 @@ router.get("/package-agreement", function (req, res) {
           keywords: pageData.keywords,
           page: "package-agreement",
         });
-<<<<<<< Updated upstream
-      }).catch((error) => {
-        res.redirect('/');;
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/package-booking/*', function (req, res) {
-  const url_data = (req.originalUrl).split('/').reverse();
-  const page_url = url_data[1] ? url_data[1] : '';
-  const package_location = url_data[0] ? url_data[0] : '';
-  PackageCollection.where('page_url', '==', page_url).where('package_location', '==', package_location).get().then((packageResponse) => {
-    if (packageResponse.empty) {
-      res.redirect('/');;
-    } else {
-      const packageData = [];
-      packageResponse.forEach((doc) => {
-        packageData.push(doc.data());
-      });
-      if (packageData.length) {
-        res.render('package-booking', {
-=======
       }
     })
     .catch((error) => {
@@ -874,146 +498,12 @@ router.get("/privacy-policy", function (req, res) {
       } else {
         const pageData = response.data();
         res.render("privacy-policy", {
->>>>>>> Stashed changes
           base_url: "https://www.nsgtaxi.com" + req.originalUrl,
           title: pageData.title,
           description: pageData.description,
           keywords: pageData.keywords,
           page: "privacy-policy",
         });
-<<<<<<< Updated upstream
-      } else {
-        res.redirect('/');;
-      }
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/package-agreement', function (req, res) {
-  DigitalMarketingCollection.doc('package_agreement_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('package-agreement', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'package-agreement',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/privacy-policy', function (req, res) {
-  DigitalMarketingCollection.doc('privacy_policy_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('privacy-policy', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'privacy-policy',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/terms-and-conditions', function (req, res) {
-  DigitalMarketingCollection.doc('terms_and_conditions_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('terms-and-conditions', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'terms-and-conditions',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-router.get('/cancellation-and-refund-policy', function (req, res) {
-  DigitalMarketingCollection.doc('cancellation_and_refund_policy_page').get().then((response) => {
-    if (!response.exists) {
-      res.redirect('/');;
-    } else {
-      const pageData = response.data();
-      res.render('cancellation-and-refund-policy', {
-        base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-        title: pageData.title,
-        description: pageData.description,
-        keywords: pageData.keywords,
-        page: 'cancellation-and-refund-policy',
-      });
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-});
-
-// Payment section start
-router.get('/payment/*', function (req, res) {
-  const url_data = (req.originalUrl).split('/').reverse();
-  const document_id = url_data[0] ? url_data[0] : '';
-  BookingCollection.where('document_id', '==', document_id).where('payment_status', '==', null).get().then((bookingResponse) => {
-    if (bookingResponse.empty) {
-      res.redirect('/');;
-    } else {
-      const bookingData = [];
-      bookingResponse.forEach((doc) => {
-        bookingData.push(doc.data());
-      });
-      if (bookingData.length) {
-        res.render('payment', {
-          base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-          title: 'Payment Confirmation',
-          description: 'Pay booking amount to NSG TAXI. Best taxi service provider in india.',
-          keywords: 'Booking Payment, Customer Payment, Bill Payment, Trip Payment',
-          first_name: bookingData[0]['first_name'],
-          last_name: bookingData[0]['last_name'],
-          email: bookingData[0]['email'],
-          mobile: bookingData[0]['mobile'],
-          trip_type: (bookingData[0]['round_way_trip'] == '1') ? 'Round Way' : 'One Way',
-          car_type: bookingData[0]['car_type'],
-          pickup_address: bookingData[0]['pickup_address'],
-          drop_off_address: bookingData[0]['drop_off_address'],
-          actual_distance: bookingData[0]['actual_distance'],
-          drop_off_date: bookingData[0]['drop_off_date'],
-          pickup_time: bookingData[0]['pickup_time'],
-          pickup_date: bookingData[0]['pickup_date'],
-          total_fare: bookingData[0]['total_fare'],
-          discount_code: bookingData[0]['discount_code'],
-          discount_amount: bookingData[0]['discount_amount'],
-          cash_payment: parseInt((parseInt(bookingData[0]['total_fare'], 10) - parseInt(bookingData[0]['discount_amount'], 10)) * 0.20, 10),
-          full_payment: parseInt(bookingData[0]['total_fare'], 10) - parseInt(bookingData[0]['discount_amount'], 10),
-          created_at: bookingData[0]['created_at'],
-          document_id: bookingData[0]['document_id'],
-          page: 'index',
-        });
-      } else {
-        res.redirect('/');;
-      }
-    }
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-=======
       }
     })
     .catch((error) => {
@@ -1125,7 +615,6 @@ router.get("/payment/*", function (req, res) {
     .catch((error) => {
       res.render("under-maintenance.ejs");
     });
->>>>>>> Stashed changes
 });
 
 function returnBookingTransactionData(data) {
@@ -1199,36 +688,6 @@ function generateValidateSignature(signatureData) {
 
 router.post("/payment-status", function (req, res) {
   if (generateValidateSignature(req.body)) {
-<<<<<<< Updated upstream
-    returnBookingTransactionData(req.body).then((response) => {
-      updatePaymentStatus(response);
-      if ((response.order.status == 'captured') || (response.order.status == 'authorized')) {
-        res.render('payment-status', {
-          base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-          title: 'Payment Status',
-          description: 'Booking payment status of NSG TAXI. Best taxi service provider in india.',
-          keywords: 'Booking Payment Status, Customer Payment Status, Bill Payment Status, Trip Payment Status',
-          transaction_status: 'success',
-          transaction_amount: parseInt(response.order.amount / 100, 10),
-          transaction_id: response.payment.id,
-          first_name: response.booking.first_name,
-          last_name: response.booking.last_name,
-          gender: response.booking.gender,
-          mobile: response.booking.mobile,
-          email: response.booking.email,
-          pickup_address: response.booking.pickup_address,
-          drop_off_address: response.booking.drop_off_address,
-          trip_type: parseInt(response.booking.round_way_trip, 10) ? 'Round Way' : 'One Way',
-          car_type: response.booking.car_type,
-          actual_distance: response.booking.actual_distance,
-          pickup_date: response.booking.pickup_date,
-          pickup_time: response.booking.pickup_time,
-          booking_id: response.booking.created_at,
-          page: 'index',
-        });
-      } else {
-        res.render('payment-status', {
-=======
     returnBookingTransactionData(req.body)
       .then((response) => {
         updatePaymentStatus(response);
@@ -1278,7 +737,6 @@ router.post("/payment-status", function (req, res) {
       })
       .catch((error) => {
         res.render("payment-status", {
->>>>>>> Stashed changes
           base_url: "https://www.nsgtaxi.com" + req.originalUrl,
           title: "Payment Status",
           description:
@@ -1313,29 +771,6 @@ function updatePaymentStatus(gatewayData) {
   }
 
   const bookingData = Object.assign({}, gatewayData.booking);
-<<<<<<< Updated upstream
-  bookingData['payment_gateway'] = 'Razorpay Softwares Pvt. Ltd.';
-  bookingData['payment_description'] = 'Booking Payment';
-  bookingData['payment_reference_number'] = gatewayData.payment.id;
-  bookingData['payment_amount'] = parseInt(gatewayData.order.amount / 100, 10);
-  bookingData['payment_status'] = payment_status;
-  BookingCollection.doc(bookingData.document_id).update(bookingData).then((response) => {
-    console.log('Booking updated after payment!');
-    Booking.sendBookingSMSEmail(bookingData);
-  }).catch((error) => {
-    console.log('Unable to update booking after payment!');
-  });
-
-  const paymentData = Object.assign({}, gatewayData.payment);
-  paymentData['amount'] = parseInt(gatewayData.order.amount / 100, 10);
-  paymentData['status'] = payment_status;
-  paymentData['updated_at'] = gatewayData.order.created_at;
-  PaymentCollection.doc(paymentData.document_id).update(paymentData).then((response) => {
-    console.log('Payment updated after payment!');
-  }).catch((error) => {
-    console.log('Unable to update payment after payment!');
-  });
-=======
   bookingData["payment_gateway"] = "Razorpay Softwares Pvt. Ltd.";
   bookingData["payment_description"] = "Booking Payment";
   bookingData["payment_reference_number"] = gatewayData.payment.id;
@@ -1363,53 +798,10 @@ function updatePaymentStatus(gatewayData) {
     .catch((error) => {
       console.log("Unable to update payment after payment!");
     });
->>>>>>> Stashed changes
 }
 // Payment section end
 
 // Handle 404 Page Start
-<<<<<<< Updated upstream
-router.get('/*', function (req, res) {
-  RouteCollection.get().then((routeSnapShot) => {
-    const routeData = [];
-    routeSnapShot.forEach((doc) => {
-      routeData.push(doc.data());
-    });
-    DigitalMarketingCollection.doc('index_page').get().then((pageDataResponse) => {
-      if (!pageDataResponse.exists) {
-        res.redirect('/');;
-      } else {
-        const pageData = pageDataResponse.data();
-        CarDetailsCollection.get().then((carDetailsSnapshot) => {
-          const carDetailsData = [];
-          carDetailsSnapshot.forEach((doc) => {
-            carDetailsData.push(doc.data());
-          });
-          res.render('index', {
-            api_key: config.google_api_key,
-            base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-            title: pageData.title,
-            description: pageData.description,
-            keywords: pageData.keywords,
-            page_offer_title: pageData.page_offer_title,
-            page_offer_description: pageData.page_offer_description,
-            page: 'index',
-            total_cars: _.groupBy(_.sortBy(carDetailsData, 'car_type'), 'car_type'),
-            total_routes: routeData,
-            from: "From",
-            to: "To"
-          });
-        }).catch((error) => {
-          res.redirect('/');;
-        });
-      }
-    }).catch((error) => {
-      res.redirect('/');;
-    });
-  }).catch((error) => {
-    res.redirect('/');;
-  });
-=======
 router.get("/*", function (req, res) {
   RouteCollection.get()
     .then((routeSnapShot) => {
@@ -1459,7 +851,6 @@ router.get("/*", function (req, res) {
     .catch((error) => {
       res.render("under-maintenance.ejs");
     });
->>>>>>> Stashed changes
 });
 // Handle 404 Page End
 
