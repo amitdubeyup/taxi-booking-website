@@ -26,7 +26,6 @@ router.get("/", function (req, res) {
       routeSnapShot.forEach((doc) => {
         routeData.push(doc.data());
       });
-      // console.log(routeData);
       DigitalMarketingCollection.doc("index_page")
         .get()
         .then((pageDataResponse) => {
@@ -40,10 +39,8 @@ router.get("/", function (req, res) {
                 carDetailsSnapshot.forEach((doc) => {
                   carDetailsData.push(doc.data());
                 });
-
                 let fromRoutes = [];
                 let toRoutes = [];
-
                 routeData.forEach((route) => {
                   if (!fromRoutes.includes(route.from_name)) {
                     fromRoutes.push(route.from_name);
@@ -52,9 +49,6 @@ router.get("/", function (req, res) {
                     toRoutes.push(route.to_name);
                   }
                 });
-
-                // console.log(fromRoutes, toRoutes);
-
                 res.render("index", {
                   api_key: config.google_api_key,
                   base_url: "https://www.nsgtaxi.com" + req.originalUrl,
@@ -121,18 +115,44 @@ router.get("/taxi-booking/*", function (req, res) {
           pageData = element;
         }
       });
-      CarDetailsCollection.get()
+        CarDetailsCollection.get()
         .then((carDetailsSnapshot) => {
           const carDetailsData = [];
           carDetailsSnapshot.forEach((doc) => {
             carDetailsData.push(doc.data());
           });
+          // res.render("index", {
+          //   api_key: config.google_api_key,
+          //   base_url: "https://www.nsgtaxi.com" + req.originalUrl,
+          //   title: pageData.page_title,
+          //   description: pageData.page_description,
+          //   keywords: pageData.page_keywords,
+          //   page_offer_title: pageData.page_offer_title,
+          //   page_offer_description: pageData.page_offer_description,
+          //   page: "index",
+          //   total_cars: _.groupBy(
+          //     _.sortBy(carDetailsData, "car_type"),
+          //     "car_type"
+          //   ),
+          //   user: req.query,
+          //   total_routes: routeData,
+          // });
+          let fromRoutes = [];
+          let toRoutes = [];
+          routeData.forEach((route) => {
+            if (!fromRoutes.includes(route.from_name)) {
+              fromRoutes.push(route.from_name);
+            }
+            if (!toRoutes.includes(route.to_name)) {
+              toRoutes.push(route.to_name);
+            }
+          });
           res.render("index", {
             api_key: config.google_api_key,
             base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-            title: pageData.page_title,
-            description: pageData.page_description,
-            keywords: pageData.page_keywords,
+            title: pageData.title,
+            description: pageData.description,
+            keywords: pageData.keywords,
             page_offer_title: pageData.page_offer_title,
             page_offer_description: pageData.page_offer_description,
             page: "index",
@@ -140,8 +160,10 @@ router.get("/taxi-booking/*", function (req, res) {
               _.sortBy(carDetailsData, "car_type"),
               "car_type"
             ),
-            user: req.query,
             total_routes: routeData,
+            user: req.query,
+            fromRoutes: fromRoutes,
+            toRoutes: toRoutes,
           });
         })
         .catch((error) => {
@@ -634,7 +656,7 @@ router.get("/payment/*", function (req, res) {
             cash_payment: parseInt(
               (parseInt(bookingData[0]["total_fare"], 10) -
                 parseInt(bookingData[0]["discount_amount"], 10)) *
-                0.2,
+              0.2,
               10
             ),
             full_payment:
@@ -841,67 +863,70 @@ function updatePaymentStatus(gatewayData) {
 // Handle 404 Page Start
 router.get("/*", function (req, res) {
   RouteCollection.get()
-    .then((routeSnapShot) => {
-      const routeData = [];
-      routeSnapShot.forEach((doc) => {
-        routeData.push(doc.data());
-      });
-      DigitalMarketingCollection.doc("index_page")
-        .get()
-        .then((pageDataResponse) => {
-          if (!pageDataResponse.exists) {
-            res.render("under-maintenance.ejs");
-          } else {
-            const pageData = pageDataResponse.data();
-            CarDetailsCollection.get()
-              .then((carDetailsSnapshot) => {
-                const carDetailsData = [];
-                carDetailsSnapshot.forEach((doc) => {
-                  carDetailsData.push(doc.data());
-                });
-
-                let fromRoutes = [];
-                let toRoutes = [];
-
-                routeData.forEach((route) => {
-                  if (!fromRoutes.includes(route.from_name)) {
-                    fromRoutes.push(route.from_name);
-                  }
-                  if (!toRoutes.includes(route.to_name)) {
-                    toRoutes.push(route.to_name);
-                  }
-                });
-                res.render("index", {
-                  api_key: config.google_api_key,
-                  base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-                  title: pageData.title,
-                  description: pageData.description,
-                  keywords: pageData.keywords,
-                  page_offer_title: pageData.page_offer_title,
-                  page_offer_description: pageData.page_offer_description,
-                  page: "index",
-                  total_cars: _.groupBy(
-                    _.sortBy(carDetailsData, "car_type"),
-                    "car_type"
-                  ),
-                  total_routes: routeData,
-                  user: req.query,
-                  fromRoutes: fromRoutes,
-                  toRoutes: toRoutes,
-                });
-              })
-              .catch((error) => {
-                res.render("under-maintenance.ejs");
-              });
-          }
-        })
-        .catch((error) => {
-          res.render("under-maintenance.ejs");
-        });
-    })
-    .catch((error) => {
-      res.render("under-maintenance.ejs");
+  .then((routeSnapShot) => {
+    const routeData = [];
+    routeSnapShot.forEach((doc) => {
+      routeData.push(doc.data());
     });
+    DigitalMarketingCollection.doc("index_page")
+      .get()
+      .then((pageDataResponse) => {
+        if (!pageDataResponse.exists) {
+          res.render("under-maintenance.ejs");
+        } else {
+          const pageData = pageDataResponse.data();
+          CarDetailsCollection.get()
+            .then((carDetailsSnapshot) => {
+              const carDetailsData = [];
+              carDetailsSnapshot.forEach((doc) => {
+                carDetailsData.push(doc.data());
+              });
+
+              let fromRoutes = [];
+              let toRoutes = [];
+
+              routeData.forEach((route) => {
+                if (!fromRoutes.includes(route.from_name)) {
+                  fromRoutes.push(route.from_name);
+                }
+                if (!toRoutes.includes(route.to_name)) {
+                  toRoutes.push(route.to_name);
+                }
+              });
+
+              // console.log(fromRoutes, toRoutes);
+
+              res.render("index", {
+                api_key: config.google_api_key,
+                base_url: "https://www.nsgtaxi.com" + req.originalUrl,
+                title: pageData.title,
+                description: pageData.description,
+                keywords: pageData.keywords,
+                page_offer_title: pageData.page_offer_title,
+                page_offer_description: pageData.page_offer_description,
+                page: "index",
+                total_cars: _.groupBy(
+                  _.sortBy(carDetailsData, "car_type"),
+                  "car_type"
+                ),
+                total_routes: routeData,
+                user: req.query,
+                fromRoutes: fromRoutes,
+                toRoutes: toRoutes,
+              });
+            })
+            .catch((error) => {
+              res.render("under-maintenance.ejs");
+            });
+        }
+      })
+      .catch((error) => {
+        res.render("under-maintenance.ejs");
+      });
+  })
+  .catch((error) => {
+    res.render("under-maintenance.ejs");
+  });
 });
 // Handle 404 Page End
 
