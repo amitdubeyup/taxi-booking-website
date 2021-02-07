@@ -9,7 +9,7 @@
     "main": "app.js",
     "start": "node app.js",
     "scripts": {
-        "start": "node app.js",
+        "start": "nodemon app.js",
         "test": "App is working fine!"
     },
     "author": "Amit Dubey",

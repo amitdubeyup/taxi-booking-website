@@ -20,13 +20,13 @@ const instance = new Razorpay({
 const crypto = require("crypto");
 
 router.get("/", function (req, res) {
-  // console.log(req.query);
   RouteCollection.get()
     .then((routeSnapShot) => {
       const routeData = [];
       routeSnapShot.forEach((doc) => {
         routeData.push(doc.data());
       });
+      // console.log(routeData);
       DigitalMarketingCollection.doc("index_page")
         .get()
         .then((pageDataResponse) => {
@@ -40,6 +40,21 @@ router.get("/", function (req, res) {
                 carDetailsSnapshot.forEach((doc) => {
                   carDetailsData.push(doc.data());
                 });
+
+                let fromRoutes = [];
+                let toRoutes = [];
+
+                routeData.forEach((route) => {
+                  if (!fromRoutes.includes(route.from_name)) {
+                    fromRoutes.push(route.from_name);
+                  }
+                  if (!toRoutes.includes(route.to_name)) {
+                    toRoutes.push(route.to_name);
+                  }
+                });
+
+                // console.log(fromRoutes, toRoutes);
+
                 res.render("index", {
                   api_key: config.google_api_key,
                   base_url: "https://www.nsgtaxi.com" + req.originalUrl,
@@ -55,6 +70,8 @@ router.get("/", function (req, res) {
                   ),
                   total_routes: routeData,
                   user: req.query,
+                  fromRoutes: fromRoutes,
+                  toRoutes: toRoutes,
                 });
               })
               .catch((error) => {
@@ -68,6 +85,25 @@ router.get("/", function (req, res) {
     })
     .catch((error) => {
       res.render("under-maintenance.ejs");
+    });
+});
+
+router.post("/find-route", (req, res) => {
+  const { pickup_city, drop_off_city } = req.body;
+  const query = RouteCollection.where("from_name", "==", pickup_city).where(
+    "to_name",
+    "==",
+    drop_off_city
+  );
+
+  query
+    .get()
+    .then((snapshot) => {
+      const data = snapshot.docs[0].data();
+      return res.status(200).json(data);
+    })
+    .catch((err) => {
+      return res.status(404).json({ Error: "Route Not Found" });
     });
 });
 
@@ -104,6 +140,7 @@ router.get("/taxi-booking/*", function (req, res) {
               _.sortBy(carDetailsData, "car_type"),
               "car_type"
             ),
+            user: req.query,
             total_routes: routeData,
           });
         })
@@ -822,6 +859,18 @@ router.get("/*", function (req, res) {
                 carDetailsSnapshot.forEach((doc) => {
                   carDetailsData.push(doc.data());
                 });
+
+                let fromRoutes = [];
+                let toRoutes = [];
+
+                routeData.forEach((route) => {
+                  if (!fromRoutes.includes(route.from_name)) {
+                    fromRoutes.push(route.from_name);
+                  }
+                  if (!toRoutes.includes(route.to_name)) {
+                    toRoutes.push(route.to_name);
+                  }
+                });
                 res.render("index", {
                   api_key: config.google_api_key,
                   base_url: "https://www.nsgtaxi.com" + req.originalUrl,
@@ -837,6 +886,8 @@ router.get("/*", function (req, res) {
                   ),
                   total_routes: routeData,
                   user: req.query,
+                  fromRoutes: fromRoutes,
+                  toRoutes: toRoutes,
                 });
               })
               .catch((error) => {

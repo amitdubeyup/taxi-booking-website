@@ -604,6 +604,9 @@ figure {
 }
 
 select[name="vehicle_type"],
+select[name="vehicle_types"],
+select[name="pickup_city"],
+select[name="drop_city"],
 select[name="vehicle_name"],
 select[name="rental_vehicle_type"],
 select[name="rental_vehicle_name"],
@@ -795,7 +798,7 @@ div.cs-select span {
 }
 
 .login-btn:hover {
-  background-color:  #ff7615;
+  background-color: #ff7615;
   color: white;
 }
 
@@ -812,20 +815,32 @@ div.cs-select span {
 
 #nsg-taxi-features > .container > .row > .features-box-shadow:hover {
   box-shadow: -1px 1px 10px -1px;
-  transition: ease-in-out .3s;
+  transition: ease-in-out 0.3s;
 }
 
-#nsg-taxi-features > .container > .row > .animate-box > .feature-left > .feature-copy > p {
+#nsg-taxi-features
+  > .container
+  > .row
+  > .animate-box
+  > .feature-left
+  > .feature-copy
+  > p {
   text-align: left;
 }
 
-#nsg-taxi-features > .container > .row > .animate-box > .feature-left > .feature-copy > h3 {
+#nsg-taxi-features
+  > .container
+  > .row
+  > .animate-box
+  > .feature-left
+  > .feature-copy
+  > h3 {
   color: #f78536;
 }
 
 .feature_trip--price {
   background: #f78536;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 50%;
 }
 
@@ -2534,7 +2549,7 @@ optgroup[label] {
 @media (max-width: 768px) {
   #nsg-taxi-logo,
   .nsg-taxi-nav-toggle {
-    margin: .8rem 0 0 0;
+    margin: 0.8rem 0 0 0;
   }
 
   #nsg-taxi-logo {
@@ -2542,7 +2557,6 @@ optgroup[label] {
   }
 
   .nsg-taxi-nav-toggle {
-    
   }
 
   #nsg-taxi-features {
