@@ -31,7 +31,7 @@
                   <label for="pickup_city">Your City:</label>
                   <select class="form-control" name="pickup_city" id="pickup_city" onchange="calculateAmount()">
                     <% fromRoutes.forEach((route)=> { %>
-                      <option>
+                      <option <%=pickupCity==route ? 'selected' : '' %>>
                         <%= route %>
                       </option>
                       <% }) %>
@@ -43,7 +43,7 @@
                   <label for="drop_city">Destination City:</label>
                   <select class="form-control" name="drop_city" id="drop_city" onchange="calculateAmount()">
                     <% toRoutes.forEach((route)=> { %>
-                      <option>
+                      <option <%=dropCity==route ? 'selected' : '' %>>
                         <%= route %>
                       </option>
                       <% }) %>
@@ -283,7 +283,7 @@
                 <div class="input-field">
                   <label for="from">Exact Pickup Location</label>
                   <input type="text" class="form-control" placeholder="Pickup Location" id="exact_pickup_address"
-                    name="exact_pickup_address" onchange="calculateExtraKms()" />
+                    name="exact_pickup_address" onchange="calculateDistance()" />
                   <input type="hidden" id="exact_pickup_latitude" name="exact_pickup_latitude" />
                   <input type="hidden" id="exact_pickup_longitude" name="exact_pickup_longitude" />
                 </div>
@@ -292,11 +292,14 @@
                 <div class="input-field">
                   <label for="from">Exact Drop off Location</label>
                   <input type="text" class="form-control" placeholder="Drop-off location" id="exact_drop_off_address"
-                    name="exact_drop_off_address" onchange="calculateExtraKms()" />
+                    name="exact_drop_off_address" onchange="calculateDistance()" />
                   <input type="hidden" id="exact_drop_off_latitude" name="exact_drop_off_latitude" />
                   <input type="hidden" id="exact_drop_off_longitude" name="exact_drop_off_longitude" />
                 </div>
               </div>
+
+              <br>
+              <br>
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 distance">
                 <div class="input-field">
                   <div class="left distance-text">Distance</div>
@@ -309,6 +312,67 @@
                   </div>
                 </div>
               </div>
+
+              <!-- New Distance -->
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 new-distance" style="display: none;">
+                <div class="input-field">
+                  <div class="left distance-text">New Distance</div>
+                </div>
+              </div>
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 new-distance" style="display: none;">
+                <div class="input-field">
+                  <div class="right distance-value" id="new-distance-value">
+                    0.00KM
+                  </div>
+                </div>
+              </div>
+              <!-- New Distance -->
+
+              <!-- Extra Kms-->
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 extra-distance" style="display: none;">
+                <div class="input-field">
+                  <div class="left distance-text">Extra KMs</div>
+                </div>
+              </div>
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 extra-distance" style="display: none;">
+                <div class="input-field">
+                  <div class="right distance-value" id="extra-kms">
+                    0.00KM
+                  </div>
+                </div>
+              </div>
+              <!-- Extra Kms -->
+
+              <!-- Per KM charge for extra distance-->
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-per-km" style="display: none;">
+                <div class="input-field">
+                  <div class="left distance-text">Fare per KM</div>
+                </div>
+              </div>
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-per-km" style="display: none;">
+                <div class="input-field">
+                  <div class="right distance-value" id="fare-per-km">
+                    0.00KM
+                  </div>
+                </div>
+              </div>
+              <!-- Per KM charge for extra distance -->
+
+              <!-- Extra Charges-->
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 extra-charge" style="display: none;">
+                <div class="input-field">
+                  <div class="left distance-text">Extra Charges</div>
+                </div>
+              </div>
+              <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 extra-charge" style="display: none;">
+                <div class="input-field">
+                  <div class="right distance-value" id="extra-charge">
+                    0.00KM
+                  </div>
+                </div>
+              </div>
+              <!-- Extra Charges -->
+
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
                 <div class="input-field">
                   <div class="left">Base Fare</div>

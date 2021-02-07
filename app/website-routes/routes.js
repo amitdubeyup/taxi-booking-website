@@ -39,8 +39,8 @@ router.get("/", function (req, res) {
                 carDetailsSnapshot.forEach((doc) => {
                   carDetailsData.push(doc.data());
                 });
-                let fromRoutes = ['Select Pickup City'];
-                let toRoutes = ['Select Drop off City'];
+                let fromRoutes = ["Select Pickup City"];
+                let toRoutes = ["Select Drop off City"];
                 routeData.forEach((route) => {
                   if (!fromRoutes.includes(route.from_name)) {
                     fromRoutes.push(route.from_name);
@@ -66,6 +66,8 @@ router.get("/", function (req, res) {
                   user: req.query,
                   fromRoutes: fromRoutes,
                   toRoutes: toRoutes,
+                  pickupCity: "a",
+                  dropCity: "a",
                 });
               })
               .catch((error) => {
@@ -103,6 +105,13 @@ router.post("/find-route", (req, res) => {
 
 router.get("/taxi-booking/*", function (req, res) {
   const page_url = req.originalUrl.split("/").reverse()[0];
+  const route = req.originalUrl.split("/")[2].split("-");
+  let fromCity = route[0];
+  let toCity = route[2];
+  fromCity = fromCity[0].toUpperCase() + fromCity.slice(1);
+  toCity = toCity[0].toUpperCase() + toCity.slice(1);
+  // console.log(fromCity, toCity);
+
   RouteCollection.get()
     .then((routeSnapShot) => {
       const routeData = [];
@@ -121,8 +130,8 @@ router.get("/taxi-booking/*", function (req, res) {
           carDetailsSnapshot.forEach((doc) => {
             carDetailsData.push(doc.data());
           });
-          let fromRoutes = ['Select Pickup City'];
-          let toRoutes = ['Select Drop off City'];
+          let fromRoutes = ["Select Pickup City"];
+          let toRoutes = ["Select Drop off City"];
           routeData.forEach((route) => {
             if (!fromRoutes.includes(route.from_name)) {
               fromRoutes.push(route.from_name);
@@ -130,7 +139,15 @@ router.get("/taxi-booking/*", function (req, res) {
             if (!toRoutes.includes(route.to_name)) {
               toRoutes.push(route.to_name);
             }
+
+            if (route.from_name.includes(fromCity)) {
+              fromCity = route.from_name;
+            }
+            if (route.to_name.includes(toCity)) {
+              toCity = route.to_name;
+            }
           });
+          // console.log(fromCity, toCity);
           res.render("index", {
             api_key: config.google_api_key,
             base_url: "https://www.nsgtaxi.com" + req.originalUrl,
@@ -148,6 +165,8 @@ router.get("/taxi-booking/*", function (req, res) {
             user: req.query,
             fromRoutes: fromRoutes,
             toRoutes: toRoutes,
+            pickupCity: fromCity,
+            dropCity: toCity,
           });
         })
         .catch((error) => {
@@ -640,7 +659,7 @@ router.get("/payment/*", function (req, res) {
             cash_payment: parseInt(
               (parseInt(bookingData[0]["total_fare"], 10) -
                 parseInt(bookingData[0]["discount_amount"], 10)) *
-              0.2,
+                0.2,
               10
             ),
             full_payment:
@@ -866,8 +885,8 @@ router.get("/*", function (req, res) {
                   carDetailsData.push(doc.data());
                 });
 
-                let fromRoutes = ['Select Pickup City'];
-                let toRoutes = ['Select Drop off City'];
+                let fromRoutes = ["Select Pickup City"];
+                let toRoutes = ["Select Drop off City"];
 
                 routeData.forEach((route) => {
                   if (!fromRoutes.includes(route.from_name)) {
@@ -895,6 +914,8 @@ router.get("/*", function (req, res) {
                   user: req.query,
                   fromRoutes: fromRoutes,
                   toRoutes: toRoutes,
+                  pickupCity: "",
+                  dropCity: "",
                 });
               })
               .catch((error) => {

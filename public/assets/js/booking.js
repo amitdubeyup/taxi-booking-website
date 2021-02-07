@@ -45,6 +45,7 @@ var map;
 var directionsDisplay;
 var stepDisplay;
 var markerArray = [];
+var route = null;
 
 $(function () {
   var geoOptions = {
@@ -58,7 +59,7 @@ $(function () {
     latitudeThree = position.coords.latitude;
     longitudeThree = position.coords.longitude;
   };
-  var geoError = function (error) { };
+  var geoError = function (error) {};
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 
   $(window).load(function () {
@@ -189,7 +190,9 @@ function exactPickupAddressAutoComplete() {
 }
 
 function exactDropOffAddressAutoComplete() {
-  const exact_drop_off_address = document.getElementById("exact_drop_off_address");
+  const exact_drop_off_address = document.getElementById(
+    "exact_drop_off_address"
+  );
   this.options = {
     types: [],
     componentRestrictions: {
@@ -256,17 +259,179 @@ function calculateDistance() {
     dataType: "json",
     success: function (result) {
       actual_distance = result["distance"];
+      if (one_way_trip) calculateExtraKms(actual_distance);
       $("#exact_pickup_address").val(result["origin"]);
       $("#exact_drop_off_address").val(result["destination"]);
       $("#pickup_address").val(result["origin"]);
       $("#drop_off_address").val(result["destination"]);
       $("#rental_pickup_address").val(result["origin"]);
-      calculateAmount();
+      if (!one_way_trip) calculateAmount();
     },
     error: function (error) {
       actual_distance = 0;
     },
   });
+}
+
+function calculateExtraKms(distance) {
+  const exact_pickup_address = $("#exact_pickup_address").val();
+  const exact_drop_off_address = $("#exact_drop_off_address").val();
+
+  if (exact_pickup_address && exact_drop_off_address) {
+    // console.log(
+    //   " => ",
+    //   distance,
+    //   total_distance,
+    //   fare_per_kilometer,
+    //   base_fare,
+    //   gst_charge,
+    //   total_fare
+    // );
+
+    let extra_kms = 0,
+      extra_charges = 0;
+    if (distance > total_distance) {
+      extra_kms = distance - total_distance;
+      total_distance = distance;
+      extra_charges = extra_kms * fare_per_kilometer;
+
+      $(".new-distance").css("display", "block");
+      $("#new-distance-value").text(`${distance} Km`);
+
+      $(".extra-distance").css("display", "block");
+      $("#extra-kms").text(`${extra_kms} Km`);
+
+      $(".fare-per-km").css("display", "block");
+      $("#fare-per-km").text(`Rs. ${fare_per_kilometer}`);
+
+      $(".extra-charge").css("display", "block");
+      $("#extra-charge").text(`Rs. ${extra_charges}`);
+
+      total_fare = route["total_fare"] + extra_charges;
+      $("#total-value").text(`Rs. ${total_fare}`);
+    } else {
+      $(".new-distance").css("display", "none");
+      $(".extra-distance").css("display", "none");
+      $(".fare-per-km").css("display", "none");
+      $(".extra-charge").css("display", "none");
+
+      total_fare = route["total_fare"] || 0;
+      $("#total-value").text(`Rs. ${total_fare}`);
+    }
+  }
+}
+
+function showNextForm() {
+  const pickup_city = $("#pickup_city").val();
+  const drop_off_city = $("#drop_city").val();
+  const pickup_date = $("#pickup_date").val();
+  const drop_off_date = $("#drop_off_date").val();
+  const pickup_time = $("#pickup_time").val();
+  const vehicle_type = $("#vehicle_types").val();
+  if (
+    pickup_city &&
+    drop_off_city &&
+    pickup_date &&
+    drop_off_date &&
+    pickup_time &&
+    vehicle_type &&
+    pickup_city !== "Select Pickup City" &&
+    drop_off_city !== "Select Drop off City"
+  ) {
+    fetch(`${url}/find-route`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pickup_city: pickup_city,
+        drop_off_city: drop_off_city,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res["route_name"]) {
+          route = res;
+          calculateFeaturedTripAmount(vehicle_type);
+        } else {
+          toastr.error("Sorry, This route is not available", "Route Not Found");
+          $("#pricing-section").css("display", "none");
+          $("#distance-section").css("display", "none");
+          $("#offer-section").css("display", "block");
+        }
+      })
+      .catch((err) => {
+        toastr.error("Sorry, This route is not available", "Route Not Found");
+      });
+  }
+}
+
+function calculateFeaturedTripAmount(vehicle_type) {
+  // console.log(route);
+  let base__fare,
+    state_tax,
+    extra_km_charge,
+    toll_amount = route.toll_amount,
+    gst = 0.05,
+    distance = route.distance;
+  switch (vehicle_type) {
+    case "Sedan":
+      base__fare = route.sedan_base_fare;
+      state_tax = route.sedan_state_tax;
+      extra_km_charge = route.sedan_km_charge;
+      break;
+    case "Hatchback":
+      base__fare = route.hatchback_base_fare;
+      state_tax = route.hatchback_state_tax;
+      extra_km_charge = route.hatchback_km_charge;
+      break;
+    case "SUV":
+      base__fare = route.suv_base_fare;
+      state_tax = route.suv_state_tax;
+      extra_km_charge = route.suv_km_charge;
+      break;
+    default:
+      base__fare = 0;
+      state_tax = 0;
+  }
+
+  $("#distance-value").text(`${distance} KM`);
+  $("#amount-value").text(`Rs. ${base__fare}/- `);
+
+  gst = gst * base__fare;
+  $("#tax-value").text(`Rs. ${gst}/- `);
+
+  $(".state-tax").css("display", "block");
+  $("#state-tax-value").text(`Rs. ${state_tax}/- `);
+
+  $(".toll-tax").css("display", "block");
+  $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
+
+  const totalAmount = base__fare + gst + toll_amount + state_tax;
+  $("#total-value").text(`Rs. ${totalAmount}/-`);
+
+  if (totalAmount > 0) {
+    $("#pricing-section").css("display", "block");
+    $("#distance-section").css("display", "block");
+    $("#offer-section").css("display", "none");
+
+    // hide extra fare values
+    $(".new-distance").css("display", "none");
+    $(".extra-distance").css("display", "none");
+    $(".fare-per-km").css("display", "none");
+    $(".extra-charge").css("display", "none");
+
+    $("#exact_pickup_address").val("");
+    $("#exact_drop_off_address").val("");
+
+    // set values to global variables
+    total_distance = distance;
+    fare_per_kilometer = extra_km_charge;
+    base_fare = base__fare;
+    gst_charge = gst;
+    total_fare = totalAmount;
+    route["total_fare"] = totalAmount;
+  }
 }
 
 $("#pickup_date").change(function () {
@@ -412,6 +577,12 @@ $("#trip_form")
         required: 1,
         validEmail: 1,
       },
+      exact_pickup_address: {
+        required: 1,
+      },
+      exact_drop_off_address: {
+        required: 1,
+      },
     },
     messages: {
       pickup_address: {
@@ -419,6 +590,12 @@ $("#trip_form")
       },
       drop_off_address: {
         required: "Please enter drop off address",
+      },
+      exact_pickup_address: {
+        required: "",
+      },
+      exact_drop_off_address: {
+        required: "",
       },
       pickup_time: {
         required: "Please select pickup time",
@@ -654,13 +831,15 @@ function selectVehicleType() {
       if (one_way_trip == 1) {
         options =
           options +
-          `<option value='${JSON.stringify(element)}'>${element["car_name"]
+          `<option value='${JSON.stringify(element)}'>${
+            element["car_name"]
           }</option>`;
       }
       if (round_way_trip == 1) {
         options =
           options +
-          `<option value='${JSON.stringify(element)}'>${element["car_name"]
+          `<option value='${JSON.stringify(element)}'>${
+            element["car_name"]
           }</option>`;
       }
     });
@@ -807,96 +986,6 @@ function calculateFinalAmount(trip_type) {
   }
 }
 
-function calculateExtraKms() { }
-
-function showNextForm() {
-  const pickup_city = $("#pickup_city").val();
-  const drop_off_city = $("#drop_city").val();
-  const pickup_date = $("#pickup_date").val();
-  const drop_off_date = $("#drop_off_date").val();
-  const pickup_time = $("#pickup_time").val();
-  const vehicle_type = $("#vehicle_types").val();
-  if (
-    pickup_city &&
-    drop_off_city &&
-    pickup_date &&
-    drop_off_date &&
-    pickup_time &&
-    vehicle_type
-  ) {
-    fetch(`${url}/find-route`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        pickup_city: pickup_city,
-        drop_off_city: drop_off_city,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res["route_name"]) {
-          calculateFeaturedTripAmount(res, vehicle_type);
-        } else {
-          toastr.error("Sorry, This route is not available", "Route Not Found");
-          $("#pricing-section").css("display", "none");
-          $("#distance-section").css("display", "none");
-          $("#offer-section").css("display", "block");
-        }
-      })
-      .catch((err) => {
-        toastr.error("Sorry, This route is not available", "Route Not Found");
-      });
-  }
-}
-
-function calculateFeaturedTripAmount(route, vehicle_type) {
-  let base_fare,
-    state_tax,
-    toll_amount = route.toll_amount,
-    gst = 0.05,
-    distance = route.distance;
-  switch (vehicle_type) {
-    case "Sedan":
-      base_fare = route.sedan_base_fare;
-      state_tax = route.sedan_state_tax;
-      break;
-    case "Hatchback":
-      base_fare = route.hatchback_base_fare;
-      state_tax = route.hatchback_state_tax;
-      break;
-    case "SUV":
-      base_fare = route.suv_base_fare;
-      state_tax = route.suv_state_tax;
-      break;
-    default:
-      base_fare = 0;
-      state_tax = 0;
-  }
-
-  $("#distance-value").text(`${distance} KM`);
-  $("#amount-value").text(`Rs. ${base_fare}/- `);
-
-  gst = gst * base_fare;
-  $("#tax-value").text(`Rs. ${gst}/- `);
-
-  $(".state-tax").css("display", "block");
-  $("#state-tax-value").text(`Rs. ${state_tax}/- `);
-
-  $(".toll-tax").css("display", "block");
-  $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
-
-  const totalAmount = base_fare + gst + toll_amount + state_tax;
-  $("#total-value").text(`Rs. ${totalAmount}/-`);
-
-  if (totalAmount > 0) {
-    $("#pricing-section").css("display", "block");
-    $("#distance-section").css("display", "block");
-    $("#offer-section").css("display", "none");
-  }
-}
-
 function selectRentalVehicleType() {
   const rental_vehicle_type = $("#rental_vehicle_type").val()
     ? JSON.parse($("#rental_vehicle_type").val())
@@ -906,7 +995,8 @@ function selectRentalVehicleType() {
     rental_vehicle_type.forEach((element) => {
       options =
         options +
-        `<option value='${JSON.stringify(element)}'>${element["car_name"]
+        `<option value='${JSON.stringify(element)}'>${
+          element["car_name"]
         }</option>`;
     });
     $("#rental_vehicle_name").html(options);
@@ -932,9 +1022,10 @@ function calculateRentalAmount() {
     $("#fare-note")
       .html(`<strong>Note 1: </strong>Toll tax, state tax & parking charges are not included. This charge will be paid by the customer if applicable.<br>
     <strong>Note 2:</strong> If vehicle travels more than ${parseInt(
-        $("#package_type").val().split(",")[1]
-      )}KM then you have to pay &#8377;${rental_vehicle_details["rental_fare"]
-        } per kilometer extra.`);
+      $("#package_type").val().split(",")[1]
+    )}KM then you have to pay &#8377;${
+      rental_vehicle_details["rental_fare"]
+    } per kilometer extra.`);
   }
 }
 
@@ -984,8 +1075,12 @@ function submitFormFinal() {
     formData["car_type"] = formData["vehicle_types"];
     formData["rental_car_type"] = formData["vehicle_types"];
   } else {
-    formData["car_type"] = `${vehicle_details["car_type"]} - ${vehicle_details["car_name"]}`;
-    formData["rental_car_type"] = `${rental_vehicle_details["car_type"]} - ${rental_vehicle_details["car_name"]}`;
+    formData[
+      "car_type"
+    ] = `${vehicle_details["car_type"]} - ${vehicle_details["car_name"]}`;
+    formData[
+      "rental_car_type"
+    ] = `${rental_vehicle_details["car_type"]} - ${rental_vehicle_details["car_name"]}`;
   }
   formData["actual_distance"] = total_distance;
   formData["fare_per_kilometer"] = fare_per_kilometer;
@@ -1059,7 +1154,7 @@ $(window).load(function () {
           document.cookie = `promo=active;`;
           setCookie("promo", "active", 1);
         },
-        error: function (error) { },
+        error: function (error) {},
       });
     }
   }, 3000);
