@@ -32,7 +32,10 @@ const Route = {
 function returnUpdatedRouteCollectionField(receivedData) {
   const newObj = Object.assign({}, Route);
   Object.keys(newObj).forEach((index) => {
-    newObj[index] = receivedData[index] ? receivedData[index] : newObj[index];
+    newObj[index] =
+      receivedData[index] || receivedData[index] == 0
+        ? receivedData[index]
+        : newObj[index];
   });
   return newObj;
 }
@@ -40,7 +43,10 @@ function returnUpdatedRouteCollectionField(receivedData) {
 function returnNewRouteData(receivedData) {
   const newObj = Object.assign({}, Route);
   Object.keys(newObj).forEach((index) => {
-    newObj[index] = receivedData[index] ? receivedData[index] : newObj[index];
+    newObj[index] =
+      receivedData[index] || receivedData[index] == 0
+        ? receivedData[index]
+        : newObj[index];
   });
   newObj["document_id"] = uuid();
   newObj["created_at"] = new Date().getTime();
@@ -51,7 +57,10 @@ function returnNewRouteData(receivedData) {
 function returnUpdatedRouteData(previousData, receivedData) {
   const newObj = Object.assign({}, previousData);
   Object.keys(Route).forEach((index) => {
-    newObj[index] = receivedData[index] ? receivedData[index] : newObj[index];
+    newObj[index] =
+      receivedData[index] || receivedData[index] == 0
+        ? receivedData[index]
+        : newObj[index];
   });
   newObj["updated_at"] = new Date().getTime();
   return newObj;
