@@ -416,8 +416,6 @@ function calculateFeaturedTripAmount(vehicle_type) {
     $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
   }
 
-  $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
-
   const totalAmount = base__fare + gst + toll_amount + state_tax;
   $("#total-value").text(`Rs. ${totalAmount}/-`);
 
