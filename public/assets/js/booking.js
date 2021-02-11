@@ -402,7 +402,11 @@ function calculateFeaturedTripAmount(vehicle_type) {
   $("#tax-value").text(`Rs. ${gst}/- `);
 
   $(".state-tax").css("display", "block");
-  $("#state-tax-value").text(`Rs. ${state_tax}/- `);
+  if (state_tax == 0) {
+    $("#state-tax-value").text(`as per actual`);
+  } else {
+    $("#state-tax-value").text(`Rs. ${state_tax}/- `);
+  }
 
   $(".toll-tax").css("display", "block");
   $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
