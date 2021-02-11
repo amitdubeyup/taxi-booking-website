@@ -2563,3 +2563,19 @@ optgroup[label] {
     margin-top: 15rem;
   }
 }
+
+.form-booking__dropup:hover {
+  cursor: pointer;
+}
+
+.form-booking__dropup {
+  display: none;
+  position: absolute;
+  background-color: white;
+  top: 153px;
+  z-index: 1;
+  width: 42%;
+  left: 225px;
+  padding: 1.5rem 0;
+  box-shadow: 0px 0px 15px 0px #dfdfdf;
+}

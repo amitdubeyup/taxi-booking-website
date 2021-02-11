@@ -1186,3 +1186,16 @@ function proceed() {
   $("#pricing-section").css("display", "none");
   $("#personal-detail-section").css("display", "block");
 }
+
+
+var flag = 0;
+
+$("#dropup-btn").click(function () {
+  if (flag == 0) {
+    $(".form-booking__dropup").css("display", "block");
+    flag = 1;
+   } else {
+    $(".form-booking__dropup").css("display", "none");
+    flag = 0;
+   }
+});
