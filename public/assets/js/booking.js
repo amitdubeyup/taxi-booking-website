@@ -354,14 +354,14 @@ function showNextForm() {
           route = res;
           calculateFeaturedTripAmount(vehicle_type);
         } else {
-          toastr.error("Sorry, This route is not available", "Route Not Found");
+          toastr.info("Sorry, This route is not available", "Route Not Found");
           $("#pricing-section").css("display", "none");
           $("#distance-section").css("display", "none");
           $("#offer-section").css("display", "block");
         }
       })
       .catch((err) => {
-        toastr.error("Sorry, This route is not available", "Route Not Found");
+        toastr.info("Sorry, This route is not available", "Route Not Found");
       });
   }
 }
@@ -402,10 +402,19 @@ function calculateFeaturedTripAmount(vehicle_type) {
   $("#tax-value").text(`Rs. ${gst}/- `);
 
   $(".state-tax").css("display", "block");
-  $("#state-tax-value").text(`Rs. ${state_tax}/- `);
+  if (state_tax == 0) {
+    $("#state-tax-value").text(`As Per Actual`);
+  } else {
+    $("#state-tax-value").text(`Rs. ${state_tax}/- `);
+  }
 
   $(".toll-tax").css("display", "block");
-  $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
+
+  if (toll_amount == 0) {
+    $("#toll-tax-value").text(`As Per Actual`);
+  } else {
+    $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
+  }
 
   const totalAmount = base__fare + gst + toll_amount + state_tax;
   $("#total-value").text(`Rs. ${totalAmount}/-`);
@@ -683,6 +692,13 @@ function selectTripType() {
     $(".featured-trip").css("display", "none");
     $("#vehicle-type-section-one-way").css("display", "none");
     $(".proper_location_one_way").css("display", "none");
+
+    $(".state-tax").css("display", "none");
+    $(".toll-tax").css("display", "none");
+    $(".extra-charge").css("display", "none");
+    $(".fare-per-km").css("display", "none");
+    $(".extra-distance").css("display", "none");
+    $(".new-distance").css("display", "none");
 
     // show round way related fields
     $(".round-way-vehicle-section").css("display", "block");
