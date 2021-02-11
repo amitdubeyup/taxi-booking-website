@@ -403,12 +403,19 @@ function calculateFeaturedTripAmount(vehicle_type) {
 
   $(".state-tax").css("display", "block");
   if (state_tax == 0) {
-    $("#state-tax-value").text(`as per actual`);
+    $("#state-tax-value").text(`As Per Actual`);
   } else {
     $("#state-tax-value").text(`Rs. ${state_tax}/- `);
   }
 
   $(".toll-tax").css("display", "block");
+
+  if (toll_amount == 0) {
+    $("#toll-tax-value").text(`As Per Actual`);
+  } else {
+    $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
+  }
+
   $("#toll-tax-value").text(`Rs. ${toll_amount}/- `);
 
   const totalAmount = base__fare + gst + toll_amount + state_tax;
