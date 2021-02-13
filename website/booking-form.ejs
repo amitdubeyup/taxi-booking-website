@@ -29,7 +29,7 @@
               <div class="col-xxs-12 col-xs-12 mt featured-trip">
                 <div class="input-field">
                   <label for="pickup_city">Your City:</label>
-                  <select class="form-control" name="pickup_city" id="pickup_city" onchange="calculateAmount()">
+                  <select class="js-example-matcher form-control" name="pickup_city" id="pickup_city" onchange="calculateAmount()">
                     <% fromRoutes.forEach((route)=> { %>
                       <option <%=pickupCity==route ? 'selected' : '' %>>
                         <%= route %>
@@ -41,7 +41,7 @@
               <div class="col-xxs-12 col-xs-12 mt featured-trip">
                 <div class="input-field">
                   <label for="drop_city">Destination City:</label>
-                  <select class="form-control" name="drop_city" id="drop_city" onchange="calculateAmount()">
+                  <select class="js-example-matcher form-control" name="drop_city" id="drop_city" onchange="calculateAmount()">
                     <% toRoutes.forEach((route)=> { %>
                       <option <%=dropCity==route ? 'selected' : '' %>>
                         <%= route %>
@@ -283,7 +283,7 @@
                 <div class="input-field">
                   <label for="from">Exact Pickup Location</label>
                   <input type="text" class="form-control" placeholder="Pickup Location" id="exact_pickup_address"
-                    name="exact_pickup_address" onchange="calculateDistance()" />
+                    name="exact_pickup_address"/>
                   <input type="hidden" id="exact_pickup_latitude" name="exact_pickup_latitude" />
                   <input type="hidden" id="exact_pickup_longitude" name="exact_pickup_longitude" />
                 </div>
@@ -292,7 +292,7 @@
                 <div class="input-field">
                   <label for="from">Exact Drop off Location</label>
                   <input type="text" class="form-control" placeholder="Drop-off location" id="exact_drop_off_address"
-                    name="exact_drop_off_address" onchange="calculateDistance()" />
+                    name="exact_drop_off_address"/>
                   <input type="hidden" id="exact_drop_off_latitude" name="exact_drop_off_latitude" />
                   <input type="hidden" id="exact_drop_off_longitude" name="exact_drop_off_longitude" />
                 </div>

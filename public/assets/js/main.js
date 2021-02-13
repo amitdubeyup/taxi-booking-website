@@ -143,3 +143,5 @@ for (let i = 0; i < arr.length; i++) {
 	temp = arr[i];
 	new_arr.push(temp.toString().slice(0, -10));
 }
+
+$(".js-example-matcher").select2({});
