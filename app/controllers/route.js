@@ -41,7 +41,6 @@ function updateField(req, res) {
 
 function addRoute(req, res) {
   const params = RouteModal.returnNewRouteData(req.body);
-  //   console.log(params);
   RouteCollection.doc(params.document_id)
     .set(params)
     .then((response) => {
@@ -238,7 +237,6 @@ function updateRoute(req, res) {
             response.data(),
             req.body
           );
-          //   console.log(RouteData);
           RouteCollection.doc(req.body.document_id.toString())
             .update(RouteData)
             .then((response) => {

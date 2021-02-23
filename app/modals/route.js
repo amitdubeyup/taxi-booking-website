@@ -6,6 +6,7 @@ const Route = {
   page_title: null,
   page_description: null,
   page_keywords: null,
+  page_content: null,
   page_offer_title: null,
   page_offer_description: null,
   route_name: null,
