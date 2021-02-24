@@ -157,6 +157,25 @@ router.get("/taxi-booking/*", function (req, res) {
     });
 });
 
+router.post("/find-route", (req, res) => {
+  const { pickup_city, drop_off_city } = req.body;
+  const query = RouteCollection.where("from_name", "==", pickup_city).where(
+    "to_name",
+    "==",
+    drop_off_city
+  );
+  query
+    .get()
+    .then((snapshot) => {
+      const data = snapshot.docs[0].data();
+      return res.status(200).json(data);
+    })
+    .catch((err) => {
+      return res.status(404).json({ Error: "Route Not Found" });
+    });
+});
+
+
 router.get("/about", function (req, res) {
   DigitalMarketingCollection.doc("about_page")
     .get()
