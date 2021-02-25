@@ -247,6 +247,7 @@
   border-radius: 5px;
   box-shadow: 0 8px 18px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin-right: 15px;
 }
 
 .cardoffer:before {

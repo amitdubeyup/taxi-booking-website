@@ -49,6 +49,7 @@ router.get("/", function (req, res) {
                     toRoutes.push(route.to_name);
                   }
                 });
+                console.log(routeData[0]);
                 res.render("index", {
                   api_key: config.google_api_key,
                   base_url: "https://www.nsgtaxi.com" + req.originalUrl,

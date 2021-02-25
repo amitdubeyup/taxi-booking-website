@@ -145,3 +145,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 
 $(".js-example-matcher").select2({});
+
+$(document).ready(function () {
+	$('[data-toggle="tooltip"]').tooltip();
+});

@@ -2471,3 +2471,9 @@ optgroup[label] {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 40px !important;
 }
+
+.slider {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 400px;
+}
