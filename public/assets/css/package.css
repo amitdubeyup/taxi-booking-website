@@ -219,20 +219,15 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-}
+@media screen and (max-width: 768px) {}
 
-@media screen and (max-width: 992px) {
-}
+@media screen and (max-width: 992px) {}
 
 /*Offer Cards Section*/
 
 .containeroffer {
   padding: 20px;
   align-items: center;
-  min-height: 100vh;
-
-  /*add flex property*/
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -293,6 +288,7 @@
   justify-content: center;
   align-items: center;
 }
+
 /*
 .mainoffer .image {
   position: relative;
@@ -384,8 +380,7 @@
   width: 500px;
 }
 
-.book-wrap,
-.tc-wrap {
+.book-wrap, .tc-wrap {
   flex: 4;
   display: flex;
   justify-content: center;
@@ -393,8 +388,7 @@
   transition: 0.5s;
 }
 
-.book-wrap:hover,
-.tc-wrap:hover {
+.book-wrap:hover, .tc-wrap:hover {
   flex: 5;
 }
 
@@ -426,6 +420,7 @@
   margin-left: 3px;
   border-radius: 18.1px;
 }
+
 /*
 .modal {
   position: fixed;
@@ -458,12 +453,10 @@
   .header {
     height: 230px;
   }
-
   .cardoffer:before {
     clip-path: circle(400px at 50% -74.5%);
     height: 230px;
   }
-
   /*
   .mainoffer .image {
     width: 1000px;
@@ -471,36 +464,27 @@
     border-width: 5px;
   }
   */
-
   .contentoffer {
     padding: 1.2rem 1.8rem 1.8rem 1.8rem;
   }
-
   .number {
     font-size: 1.8rem;
   }
-
   .number-title {
     font-size: 0.4rem;
   }
-
   .title {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
-
-  .dest,
-  .dest1,
-  .dest2 {
+  .dest, .dest1, .dest2 {
     font-size: 0.6rem;
   }
-
   .bookoffer {
     padding: 7.6px 0;
     border-radius: 14.6px;
     font-size: 0.6rem;
   }
-
   .tc {
     padding: 5.6px 0;
     border-radius: 14.6px;
