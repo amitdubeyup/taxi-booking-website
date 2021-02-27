@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 
 .nsg-taxi-package-container {
@@ -25,6 +25,10 @@
 
 .package-description {
   height: 200px;
+}
+
+.specialmargin {
+  margin-top: 80px;
 }
 
 .package-type {
@@ -227,12 +231,13 @@
 
 /*Offer Cards Section*/
 
+.specialoffer {
+  background: cornsilk;
+}
+
 .containeroffer {
   padding: 20px;
   align-items: center;
-  min-height: 100vh;
-
-  /*add flex property*/
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -247,6 +252,7 @@
   border-radius: 5px;
   box-shadow: 0 8px 18px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin-right: 15px;
 }
 
 .cardoffer:before {
@@ -292,6 +298,7 @@
   justify-content: center;
   align-items: center;
 }
+
 /*
 .mainoffer .image {
   position: relative;
@@ -411,6 +418,10 @@
   margin-right: 3px;
 }
 
+.bookoffer :hover {
+  text-decoration: #000;
+}
+
 .tc {
   padding: 7.6px 0;
   width: 100%;
@@ -425,6 +436,7 @@
   margin-left: 3px;
   border-radius: 18.1px;
 }
+
 /*
 .modal {
   position: fixed;
@@ -457,12 +469,10 @@
   .header {
     height: 230px;
   }
-
   .cardoffer:before {
     clip-path: circle(400px at 50% -74.5%);
     height: 230px;
   }
-
   /*
   .mainoffer .image {
     width: 1000px;
@@ -470,36 +480,29 @@
     border-width: 5px;
   }
   */
-
   .contentoffer {
     padding: 1.2rem 1.8rem 1.8rem 1.8rem;
   }
-
   .number {
     font-size: 1.8rem;
   }
-
   .number-title {
     font-size: 0.4rem;
   }
-
   .title {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
-
   .dest,
   .dest1,
   .dest2 {
     font-size: 0.6rem;
   }
-
   .bookoffer {
     padding: 7.6px 0;
     border-radius: 14.6px;
     font-size: 0.6rem;
   }
-
   .tc {
     padding: 5.6px 0;
     border-radius: 14.6px;
