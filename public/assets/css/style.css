@@ -42,6 +42,9 @@ a:hover {
   text-decoration: none;
   color: #f78536;
 }
+.bookoffer:hover {
+  color: white;
+}
 
 p,
 ul,
