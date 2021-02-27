@@ -223,11 +223,9 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-}
+@media screen and (max-width: 768px) {}
 
-@media screen and (max-width: 992px) {
-}
+@media screen and (max-width: 992px) {}
 
 /*Offer Cards Section*/
 
@@ -298,6 +296,8 @@
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
+=======
 
 /*
 .mainoffer .image {
@@ -313,6 +313,7 @@
   overflow: hidden;
 }
 */
+>>>>>>> sanketupdate
 
 .offerhead {
   color: orange;
@@ -390,8 +391,7 @@
   width: 500px;
 }
 
-.book-wrap,
-.tc-wrap {
+.book-wrap, .tc-wrap {
   flex: 4;
   display: flex;
   justify-content: center;
@@ -399,8 +399,7 @@
   transition: 0.5s;
 }
 
-.book-wrap:hover,
-.tc-wrap:hover {
+.book-wrap:hover, .tc-wrap:hover {
   flex: 5;
 }
 
@@ -473,6 +472,8 @@
     clip-path: circle(400px at 50% -74.5%);
     height: 230px;
   }
+<<<<<<< HEAD
+=======
   /*
   .mainoffer .image {
     width: 1000px;
@@ -480,6 +481,7 @@
     border-width: 5px;
   }
   */
+>>>>>>> sanketupdate
   .contentoffer {
     padding: 1.2rem 1.8rem 1.8rem 1.8rem;
   }
@@ -493,9 +495,13 @@
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
+<<<<<<< HEAD
+  .dest, .dest1, .dest2 {
+=======
   .dest,
   .dest1,
   .dest2 {
+>>>>>>> sanketupdate
     font-size: 0.6rem;
   }
   .bookoffer {
