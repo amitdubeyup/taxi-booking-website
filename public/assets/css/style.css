@@ -802,7 +802,9 @@ div.cs-select span {
 .nsg-taxi-content-section {
   padding: 4em 0em;
 }
-
+#nsg-taxi-tours {
+  padding: 0em;
+}
 .login-btn {
   background-color: #f78536;
   border-right: none;
@@ -2655,9 +2657,8 @@ optgroup[label] {
 }
 
 .featurecol1 {
-  margin-top: 90px;
-  margin-left: -20px;
-  margin-right: -20px;
+  width: 94%;
+  margin: auto;
   margin-bottom: 50px;
   background: white;
   -webkit-border-radius: 10px;
@@ -2680,7 +2681,6 @@ optgroup[label] {
 .featurea {
   color: black;
   display: -webkit-inline-box;
-  text-decoration: underline;
 }
 
 /* mouse over link */

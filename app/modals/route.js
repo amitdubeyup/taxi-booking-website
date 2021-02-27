@@ -3,10 +3,10 @@ const uuid = require("uuid");
 const Route = {
   document_id: null,
   page_url: null,
+  blog_url: null,
   page_title: null,
   page_description: null,
   page_keywords: null,
-  page_content: null,
   page_offer_title: null,
   page_offer_description: null,
   route_name: null,
@@ -26,6 +26,7 @@ const Route = {
   toll_amount: null,
   driver_allowance: null,
   waiting_charge: null,
+  special_offer: null,
   created_at: null,
   updated_at: null,
 };
