@@ -121,7 +121,7 @@ function returnVendorAmount(amount, rate) {
 }
 
 function sendPinnacleSMS(req, res) {
-    const URL = `http://www.smsjust.com/sms/user/urlsms.php?username=nsgtravel&pass=e4_k@2ZR&senderid=NSGTRA&dest_mobileno=${req.body.mobile}&message=${req.body.message}&response=Y`;
+    const URL = `http://www.smsjust.com/sms/user/urlsms.php?username=nsgtravel&pass=83Eov@$R&senderid=NSGTRA&dest_mobileno=${req.body.mobile}&message=${req.body.message}&response=Y`;
     axios({
         method: 'GET',
         url: URL,
@@ -153,7 +153,7 @@ function sendPinnacleSMS(req, res) {
 
 function sendCustomPinnacleSMS(mobile, message) {
     return new Promise((resolve, reject) => {
-        const URL = `http://www.smsjust.com/sms/user/urlsms.php?username=nsgtravel&pass=e4_k@2ZR&senderid=NSGTRA&dest_mobileno=${mobile}&message=${message}&response=Y`;
+        const URL = `http://www.smsjust.com/sms/user/urlsms.php?username=nsgtravel&pass=83Eov@$R&senderid=NSGTRA&dest_mobileno=${mobile}&message=${message}&response=Y`;
         axios({
             method: 'GET',
             url: URL,

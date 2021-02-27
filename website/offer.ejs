@@ -1,156 +1,32 @@
 <div class="slider">
     <div class="containeroffer" style="width: <%= (total_routes.length + 15) * 280 %>px">
         <% for(var i=0; i < total_routes.length; i++) { %>
-        <div class="cardoffer">
-            <div class="headeroffer">
-
-                <a href="/taxi-booking/<%= total_routes[i].page_url %>" class="questionoffer" title="<%= total_routes[i].page_content %>">
-                    <i class="fa fa-question-circle"></i>
-                </a>
-                <div class="mainoffer">
-                    <div class="image">
-
+            <div class="cardoffer">
+                <div class="headeroffer">
+                    <div class="mainoffer">
+                        <div class="image">
+                        </div>
+                        <h3 class="dest"><u>SPECIAL OFFER</u></h3>
+                        <h3 class="dest0"><%= total_routes[i].route_name %></h3>
+                        <h1 class="dest1">Rs. <%= total_routes[i].hatchback_base_fare %>/-</h1>
                     </div>
-                    <h3 class="dest"><u>SPECIAL OFFER</u></h3>
-                    <h3 class="dest0"><b><%= total_routes[i].route_name %></b></h3>
-
-                    <h1 class="dest1">Rs. <%= total_routes[i].hatchback_base_fare %>/-</h1>
-                    <h1 class="dest2">Extra KM @<%= total_routes[i].hatchback_km_charge %>Rs/KM</h1>
                 </div>
-
-            </div>
-
-
-            <p class="poffer"><u>OFFER</u> :</p>
-            <p class="textoffer">*<%= total_routes[i].distance %>KMs @ base fare.</p>
-            <p class="textoffer">*Vehicle : Dzire, Xcent, Etios or similar.</p>
-            <p class="textoffer">*Top Notch Service</p>
-            <p class="textoffer">*Safety Assured</p>
-
-            <div class="contentoffer">
-                <div class="buttons-wrapoffer">
-                    <div class="book-wrap">
-                        <a href="/taxi-booking/<%= total_routes[i].page_url %>" class="bookoffer">Book</a>
-                    </div>
-                    <div class="tc-wrap">
-                        <a href="/taxi-booking/<%= total_routes[i].page_url %>" class="tc">Details</a>
+                <p class="poffer"><u>OFFER</u> :</p>
+                <p class="textoffer">*<%= total_routes[i].distance %>KMs @ base fare.</p>
+                <p class="textoffer">*Vehicle : Dzire, Xcent, Etios or similar.</p>
+                <p class="textoffer">*Top Notch Service</p>
+                <p class="textoffer">*Safety Assured</p>
+                <div class="contentoffer">
+                    <div class="buttons-wrapoffer">
+                        <div class="book-wrap">
+                            <a href="/taxi-booking/<%= total_routes[i].page_url %>" class="bookoffer">Book</a>
+                        </div>
+                        <div class="tc-wrap">
+                            <a href="/taxi-booking/<%= total_routes[i].blog_url %>" class="tc">Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <% } %>
-        <!-- <div class="cardoffer">
-            <div class="headeroffer">
-
-                <a href="#" class="questionoffer">
-                    <i class="fa fa-question-circle"></i>
-                </a>
-                <div class="mainoffer">
-                    <div class="image">
-
-                    </div>
-                    <h3 class="dest"><u>SPECIAL OFFER</u></h3>
-                    <h3 class="dest0"><b>Delhi To Shimla</b></h3>
-
-                    <h1 class="dest1">Rs. 12,000/-</h1>
-                    <h1 class="dest2">Extra KM @20Rs/KM</h1>
-                </div>
-
-            </div>
-
-
-            <p class="poffer"><u>OFFER</u> :</p>
-            <p class="textoffer">*142KMs @ base fare.</p>
-            <p class="textoffer">*Sedans : Dzire,Etios.</p>
-            <p class="textoffer">*Top Notch Service</p>
-            <p class="textoffer">*Safety Assured</p>
-
-            <div class="contentoffer">
-                <div class="buttons-wrapoffer">
-                    <div class="book-wrap">
-                        <a href="#" class="bookoffer">Book</a>
-                    </div>
-                    <div class="tc-wrap">
-                        <a href="#" class="tc">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="cardoffer">
-            <div class="headeroffer">
-
-                <a href="#" class="questionoffer">
-                    <i class="fa fa-question-circle"></i>
-                </a>
-                <div class="mainoffer">
-                    <div class="image">
-
-                    </div>
-                    <h3 class="dest"><u>SPECIAL OFFER</u></h3>
-                    <h3 class="dest0"><b>Delhi To Shimla</b></h3>
-
-                    <h1 class="dest1">Rs. 12,000/-</h1>
-                    <h1 class="dest2">Extra KM @20Rs/KM</h1>
-                </div>
-
-            </div>
-
-
-            <p class="poffer"><u>OFFER</u> :</p>
-            <p class="textoffer">*142KMs @ base fare.</p>
-            <p class="textoffer">*Sedans : Dzire,Etios.</p>
-            <p class="textoffer">*Top Notch Service</p>
-            <p class="textoffer">*Safety Assured</p>
-
-            <div class="contentoffer">
-                <div class="buttons-wrapoffer">
-                    <div class="book-wrap">
-                        <a href="#" class="bookoffer">Book</a>
-                    </div>
-                    <div class="tc-wrap">
-                        <a href="#" class="tc">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="cardoffer">
-            <div class="headeroffer">
-
-                <a href="#" class="questionoffer">
-                    <i class="fa fa-question-circle"></i>
-                </a>
-                <div class="mainoffer">
-                    <div class="image">
-
-                    </div>
-                    <h3 class="dest"><u>SPECIAL OFFER</u></h3>
-                    <h3 class="dest0"><b>Delhi To Shimla</b></h3>
-
-                    <h1 class="dest1">Rs. 12,000/-</h1>
-                    <h1 class="dest2">Extra KM @20Rs/KM</h1>
-                </div>
-
-            </div>
-
-
-            <p class="poffer"><u>OFFER</u> :</p>
-            <p class="textoffer">*142KMs @ base fare.</p>
-            <p class="textoffer">*Sedans : Dzire,Etios.</p>
-            <p class="textoffer">*Top Notch Service</p>
-            <p class="textoffer">*Safety Assured</p>
-
-            <div class="contentoffer">
-                <div class="buttons-wrapoffer">
-                    <div class="book-wrap">
-                        <a href="#" class="bookoffer">Book</a>
-                    </div>
-                    <div class="tc-wrap">
-                        <a href="#" class="tc">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+            <% } %>
     </div>
 </div>
