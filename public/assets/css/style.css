@@ -2642,30 +2642,6 @@ optgroup[label] {
 .slider {
   overflow-x: scroll;
   overflow-y: hidden;
-<<<<<<< HEAD
-  height: 400px;
-}
-
-/* Slider Start */
-
-.jssorl-009-spin img {
-  animation-name: jssorl-009-spin;
-  animation-duration: 1.6s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes jssorl-009-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Slider End */
-=======
   height: 500px;
   margin-top: 50px;
 }
@@ -2713,4 +2689,3 @@ optgroup[label] {
 .featurea:hover {
   color: orange;
 }
->>>>>>> sanketupdate
