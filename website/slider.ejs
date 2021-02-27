@@ -1,0 +1,28 @@
+<div id="nsg-taxi-tours" class="nsg-taxi-section-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center animate-box">
+                <h2 class="featured-route" style="margin-top: 6rem; margin-bottom: 6rem;">Featured One
+                    Way
+                    Route</h2>
+            </div>
+        </div>
+        <div class="row">
+            <% for(var i=0; i < total_routes.length; i++) { %>
+                <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeIn">
+                    <div class="trip-details">
+                        <a href="/taxi-booking/<%= total_routes[i].page_url %>">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 text-left animate-box" data-animate-effect="fadeIn">
+                                    <div class="trip-title">
+                                        <%= total_routes[i].route_name %>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div><br>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</div>
