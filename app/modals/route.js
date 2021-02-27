@@ -26,7 +26,7 @@ const Route = {
   toll_amount: null,
   driver_allowance: null,
   waiting_charge: null,
-  special_offer: false,
+  special_offer: null,
   created_at: null,
   updated_at: null,
 };
