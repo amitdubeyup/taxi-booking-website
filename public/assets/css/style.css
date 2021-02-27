@@ -2659,7 +2659,8 @@ optgroup[label] {
 .featurecol1 {
   width: 94%;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
+  margin-top: 80px;
   background: white;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
