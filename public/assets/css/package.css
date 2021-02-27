@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 
 .nsg-taxi-package-container {
@@ -25,6 +25,10 @@
 
 .package-description {
   height: 200px;
+}
+
+.specialmargin {
+  margin-top: 80px;
 }
 
 .package-type {
@@ -225,6 +229,10 @@
 
 /*Offer Cards Section*/
 
+.specialoffer {
+  background: cornsilk;
+}
+
 .containeroffer {
   padding: 20px;
   align-items: center;
@@ -288,6 +296,24 @@
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
+=======
+
+/*
+.mainoffer .image {
+  position: relative;
+  width: 65px;
+  height: 90px;
+  margin-top: 10px;
+  border-radius: 100%;
+  background: url("/public/assets/css/images/specill.gif") no-repeat center /
+    cover;
+  border: 4px solid #f78536;
+  margin-bottom: 1px;
+  overflow: hidden;
+}
+*/
+>>>>>>> sanketupdate
 
 .offerhead {
   color: orange;
@@ -391,6 +417,10 @@
   margin-right: 3px;
 }
 
+.bookoffer :hover {
+  text-decoration: #000;
+}
+
 .tc {
   padding: 7.6px 0;
   width: 100%;
@@ -442,6 +472,16 @@
     clip-path: circle(400px at 50% -74.5%);
     height: 230px;
   }
+<<<<<<< HEAD
+=======
+  /*
+  .mainoffer .image {
+    width: 1000px;
+    height: 1000px;
+    border-width: 5px;
+  }
+  */
+>>>>>>> sanketupdate
   .contentoffer {
     padding: 1.2rem 1.8rem 1.8rem 1.8rem;
   }
@@ -455,7 +495,13 @@
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
   }
+<<<<<<< HEAD
   .dest, .dest1, .dest2 {
+=======
+  .dest,
+  .dest1,
+  .dest2 {
+>>>>>>> sanketupdate
     font-size: 0.6rem;
   }
   .bookoffer {
