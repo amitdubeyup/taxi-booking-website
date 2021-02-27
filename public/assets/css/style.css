@@ -737,6 +737,14 @@ select[name="gender"] {
 .mt {
   margin-bottom: 20px;
 }
+.mt1 {
+  margin-bottom: 10px;
+  margin-top: 18px;
+}
+.mt2 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
 div.cs-select span {
   padding: 10px 10px;
@@ -2365,7 +2373,7 @@ label {
   text-align: right;
   color: #ef6437;
 }
-
+/* 
 .amount-right {
   text-align: right;
   color: #ef6437;
@@ -2373,6 +2381,7 @@ label {
   font-weight: bold;
   margin-left: 180px;
 }
+*/
 
 .fare-note {
   font-size: 12px;
