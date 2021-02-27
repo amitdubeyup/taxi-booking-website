@@ -1418,10 +1418,11 @@ div.cs-select span {
   align-items: center;
   background: white;
 }
-
+/* 
 #nsg-taxi-features .feature-left .icon i {
   color: !important;
 }
+ */
 
 #nsg-taxi-features .feature-left .icon {
   float: left;
