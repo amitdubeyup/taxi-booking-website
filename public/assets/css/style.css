@@ -835,7 +835,7 @@ div.cs-select span {
 }
 
 #nsg-taxi-features > .container > .row > .features-box-shadow {
-  height: 350px;
+  height: 336px;
 }
 
 #nsg-taxi-features > .container > .row > .features-box-shadow:hover {
@@ -2406,10 +2406,14 @@ label {
 }
 */
 
+.input-field1 {
+  margin-top: -20px;
+}
+
 .fare-note {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.5);
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 .book-now {
