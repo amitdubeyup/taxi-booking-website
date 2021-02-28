@@ -2382,6 +2382,16 @@ label {
   color: #ef6437;
 }
 
+.faredetails {
+  font-size: 13px;
+}
+
+@media screen and (max-width: 649px) {
+  .faredetails {
+    font-size: 13px;
+  }
+}
+
 .right {
   text-align: right;
   color: #ef6437;
