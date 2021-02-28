@@ -826,8 +826,16 @@ div.cs-select span {
   }
 } */
 
+.grab {
+  color: #f78536;
+  font-size: 35px;
+}
+.grab:hover {
+  color: orange;
+}
+
 #nsg-taxi-features > .container > .row > .features-box-shadow {
-  height: 334px;
+  height: 350px;
 }
 
 #nsg-taxi-features > .container > .row > .features-box-shadow:hover {

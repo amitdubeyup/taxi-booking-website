@@ -1,20 +1,23 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
 <div class="specialmargin">
     <span class="specialoffers">
         <marquee behavior=scroll direction="left" scrollamount="8">
             <b>
-                <a>Special Offers : </a>
-                <a class="grab">Grab them fast, limited time period deals.</a>
+                <a class="grab">Special Offers : </a>
+                <a >Grab them fast, limited time period deals.</a>
             </b>
         </marquee>
     </span>
 </div>
 <div class="slider">
-    <div class="containeroffer" style="background-color: white; ">
+    <div class="containeroffer " style="background-color: white; ">
         <% for(var i=0; i < total_routes.length; i++) { %>
             <% if (total_routes[i].special_offer == 'Yes' ) { %>
-                <div class="cardoffer">
-                    <div class="headeroffer">
-                        <div class="mainoffer">
+                <div class="cardoffer py-1 py-sm-0 ">
+                    <div class="headeroffer ">
+                        <div class="mainoffer ">
                             <h3 class="dest"><u>SPECIAL OFFER</u></h3>
                             <h3 class="dest0">
                                 <%= total_routes[i].route_name %>
