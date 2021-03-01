@@ -31,6 +31,12 @@
   margin-top: 80px;
 }
 
+@media screen and (max-width: 620px) {
+  .specialmargin {
+    margin-top: 1180px;
+  }
+}
+
 .package-type {
   font-size: 10px;
   color: #a3b9a3;
