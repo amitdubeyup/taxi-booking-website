@@ -314,6 +314,9 @@ function showNextForm() {
   const drop_off_date = $("#drop_off_date").val();
   const pickup_time = $("#pickup_time").val();
   const vehicle_type = $("#vehicle_types").val();
+
+  $('.specialmargin').css('margin-top','1180px');
+
   if (
     pickup_city &&
     drop_off_city &&
@@ -687,6 +690,9 @@ function selectTripType() {
   } else {
     one_way_trip = 1;
     round_way_trip = 0;
+    $(".specialmargin").addClass("specialmargin_round_trip");
+    $(".specialmargin").removeClass("specialmargin");
+    
     $("#drop-off-date-section").css("display", "none");
     $("#vehicle-type-section").addClass(
       "col-xxs-12 col-xs-12 col-md-12 col-lg-12"
@@ -709,6 +715,11 @@ function selectTripType() {
   $("#round_way_trip").val(round_way_trip);
   $("#one_way_trip").prop("checked", one_way_trip);
   $("#round_way_trip").prop("checked", round_way_trip);
+
+  
+    //Change location of this code
+    $('.specialmargin').css('margin-top','80px');
+
   selectVehicleType();
   calculateAmount();
 }
@@ -863,6 +874,7 @@ function calculateAmount() {
     const pickup_date = $("#pickup_date").val();
     const drop_off_date = $("#drop_off_date").val();
     const pickup_time = $("#pickup_time").val();
+    
     if (
       pickup_city &&
       drop_off_city &&

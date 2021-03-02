@@ -33,7 +33,10 @@
 
 @media screen and (max-width: 620px) {
   .specialmargin {
-    margin-top: 1180px;
+    margin-top: 80px;
+  }
+  .specialmargin_round_trip {
+    margin-top: 180px;
   }
 }
 
