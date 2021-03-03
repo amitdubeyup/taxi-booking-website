@@ -40,6 +40,10 @@
   }
 }
 
+.usericon {
+  margin-top: 10px;
+}
+
 .package-type {
   font-size: 10px;
   color: #a3b9a3;
