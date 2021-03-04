@@ -830,6 +830,11 @@ div.cs-select span {
   color: #f78536;
   font-size: 35px;
 }
+
+.specialtext {
+  margin-left: 280px;
+}
+
 .grab:hover {
   color: orange;
 }
