@@ -826,6 +826,10 @@ div.cs-select span {
   }
 } */
 
+.landingpage {
+  padding: 40px;
+}
+
 .grab {
   color: #f78536;
   font-size: 35px;
