@@ -830,16 +830,31 @@ div.cs-select span {
   padding: 40px;
 }
 
-.grab {
+.deal {
   color: #f78536;
   font-size: 35px;
+  margin-left: 420px;
+}
+.deal1 {
+  margin-left: 200px;
 }
 
-.specialtext {
-  margin-left: 280px;
+@media screen and (max-width: 620px) {
+  .deal {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+  .deal1 {
+    font-size: 15px;
+    margin-left: 20px;
+  }
 }
 
-.grab:hover {
+/* .specialtext { */
+/* margin-left: 450px; */
+/* } */
+
+.deal:hover {
   color: orange;
 }
 
