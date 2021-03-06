@@ -46,7 +46,64 @@
                                 <a href="/taxi-booking/<%= total_routes[i].page_url %>" class="bookoffer">Book</a>
                             </div>
                             <div class="tc-wrap">
-                                <a href="<%= total_routes[i].blog_url %>" target="_blank" class="tc">Details</a>
+                                <!-- <a href="<%= total_routes[i].blog_url %>" target="_blank" class="tc">Details</a> -->
+                                <button id="myBtn" class="tc">Details</button>
+
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal">
+
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <div class="offertc">
+                                            <!-- <div class="tctile">Get the best deal, Lucknow to Allahabad at just Rs.2675 only.</div> -->
+                                            <img src="/assets/images/company/nsg-taxi-20-40.png" alt="">
+                                            
+                                            <p></p>
+                                            <div class="tcpopup">Terms & Conditions :</div>
+                                        <ul class="tcul">
+                                            
+                                            <!-- <li class="tcs">Offer valid thrice per user per month</li> -->
+                                            <!-- <li class="tcs">Offer valid from Friday to Sunday</li> -->
+                                            <!-- <li class="tcs">Offer valid only on IndusInd Bank World & Signature, Platinum & Titanium Debit Cards</li> -->
+                                            <li class="tcs">1.Offer valid on a minimum cart value of INR 2000/-</li>
+                                            <li class="tcs">2.The maximum available discount per transaction is INR 200/-</li>
+                                            <li class="tcs">3.Other T&C's may apply</li>
+                                            <li class="tcs">4.Offer valid till Mar 28, 2021 11:59 PM</li>
+                                        </ul>
+                                    </div>
+                                        <!-- <p>Some text in the Modal..</p> -->
+                                    </div>
+
+                                    </div>
+                                    <script>
+                                        // Get the modal
+                                        var modal = document.getElementById("myModal");
+                                        
+                                        // Get the button that opens the modal
+                                        var btn = document.getElementById("myBtn");
+                                        
+                                        // Get the <span> element that closes the modal
+                                        var span = document.getElementsByClassName("close")[0];
+                                        
+                                        // When the user clicks the button, open the modal 
+                                        btn.onclick = function() {
+                                          modal.style.display = "block";
+                                        }
+                                        
+                                        // When the user clicks on <span> (x), close the modal
+                                        span.onclick = function() {
+                                          modal.style.display = "none";
+                                        }
+                                        
+                                        // When the user clicks anywhere outside of the modal, close it
+                                        window.onclick = function(event) {
+                                          if (event.target == modal) {
+                                            modal.style.display = "none";
+                                          }
+                                        }
+                                        </script>
+                                    
                             </div>
                         </div>
                     </div>
