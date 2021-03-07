@@ -1,9 +1,14 @@
 const config = require('../config');
+const BookingCollection = config.db.collection('Booking');
 const PaymentCollection = config.db.collection('Payment');
 const PaymentModal = require('../modals/payment');
-const _ = require('lodash');
-const Razorpay = require('razorpay');
-const instance = new Razorpay({ key_id: config.key, key_secret: config.secret });
+const _ = require("lodash");
+const moment = require("moment");
+const Razorpay = require("razorpay");
+const instance = new Razorpay({
+    key_id: config.key,
+    key_secret: config.secret,
+});
 const crypto = require("crypto");
 
 module.exports = {
@@ -71,7 +76,8 @@ module.exports = {
     fetchAllPaymentTransfer: fetchAllPaymentTransfer,
     reversePaymentTransfer: reversePaymentTransfer,
     validateSignature: validateSignature,
-    validateWebhookSignature: validateWebhookSignature
+    validateWebhookSignature: validateWebhookSignature,
+    updatePaymentStatus: updatePaymentStatus
 };
 
 function updateField(req, res) {
@@ -1434,3 +1440,168 @@ function validateWebhookSignature(req, res) {
     });
 }
 
+// Payment section start
+function returnBookingTransactionData(data) {
+    return new Promise((resolve, reject) => {
+        instance.orders
+            .fetchPayments(data.razorpay_order_id)
+            .then((orderResponse) => {
+                if (orderResponse["items"].length) {
+                    const orderData = orderResponse["items"][0];
+                    PaymentCollection.where("id", "==", data.razorpay_order_id)
+                        .get()
+                        .then((paymentResponse) => {
+                            if (paymentResponse.empty) {
+                                reject({});
+                            } else {
+                                const paymentData = [];
+                                paymentResponse.forEach((doc) => {
+                                    paymentData.push(doc.data());
+                                });
+                                BookingCollection.where(
+                                    "document_id",
+                                    "==",
+                                    paymentData[0]["receipt"]
+                                )
+                                    .get()
+                                    .then((bookingResponse) => {
+                                        if (bookingResponse.empty) {
+                                            reject({});
+                                        } else {
+                                            const bookingData = [];
+                                            bookingResponse.forEach((doc) => {
+                                                bookingData.push(doc.data());
+                                            });
+                                            resolve({
+                                                order: orderData,
+                                                payment: paymentData[0],
+                                                booking: bookingData[0],
+                                            });
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        reject({});
+                                    });
+                            }
+                        })
+                        .catch((error) => {
+                            reject({});
+                        });
+                } else {
+                    reject({});
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                reject({});
+            });
+    });
+}
+
+function generateValidateSignature(signatureData) {
+    const generatedSignature = crypto
+        .createHmac("SHA256", config.secret)
+        .update(
+            signatureData.razorpay_order_id + "|" + signatureData.razorpay_payment_id
+        )
+        .digest("hex");
+    const isSignatureValid =
+        generatedSignature == signatureData.razorpay_signature;
+    return isSignatureValid;
+}
+
+function updatePaymentStatus(req, res) {
+    if (generateValidateSignature(req.body)) {
+        returnBookingTransactionData(req.body)
+            .then((response) => {
+                updateFinalStatus(response);
+                if (
+                    response.order.status == "captured" ||
+                    response.order.status == "authorized"
+                ) {
+                    res.status(200);
+                    return res.json({
+                        success: true,
+                        message: 'Transaction Success',
+                        data: {
+                            transaction_status: "success",
+                            transaction_amount: parseInt(response.order.amount / 100, 10),
+                            transaction_id: response.payment.id,
+                            first_name: response.booking.first_name,
+                            last_name: response.booking.last_name,
+                            gender: response.booking.gender,
+                            mobile: response.booking.mobile,
+                            email: response.booking.email,
+                            pickup_address: response.booking.pickup_address,
+                            drop_off_address: response.booking.drop_off_address,
+                            trip_type: parseInt(response.booking.round_way_trip, 10)
+                                ? "Round Way"
+                                : "One Way",
+                            car_type: response.booking.car_type,
+                            actual_distance: response.booking.actual_distance,
+                            pickup_date: response.booking.pickup_date,
+                            pickup_time: response.booking.pickup_time,
+                            booking_id: response.booking.created_at,
+                        }
+                    });
+                } else {
+                    res.status(400);
+                    return res.json({
+                        success: false,
+                        message: 'Transaction Failed'
+                    });
+                }
+            })
+            .catch((error) => {
+                res.status(400);
+                return res.json({
+                    success: false,
+                    message: 'Transaction Failed'
+                });
+            });
+    } else {
+        res.status(400);
+        return res.json({
+            success: false,
+            message: 'Transaction Failed'
+        });
+    }
+}
+
+function updateFinalStatus(gatewayData) {
+    let payment_status = "failed";
+    if (gatewayData.order.status == "authorized") {
+        payment_status = "success";
+    }
+    if (gatewayData.order.status == "captured") {
+        payment_status = "success";
+    }
+
+    const bookingData = Object.assign({}, gatewayData.booking);
+    bookingData["payment_gateway"] = "Razorpay Softwares Pvt. Ltd.";
+    bookingData["payment_description"] = "Booking Payment";
+    bookingData["payment_reference_number"] = gatewayData.payment.id;
+    bookingData["payment_amount"] = parseInt(gatewayData.order.amount / 100, 10);
+    bookingData["payment_status"] = payment_status;
+    BookingCollection.doc(bookingData.document_id)
+        .update(bookingData)
+        .then((response) => {
+            console.log("Booking updated after payment!");
+        })
+        .catch((error) => {
+            console.log("Unable to update booking after payment!");
+        });
+    const paymentData = Object.assign({}, gatewayData.payment);
+    paymentData["amount"] = parseInt(gatewayData.order.amount / 100, 10);
+    paymentData["status"] = payment_status;
+    paymentData["updated_at"] = gatewayData.order.created_at;
+    PaymentCollection.doc(paymentData.document_id)
+        .update(paymentData)
+        .then((response) => {
+            console.log("Payment updated after payment!");
+        })
+        .catch((error) => {
+            console.log("Unable to update payment after payment!");
+        });
+}
+// Payment section end
