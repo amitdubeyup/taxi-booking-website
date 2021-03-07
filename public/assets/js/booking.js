@@ -1134,35 +1134,6 @@ function getCookie(cname) {
   return "";
 }
 
-$(window).load(function () {
-  setTimeout(function () {
-    const cookie = getCookie("promo");
-    if (cookie == "" || cookie == null || cookie == undefined) {
-      $.ajax({
-        type: "GET",
-        url: `${url}/api/promo-code/fetch-active`,
-        dataType: "json",
-        success: function (result) {
-          $("#coupon-section").html(`
-                        <img src="${result["data"]["image"]}" alt="Avatar" style="width:100%;">
-                        <div class="coupon-container" style="background-color:white">
-                        <h4 class="coupon-title"><b>${result["data"]["title"]}</b></h4>
-                        <p class="coupon-description">${result["data"]["description"]}</p>
-                        </div>
-                        <div class="coupon-container">
-                        <p class="coupon-code">Use Promo Code: <span>${result["data"]["code"]}</span></p>
-                        </div>
-                    `);
-          $("#coupon_modal").modal("show");
-          document.cookie = `promo=active;`;
-          setCookie("promo", "active", 1);
-        },
-        error: function (error) { },
-      });
-    }
-  }, 3000);
-});
-
 $("#close_modal").click(function () {
   $("#coupon_modal").modal("hide");
 });
