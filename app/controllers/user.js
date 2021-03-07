@@ -59,7 +59,6 @@ function generateCode(n) {
 
 function loginUser(req, res) {
   if (req.body.mobile && req.body.password) {
-    console.log("entering");
     UserCollection.doc(parseInt(req.body.mobile).toString())
       .get()
       .then((response) => {
@@ -70,7 +69,6 @@ function loginUser(req, res) {
             message: `Account doesn't exist, please create account!`,
           });
         } else {
-          console.log("exists");
           const userData = response.data();
           if (userData["mobile_verified"]) {
             if (req.body.password == userData["password"]) {
