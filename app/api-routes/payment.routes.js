@@ -67,7 +67,7 @@ router.post('/fetch-all-payment-transfer', PaymentController.fetchAllPaymentTran
 router.post('/reverse-payment-transfer', PaymentController.reversePaymentTransfer);
 router.post('/validate-signature', PaymentController.validateSignature);
 router.post('/validate-webhook-signature', PaymentController.validateWebhookSignature);
-
+router.post('/update-status', PaymentController.updatePaymentStatus);
 
 router.post('/', function (req, res, next) {
     res.status(200);
@@ -75,6 +75,6 @@ router.post('/', function (req, res, next) {
         message: 'Welcome to coolest api on the earth !',
     });
 });
-    
+
 
 module.exports = router;

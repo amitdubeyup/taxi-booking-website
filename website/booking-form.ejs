@@ -29,7 +29,8 @@
               <div class="col-xxs-12 col-xs-12 mt featured-trip">
                 <div class="input-field">
                   <label for="pickup_city">Your City:</label>
-                  <select class="js-example-matcher form-control" name="pickup_city" id="pickup_city" onchange="calculateAmount()">
+                  <select class="js-example-matcher form-control" name="pickup_city" id="pickup_city"
+                    onchange="calculateAmount()">
                     <% fromRoutes.forEach((route)=> { %>
                       <option <%=pickupCity==route ? 'selected' : '' %>>
                         <%= route %>
@@ -41,7 +42,8 @@
               <div class="col-xxs-12 col-xs-12 mt featured-trip">
                 <div class="input-field">
                   <label for="drop_city">Destination City:</label>
-                  <select class="js-example-matcher form-control" name="drop_city" id="drop_city" onchange="calculateAmount()">
+                  <select class="js-example-matcher form-control" name="drop_city" id="drop_city"
+                    onchange="calculateAmount()">
                     <% toRoutes.forEach((route)=> { %>
                       <option <%=dropCity==route ? 'selected' : '' %>>
                         <%= route %>
@@ -283,7 +285,7 @@
                 <div class="input-field">
                   <label for="from">Exact Pickup Location</label>
                   <input type="text" class="form-control" placeholder="Pickup Location" id="exact_pickup_address"
-                    name="exact_pickup_address"/>
+                    name="exact_pickup_address" />
                   <input type="hidden" id="exact_pickup_latitude" name="exact_pickup_latitude" />
                   <input type="hidden" id="exact_pickup_longitude" name="exact_pickup_longitude" />
                 </div>
@@ -292,7 +294,7 @@
                 <div class="input-field">
                   <label for="from">Exact Drop off Location</label>
                   <input type="text" class="form-control" placeholder="Drop-off location" id="exact_drop_off_address"
-                    name="exact_drop_off_address"/>
+                    name="exact_drop_off_address" />
                   <input type="hidden" id="exact_drop_off_latitude" name="exact_drop_off_latitude" />
                   <input type="hidden" id="exact_drop_off_longitude" name="exact_drop_off_longitude" />
                 </div>
@@ -418,23 +420,23 @@
               </div>
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
                 <div class="input-field">
-                   <div class="left">Total Fare<span class="faredetails" id="dropup-btn" style="color: #ef6437; margin-left: 0rem; cursor: pointer;"> (Fare Details)</span>
-                  </div> 
-                  
-                 
+                  <div class="left">Total Fare<span class="faredetails" id="dropup-btn"
+                      style="color: #ef6437; margin-left: 0rem; cursor: pointer;"> (Fare Details)</span>
+                  </div>
+
+
                 </div>
               </div>
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
-                <div class="input-field" >
-                  <!-- <span id="dropup-btn" style="color: #ef6437; font-size: 85%; margin-left: 5rem; cursor: pointer;">(Fare Details)</i></span> -->
+                <div class="input-field">
                   <div class="right amount-right" id="total-value">
                     &#8377;0.00/-
                   </div>
                 </div>
               </div>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <br />
+              <br />
 
               <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt2">
                 <div class="input-field">
@@ -457,21 +459,9 @@
                   </label>
                 </div>
               </div>
-             
               <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 widhtbook">
                 <input type="submit" class="btn btn-primary btn-block book-now" value="Book Now" />
               </div>
-            <!--  <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt">
-                <div class="input-field">
-                  <input type="checkbox" class="checkbox-input" id="terms_and_conditions" name="terms_and_conditions"
-                    onClick="acceptTermsConditions()" />
-                  <label for="terms_and_conditions" class="checkbox-label">
-                    I read and accept
-                    <a hreflang="en" href="/terms-and-conditions" target="_blank" class="terms-link">Terms &
-                      Conditions.</a>
-                  </label>
-                </div>
-              </div>-->
             </div>
           </div>
         </div>
@@ -479,27 +469,20 @@
     </div>
     <div class="col-sm-12 col-sm-push-1 col-md-7 col-md-push-1 offer-section" id="offer-section">
       <div class="desc2 animate-box">
-        <!-- <h2> 
-          <%=page_offer_title%>
-        </h2>
-        <h3>
-          <%=page_offer_description%>
-        </h3>
-        -->
         <div>
           <a href="">
-        <img src="/assets/images/bankoffers/paytm.svg" style="width: 600px; margin-top: -30px;"></a>
-      </div>
-        <br/>
+            <img src="/assets/images/bankoffers/paytm.svg" style="width: 600px; margin-top: -30px;"></a>
+        </div>
+        <br />
         <div>
           <a href="">
-        <img src="/assets/images/bankoffers/nsgtaxi.svg" style="width: 600px; "></a>
-      </div>
-        <br/>
-      <div>
-        <a href="">
-        <img src="/assets/images/bankoffers/icici.svg" style="width: 600px; "></a>
-      </div>
+            <img src="/assets/images/bankoffers/nsgtaxi.svg" style="width: 600px; "></a>
+        </div>
+        <br />
+        <div>
+          <a href="">
+            <img src="/assets/images/bankoffers/icici.svg" style="width: 600px; "></a>
+        </div>
       </div>
     </div>
   </div>
