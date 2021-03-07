@@ -1,12 +1,12 @@
 <div class="specialmargin">
-    <div class="landingpage">
-        <h2> 
+    <!--<div class="landingpage">
+         <h2>  
             <%=page_offer_title%>
           </h2>
           <h3>
             <%=page_offer_description%>
           </h3>
-        </div>
+        </div>-->
 
     <span class="specialoffers">
         <!-- <h1 class="specialtext"> -->
@@ -25,7 +25,7 @@
     <div class="containeroffer " style="background-color: white; ">
         <% for(var i=0; i < total_routes.length; i++) { %>
             <% if (total_routes[i].special_offer == 'Yes' ) { %>
-                <div class="cardoffer py-1 py-sm-0 ">
+                <div class="cardoffer">
                     <div class="headeroffer ">
                         <div class="mainoffer ">
                             <h3 class="dest"><u>SPECIAL OFFER</u></h3>
@@ -55,26 +55,20 @@
                                     <!-- Modal content -->
                                     <div class="modal-content">
                                         <span class="close">&times;</span>
-                                        <div class="offertc">
-                                            <!-- <div class="tctile">Get the best deal, Lucknow to Allahabad at just Rs.2675 only.</div> -->
+                                    <div class="offertc">
+                                            
                                             <img src="/assets/images/company/nsg-taxi-20-40.png" alt="">
                                             
                                             <p></p>
                                             <div class="tcpopup">Terms & Conditions :</div>
                                         <ul class="tcul">
-                                            
-                                            <!-- <li class="tcs">Offer valid thrice per user per month</li> -->
-                                            <!-- <li class="tcs">Offer valid from Friday to Sunday</li> -->
-                                            <!-- <li class="tcs">Offer valid only on IndusInd Bank World & Signature, Platinum & Titanium Debit Cards</li> -->
                                             <li class="tcs">1.Offer valid on a minimum cart value of INR 2000/-</li>
                                             <li class="tcs">2.The maximum available discount per transaction is INR 200/-</li>
                                             <li class="tcs">3.Other T&C's may apply</li>
                                             <li class="tcs">4.Offer valid till Mar 28, 2021 11:59 PM</li>
                                         </ul>
                                     </div>
-                                        <!-- <p>Some text in the Modal..</p> -->
-                                    </div>
-
+                                        
                                     </div>
                                     <script>
                                         // Get the modal
@@ -102,7 +96,10 @@
                                             modal.style.display = "none";
                                           }
                                         }
-                                        </script>
+                                    </script>
+
+                                    </div>
+                                    
                                     
                             </div>
                         </div>
