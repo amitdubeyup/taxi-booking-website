@@ -315,7 +315,13 @@ function showNextForm() {
   const pickup_time = $("#pickup_time").val();
   const vehicle_type = $("#vehicle_types").val();
 
-  // $('.specialmargin').css('margin-top','80px');
+  screen.width < 768 ? $('#marginid').addClass('marginm') : $('#marginid').removeClass('specialmargin specialmargin_round_trip');
+  screen.width < 768 ? $('#marginid').addClass('') : $('#marginid').removeClass('specialmargin specialmargin_round_trip');
+  
+
+  
+
+//  $('.margin_mobile').css('margin-top','1180px');
 
   if (
     pickup_city &&
@@ -661,7 +667,7 @@ $("#trip_form")
       }
     },
   });
-
+ 
 function selectTripType() {
   if (one_way_trip) {
     one_way_trip = 0;
@@ -687,6 +693,9 @@ function selectTripType() {
 
     $(".round-way-vehicle-section").css("display", "block");
     $(".proper_location_round_way").css("display", "block");
+
+    $('.specialmargin').css('margin-top','80px');
+
   } else {
     one_way_trip = 1;
     round_way_trip = 0;
@@ -715,10 +724,9 @@ function selectTripType() {
   $("#round_way_trip").val(round_way_trip);
   $("#one_way_trip").prop("checked", one_way_trip);
   $("#round_way_trip").prop("checked", round_way_trip);
-
   
     //Change location of this code
-    $('.specialmargin').css('margin-top','80px');
+    $('.specialmargin').css('margin-top','180px');
 
   selectVehicleType();
   calculateAmount();
