@@ -315,7 +315,7 @@ function showNextForm() {
   const pickup_time = $("#pickup_time").val();
   const vehicle_type = $("#vehicle_types").val();
 
-  $('.specialmargin').css('margin-top','1180px');
+  // $('.specialmargin').css('margin-top','80px');
 
   if (
     pickup_city &&
