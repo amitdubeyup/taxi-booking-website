@@ -469,101 +469,68 @@
     </div>
     <div class="col-sm-12 col-sm-push-1 col-md-7 col-md-push-1 offer-section" id="offer-section">
       <div class="desc2 animate-box">
-        <div>
-            <!-- <div class="tc-wrap"> -->
-              <div>
-              
-              <img class="firstoffer" src="/assets/images/bankoffers/nsgtaxi.svg" id="myBtn" style="width: 600px; cursor: pointer; margin-right: 50px; margin-top: -50px;"></img>
-            </div>
-              <!-- The Modal -->
-          <div id="myModal" class="modal">
 
-                  <!-- Modal content -->
-            <div class="modal-content">
-                      <span class="close">&times;</span>
-                  <div class="offertc">
-
-                    <img class="popupoffer" src="/assets/images/bankoffers/offernsg.svg">
-
-                  </div>
-                  
-              
-            </div>
-          </div>
-        </div>
-        <br/>
-        <div>
-          <!-- <div class="tc-wrap"> -->
-            <div>
-            
-            <img class="firstoffer" src="/assets/images/bankoffers/paytm.svg" id="myBtn" style="width: 600px; cursor: pointer; margin-right: 50px;"></img>
-          </div>
-            <!-- The Modal -->
-        <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-          <div class="modal-content">
-                    <span class="close">&times;</span>
-                <div class="offertc">
-
-                  <img class="popupoffer" src="/assets/images/bankoffers/offerpaytm.svg">
-
-                </div>
-                
-            
+        <img src="assets/images/bankoffers/paytm.svg"  width="600px" class="modal-open" data-modal="modal1" style="cursor: pointer; margin-top: -50px;">
+    <br/>
+    <br/>
+    <img src="assets/images/bankoffers/nsgtaxi.svg"  width="600px" class="modal-open" data-modal="modal2" style="cursor: pointer;">
+    <br/>
+    <br/>
+    <img src="assets/images/bankoffers/icici.svg"  width="600px" class="modal-open" data-modal="modal3" style="cursor: pointer;">
+    
+      <!-- modals -->
+      <div class="modal" id="modal1">
+        <div class="modal-content">
+          <!-- <span class="close">&times;</span> -->
+          <div class="modal-body">
+            <img src="assets/images/bankoffers/offerpaytm.svg"  height="450px" width="350px">
           </div>
         </div>
       </div>
-      <br/>
-      <div>
-        <!-- <div class="tc-wrap"> -->
-          <div>
-          
-          <img class="firstoffer" src="/assets/images/bankoffers/icici.svg" id="myBtn" style="width: 600px; cursor: pointer; margin-right: 50px;"></img>
-        </div>
-          <!-- The Modal -->
-      <div id="myModal" class="modal">
 
-              <!-- Modal content -->
-            <div class="modal-content">
-                  <span class="close">&times;</span>
-              <div class="offertc">
-
-                <img class="popupoffer" src="/assets/images/bankoffers/offericici.svg">
-
-              </div>
-              
-              <script>
-                  // Get the modal
-                  var modal = document.getElementById("myModal");
-
-                  // Get the button that opens the modal
-                  var btn = document.getElementById("myBtn");
-
-                  // Get the <span> element that closes the modal
-                  var span = document.getElementsByClassName("close")[0];
-
-                  // When the user clicks the button, open the modal 
-                  btn.onclick = function () {
-                      modal.style.display = "block";
-                  }
-
-                  // When the user clicks on <span> (x), close the modal
-                  span.onclick = function () {
-                      modal.style.display = "none";
-                  }
-
-                  // When the user clicks anywhere outside of the modal, close it
-                  window.onclick = function (event) {
-                      if (event.target == modal) {
-                          modal.style.display = "none";
-                      }
-                  }
-              </script>
-            </div>
+      <div class="modal" id="modal2">
+        <div class="modal-content">
+          <!-- <span class="close">&times;</span> -->
+          <div class="modal-body">
+            <img src="assets/images/bankoffers/offernsg.svg"  height="450px" width="350px">
           </div>
         </div>
       </div>
-    </div> 
+
+
+      <div class="modal" id="modal3">
+        <div class="modal-content">
+          <!-- <span class="close">&times;</span> -->
+          <div class="modal-body">
+            <img src="assets/images/bankoffers/offericici.svg"  height="450px" width="350px">
+          </div>
+        </div>
+      </div>
+        <script>
+                    //getting modal opening buttons
+                var modalBtns = document.querySelectorAll('.modal-open');
+
+                modalBtns.forEach(function(btn){
+                  btn.onclick = function(){
+                    var modal = btn.getAttribute('data-modal');
+
+                    document.getElementById(modal).style.display = "block";
+                  };
+                });
+
+                // var span = document.getElementsByClassName("close")[0];
+                // span.onclick = function () {
+                //                       modal.style.display = "none";
+                //                   }
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+        </script>
+      </div>  
+    </div>
   </div>  
 </form>
