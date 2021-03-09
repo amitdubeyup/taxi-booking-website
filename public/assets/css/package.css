@@ -460,62 +460,20 @@
   border-radius: 18.1px;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%; /* Couldbe more or less, depending on screen size */
-  height: 90%;
-}
+
 
 .popupoffer {
   height: 500px;
 }
 
-@media screen and (max-width: 620px) {
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Couldbe more or less, depending on screen size */
-    height: 70%;
-  }
+
   .tcs {
     font-size: 15px;
   }
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 
 .offertc {
   font-weight: 500;
@@ -542,81 +500,7 @@
   color: #f78536;
 }
 
-/*
-.modal {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: -1;
-  opacity: 0;
-  transition: 0.5s;
-}
 
-.modal img {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.3);
-  max-width: 100%;
-  max-height: 100%;
-  transition: 0.5s;
-}
-*/
-/*  
-@media (max-width: 410px) {
-  .content {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 370px) {
-  .header {
-    height: 230px;
-  }
-  .cardoffer:before {
-    clip-path: circle(400px at 50% -74.5%);
-    height: 230px;
-  }
-  /*
-  .mainoffer .image {
-    width: 1000px;
-    height: 1000px;
-    border-width: 5px;
-  }
-  */
-/*  
-  .contentoffer {
-    padding: 1.2rem 1.8rem 1.8rem 1.8rem;
-  }
-  .number {
-    font-size: 1.8rem;
-  }
-  .number-title {
-    font-size: 0.4rem;
-  }
-  .title {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-  .dest,
-  .dest1,
-  .dest2 {
-    font-size: 0.6rem;
-  }
-  .bookoffer {
-    padding: 7.6px 0;
-    border-radius: 14.6px;
-    font-size: 0.6rem;
-  }
-  .tc {
-    padding: 5.6px 0;
-    border-radius: 14.6px;
-    font-size: 0.6rem;
-  }
-}
-*/
-/*  */
 @media screen and (max-width: 620px) {
   .containeroffer {
     width: 100%;
@@ -631,4 +515,48 @@
     width: 80%;
     margin: 2rem;
   }
+}
+
+
+/* Modal Popup For Offers */
+
+.modal-open {
+  padding: 8px 16px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  margin-top: 130px;
+  width: 32%;
+  margin-left: auto;
+  margin-right: 300px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  z-index: 4;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
