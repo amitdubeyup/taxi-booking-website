@@ -481,7 +481,11 @@
   padding: 20px;
   border: 1px solid #888;
   width: 30%; /* Couldbe more or less, depending on screen size */
-  height: 60%;
+  height: 90%;
+}
+
+.offerpaytm {
+  height: 500px;
 }
 
 @media screen and (max-width: 620px) {
