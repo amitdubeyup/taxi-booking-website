@@ -91,9 +91,15 @@
 
 @media screen and (max-width: 480px) {
   .tabulation label {
-    width: 40%;
+    width: 50%;
   }
 }
+
+/* @media screen and (max-width: 480px) {
+  .pickright {
+    margin-left: 120px;
+  }
+} */
 
 @media screen and (max-width: 480px) {
   .tabulation input[type="text"] {
