@@ -847,8 +847,9 @@ div.cs-select span {
 
 @media screen and (max-width: 620px) {
   .deal {
-    font-size: 25px;
+    font-size: 20px;
     margin-left: 60px;
+    font-weight: bold;
   }
   .deal1 {
     font-size: 15px;
