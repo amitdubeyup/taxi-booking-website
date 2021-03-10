@@ -40,6 +40,12 @@ summary {
   display: block;
 }
 
+@media screen and (max-width: 620px) {
+  footer {
+    display: none;
+  }
+}
+
 audio,
 canvas,
 progress,
