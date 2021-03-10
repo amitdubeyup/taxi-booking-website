@@ -2239,7 +2239,8 @@ div.cs-select span {
 
 @media screen and (max-width: 768px) {
   .row-bottom-padded-md {
-    padding-bottom: 2em;
+    /* padding-bottom: 2em; */
+    display: none;
   }
 }
 
