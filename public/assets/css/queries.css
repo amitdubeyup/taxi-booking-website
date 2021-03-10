@@ -138,7 +138,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  #nsg-taxi-home {
+  #nsg-taxi-home,
+  #nsg-taxi-testimonial,
+  #nsg-taxi-features {
     display: none;
   }
 }
