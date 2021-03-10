@@ -614,7 +614,7 @@ figure {
   .tabulation input[type="text"],
   .tabulation input[type="number"],
   .tabulation input[type="time"] {
-    width: 100px;
+    width: 110px;
     background: #fff;
     border: 1px solid #f78536;
     border-left: 5px solid #f78536;
@@ -628,6 +628,23 @@ figure {
   }
 
   .tabulation input[type="date"] {
+    width: 138px;
+    background: #fff;
+    border: 1px solid #f78536;
+    border-left: 5px solid #f78536;
+    box-shadow: none;
+    font-size: 14px;
+    padding: 5px 5px !important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form-control input[type="date"] {
     width: 138px;
     background: #fff;
     border: 1px solid #f78536;
@@ -2248,6 +2265,15 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 480px) {
+  .dropoffright {
+    float: none;
+    width: 68%;
+    margin-left: 163px;
+    margin-top: -95px;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .pickright {
     float: none;
     width: 68%;
@@ -2287,9 +2313,15 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 768px) {
-  .row-bottom-padded-md {
+  .row-bottom-padded-md1 {
     /* padding-bottom: 2em; */
     display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row-bottom-padded-md {
+    /* padding-bottom: 2em; */
+    display: block;
   }
 }
 
