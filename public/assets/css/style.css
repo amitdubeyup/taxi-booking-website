@@ -2265,9 +2265,17 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 480px) {
-  .dropoffright {
+  .dateright {
     float: none;
-    width: 100%;
+    width: 56%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dropright {
+    float: none;
+    width: 56%;
+    margin-top: -25px;
     /* margin-left: 163px;
     margin-top: -95px; */
   }
@@ -2275,10 +2283,10 @@ div.cs-select span {
 
 @media screen and (max-width: 480px) {
   .pickright {
-    float: none;
-    width: 100%;
-    /* margin-left: 163px;
-    margin-top: -95px; */
+    float: right;
+    width: 50%;
+    margin-top: -80px;
+    padding-right: 13px;
   }
 }
 
