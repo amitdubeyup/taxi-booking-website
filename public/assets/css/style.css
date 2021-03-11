@@ -614,7 +614,7 @@ figure {
   .tabulation input[type="text"],
   .tabulation input[type="number"],
   .tabulation input[type="time"] {
-    width: 110px;
+    /* width: 110px; */
     background: #fff;
     border: 1px solid #f78536;
     border-left: 5px solid #f78536;
@@ -628,7 +628,7 @@ figure {
   }
 
   .tabulation input[type="date"] {
-    width: 138px;
+    /* width: 138px; */
     background: #fff;
     border: 1px solid #f78536;
     border-left: 5px solid #f78536;
@@ -2267,18 +2267,18 @@ div.cs-select span {
 @media screen and (max-width: 480px) {
   .dropoffright {
     float: none;
-    width: 68%;
-    margin-left: 163px;
-    margin-top: -95px;
+    width: 100%;
+    /* margin-left: 163px;
+    margin-top: -95px; */
   }
 }
 
 @media screen and (max-width: 480px) {
   .pickright {
     float: none;
-    width: 68%;
-    margin-left: 163px;
-    margin-top: -95px;
+    width: 100%;
+    /* margin-left: 163px;
+    margin-top: -95px; */
   }
 }
 
