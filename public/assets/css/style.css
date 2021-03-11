@@ -2265,6 +2265,21 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 480px) {
+  .rightvehicle {
+    float: none;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .rightname {
+    width: 50%;
+    margin-top: -80px;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .vehicleright {
     margin-bottom: 0px;
   }
