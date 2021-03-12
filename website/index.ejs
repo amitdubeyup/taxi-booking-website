@@ -35,13 +35,13 @@
 						<div class="col-md-12 text-center animate-box mb-5">
 							<div class="featurecol1">
 								<span class=""><b class="featuretext">Featured One Way Routes : </b></span>
-								<ul id="myList"><% for(var i=0; i < total_routes.length; i++) { %>
+							    <% for(var i=0; i < total_routes.length; i++) { %>
 								
-									<li id="myListItems"><a class="featurea" href="/taxi-booking/<%= total_routes[i].page_url %>">
+								<a class="featurea" href="/taxi-booking/<%= total_routes[i].page_url %>">
 										<%= total_routes[i].route_name %> |
-									</a></li>
+									</a>
 								
-									<% } %></ul>
+									<% } %>
 							</div>
 						</div>
 					</div>
