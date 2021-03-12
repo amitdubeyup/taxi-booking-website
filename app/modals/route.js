@@ -3,7 +3,6 @@ const uuid = require("uuid");
 const Route = {
   document_id: null,
   page_url: null,
-  blog_url: null,
   page_title: null,
   page_description: null,
   page_keywords: null,
