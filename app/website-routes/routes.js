@@ -18,8 +18,8 @@ const instance = new Razorpay({
   key_secret: config.secret,
 });
 const crypto = require("crypto");
-
 router.get("/", function (req, res) {
+  const root_url = (req.headers.host == 'localhost:3000') ? 'http://localhost:3000' : 'https://www.nsgtaxi.com';
   RouteCollection.get()
     .then((routeSnapShot) => {
       const routeData = [];
@@ -51,6 +51,7 @@ router.get("/", function (req, res) {
                 });
                 res.render("index", {
                   api_key: config.google_api_key,
+                  root_url: root_url,
                   base_url: "https://www.nsgtaxi.com" + req.originalUrl,
                   title: pageData.title,
                   description: pageData.description,
@@ -72,33 +73,34 @@ router.get("/", function (req, res) {
                 });
               })
               .catch((error) => {
-                res.render("/");
+                res.render(root_url);
               });
           }
         })
         .catch((error) => {
-          res.render("/");
+          res.render(root_url);
         });
     })
     .catch((error) => {
-      res.render("/");
+      res.render(root_url);
     });
 });
 
 router.get("/taxi-booking/*", function (req, res) {
+  const root_url = (req.headers.host == 'localhost:3000') ? 'http://localhost:3000' : 'https://www.nsgtaxi.com';
   const page_url = req.originalUrl.split("/").reverse()[0];
   const route = req.originalUrl.split("/")[2].split("-");
-  let fromCity = route[0];
-  let toCity = route[2];
-  fromCity = fromCity[0].toUpperCase() + fromCity.slice(1);
-  toCity = toCity[0].toUpperCase() + toCity.slice(1);
+  let fromCity = route[0] ? route[0] : '';
+  let toCity = route[2] ? route[2] : '';
+  fromCity = fromCity ? fromCity[0].toUpperCase() + fromCity.slice(1) : '';
+  toCity = toCity ? toCity[0].toUpperCase() + toCity.slice(1) : '';
   RouteCollection.get()
     .then((routeSnapShot) => {
       const routeData = [];
       routeSnapShot.forEach((doc) => {
         routeData.push(doc.data());
       });
-      let pageData = null;
+      let pageData = {};
       routeData.forEach((element) => {
         if (element["page_url"] == page_url) {
           pageData = element;
@@ -128,13 +130,14 @@ router.get("/taxi-booking/*", function (req, res) {
           });
           res.render("index", {
             api_key: config.google_api_key,
+            root_url: root_url,
             base_url: "https://www.nsgtaxi.com" + req.originalUrl,
-            title: pageData.page_title,
-            description: pageData.page_description,
-            keywords: pageData.page_keywords,
-            content: pageData.page_content,
-            page_offer_title: pageData.page_offer_title,
-            page_offer_description: pageData.page_offer_description,
+            title: pageData['page_title'],
+            description: pageData['page_description'],
+            keywords: pageData['page_keywords'],
+            content: pageData['page_content'],
+            page_offer_title: pageData['page_offer_title'],
+            page_offer_description: pageData['page_offer_description'],
             page: "index",
             total_cars: _.groupBy(
               _.sortBy(carDetailsData, "car_type"),
@@ -149,11 +152,11 @@ router.get("/taxi-booking/*", function (req, res) {
           });
         })
         .catch((error) => {
-          res.render("/");
+          res.render(root_url);
         });
     })
     .catch((error) => {
-      res.render("/");
+      res.render(root_url);
     });
 });
 
@@ -863,6 +866,7 @@ function updatePaymentStatus(gatewayData) {
 
 // Handle 404 Page Start
 router.get("/*", function (req, res) {
+  const root_url = (req.headers.host == 'localhost:3000') ? 'http://localhost:3000' : 'https://www.nsgtaxi.com';
   RouteCollection.get()
     .then((routeSnapShot) => {
       const routeData = [];
@@ -897,6 +901,7 @@ router.get("/*", function (req, res) {
 
                 res.render("index", {
                   api_key: config.google_api_key,
+                  root_url: root_url,
                   base_url: "https://www.nsgtaxi.com" + req.originalUrl,
                   title: pageData.title,
                   description: pageData.description,
@@ -918,16 +923,16 @@ router.get("/*", function (req, res) {
                 });
               })
               .catch((error) => {
-                res.render("/");
+                res.render(root_url);
               });
           }
         })
         .catch((error) => {
-          res.render("/");
+          res.render(root_url);
         });
     })
     .catch((error) => {
-      res.render("/");
+      res.render(root_url);
     });
 });
 // Handle 404 Page End
