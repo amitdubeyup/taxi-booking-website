@@ -96,6 +96,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .tabulation .mtlabel {
+    width: 100%;
+    margin-top: -10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .tabulation .dropcity {
     margin-top: -10px;
   }

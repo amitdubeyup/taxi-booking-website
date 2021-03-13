@@ -791,6 +791,13 @@ select[name="gender"] {
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 480px) {
+  .pickuptime {
+    margin-top: 15px;
+    width: 50%;
+  }
+}
+
 .mt1 {
   margin-bottom: 10px;
   margin-top: 18px;
@@ -2264,26 +2271,33 @@ div.cs-select span {
   }
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .rightvehicle {
     float: none;
-    width: 50%;
+    width: 56%;
+    margin-bottom: 0px;
+  }
+} */
+
+@media screen and (max-width: 480px) {
+  .mtrightvehicle {
+    margin-top: 7px;
   }
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .rightname {
     width: 50%;
-    margin-top: -80px;
+    margin-top: -60px;
     float: right;
   }
-}
+} */
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .vehicleright {
     margin-bottom: 0px;
   }
-}
+} */
 
 @media screen and (max-width: 480px) {
   .dateright {
@@ -2292,15 +2306,14 @@ div.cs-select span {
   }
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .dropright {
     float: none;
     width: 56%;
     margin-top: -25px;
-    /* margin-left: 163px;
-    margin-top: -95px; */
+    
   }
-}
+} */
 
 @media screen and (max-width: 480px) {
   .pickright {
@@ -2311,11 +2324,11 @@ div.cs-select span {
   }
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .righttime {
     margin-left: 20px;
   }
-}
+} */
 
 .row-bottom-padded-lg {
   padding-bottom: 7em;
@@ -2881,6 +2894,9 @@ optgroup[label] {
 .featurea {
   color: black;
   display: -webkit-inline-box;
+  padding-block-start: 2px;
+  padding-block-end: 2px;
+  padding-inline: 5px;
 }
 
 /* mouse over link */
