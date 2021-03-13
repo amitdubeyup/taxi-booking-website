@@ -519,12 +519,12 @@
 
 
 /* Modal Popup For Offers */
-/* 
-.modal-open {
+
+.modala-open {
   padding: 8px 16px;
 }
 
-.modal {
+.modala {
   position: fixed;
   top: 0;
   left: 0;
@@ -535,7 +535,7 @@
   display: none;
 }
 
-.modal-content {
+.modala-content {
   background: #fff;
   margin-top: 130px;
   width: 24.5%;
@@ -544,7 +544,7 @@
   margin-right: 300px;
   border-radius: 4px;
   z-index: 4;
-} */
+}
 
 /* The Close Button */
 /* .close {
