@@ -22,7 +22,7 @@
 						<div class="nsg-taxi-cover" data-stellar-background-ratio="0.5"
 							style="background-image: url('/assets/images/cover_bg_1.jpg');">
 							<div class="desc" style="margin: -15rem 0;">
-								<div class="container">
+								<div class="container booking-container">
 									<% include booking-form.ejs %>
 								</div>
 							</div>
@@ -35,7 +35,7 @@
 						<div class="col-md-12 text-center animate-box mb-5">
 							<div class="featurecol1">
 								
-								<span class=""><b class="featuretext">Featured One Way Routes : </b></span>
+								<div class="feature-routes"><b class="featuretext">Featured One Way Routes</b></div>
 							    <% for(var i=0; i < 56; i++) { %>
 								
 								<a class="featurea" href="/taxi-booking/<%= total_routes[i].page_url %>">

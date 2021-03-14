@@ -31,15 +31,6 @@
   margin-top: 180px;
 }
 
-@media screen and (max-width: 620px) {
-  .specialmargin {
-    margin-top: 80px;
-  }
-  .specialmargin_round_trip {
-    margin-top: 180px;
-  }
-}
-
 .marginm {
   margin-top: 1180px;
 }
@@ -240,12 +231,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 992px) {
-}
-
 /*Offer Cards Section*/
 
 .specialoffer {
@@ -278,6 +263,7 @@
   transform: scale(1.05);
   box-shadow: 0 0 40px --10px rgba(0, 0, 0, 0.25);
 }
+
 .cardoffer:before {
   content: "";
   position: absolute;
@@ -321,21 +307,6 @@
   justify-content: center;
   align-items: center;
 }
-
-/*
-.mainoffer .image {
-  position: relative;
-  width: 65px;
-  height: 90px;
-  margin-top: 10px;
-  border-radius: 100%;
-  background: url("/public/assets/css/images/specill.gif") no-repeat center /
-    cover;
-  border: 4px solid #f78536;
-  margin-bottom: 1px;
-  overflow: hidden;
-}
-*/
 
 .offerhead {
   color: orange;
@@ -413,8 +384,7 @@
   width: 500px;
 }
 
-.book-wrap,
-.tc-wrap {
+.book-wrap, .tc-wrap {
   flex: 4;
   display: flex;
   justify-content: center;
@@ -422,8 +392,7 @@
   transition: 0.5s;
 }
 
-.book-wrap:hover,
-.tc-wrap:hover {
+.book-wrap:hover, .tc-wrap:hover {
   flex: 5;
 }
 
@@ -460,20 +429,13 @@
   border-radius: 18.1px;
 }
 
-
-
-
 .popupoffer {
   height: 500px;
 }
 
-
-  .tcs {
-    font-size: 15px;
-  }
+.tcs {
+  font-size: 15px;
 }
-
-
 
 .offertc {
   font-weight: 500;
@@ -499,26 +461,6 @@
 .viewmore {
   color: #f78536;
 }
-
-
-@media screen and (max-width: 620px) {
-  .containeroffer {
-    width: 100%;
-  }
-
-  .dest,
-  .dest0,
-  .dest1 {
-    font-size: 20px;
-  }
-  .cardoffer {
-    width: 80%;
-    margin: 2rem;
-  }
-}
-
-
-/* Modal Popup For Offers */
 
 .modala-open {
   padding: 8px 16px;
@@ -546,17 +488,85 @@
   z-index: 4;
 }
 
-/* The Close Button */
-/* .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+@media screen and (max-width: 620px) {
+  .header-container {
+    padding-right: 0px;
+  }
+  .specialmargin {
+    margin-top: 0px;
+  }
+  .specialmargin_round_trip {
+    margin-top: 180px;
+  }
+  .landingpage {
+    padding: 40px 20px 30px 20px;
+    margin-bottom: 0px;
+  }
+  .containeroffer {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding-top: 0px;
+  }
+  .containeroffer {
+    width: 100%;
+    padding: 10px;
+  }
+  .dest, .dest0, .dest1 {
+    font-size: 20px;
+  }
+  .cardoffer {
+    width: 100%;
+    margin: 10px auto;
+  }
+  #nsg-taxi-tours {
+    padding: 0em;
+  }
+  .featurecol1 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  .bookoffer {
+    padding: 10px 25px;
+    width: auto;
+    background: linear-gradient(to right, #ec7200 0%, #ec7200 140%);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    margin-right: 3px;
+  }
+  .specialoffers {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .deal {
+    font-size: 20px;
+    margin-left: 0px;
+    font-weight: bold;
+  }
+  .offer_title {
+    font-size: 20px;
+    text-align: center;
+  }
+  .booking-container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .nsg-taxi-cover .desc {
+    margin-top: -90px !important;
+  }
+  .feature-routes {
+    margin: 15px auto;
+  }
+  .featuretext {
+    font-size: 20px;
+  }
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-} */
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 992px) {}
