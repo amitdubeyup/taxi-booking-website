@@ -2269,10 +2269,7 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 480px) {
-  .col-xxs-12 {
-    float: none;
-    width: 100%;
-  }
+
 }
 
 /* @media screen and (max-width: 480px) {
