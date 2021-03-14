@@ -686,11 +686,14 @@ function selectTripType() {
     $("#pickup-date-section").removeClass("dateright");
     $("#drop-off-date-section").css("display", "block");
 
-    $("#pickup-date-section").addClass("col-xxs-6 col-xs-6 mt alternate dateright");
+    $("#pickup-date-section").addClass("col-xxs-6 col-xs-6 mt alternate");
     $("#drop-off-date-section").addClass("col-xxs-6 col-xs-6 mt alternate dropright");
-    $("#drop-off-date-section").css("display", "none");
-    $("#pickup-time-section").addClass("col-xxs-6 col-xs-6 mt pickright");
+    $("#drop-off-date-section").css("display", "block");
+    $("#pickup-time-section").addClass("col-xxs-6 col-xs-6 mt");
     $("#vehicle-type-section-one-way").addClass("col-xxs-12 col-xs-12 mt vehicleright");
+    $("#vehicle-type-section-one-way").css("display", "none");
+    $("#vehicle-type-section").addClass("col-xs-6 round-way-vehicle-section mtrightvehicle mt col-md-6 col-lg-6");
+    $("#vehicle-type-section").css("display", "block");
   } else {
     one_way_trip = 1;
     round_way_trip = 0;
