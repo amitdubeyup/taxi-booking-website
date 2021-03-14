@@ -2003,6 +2003,7 @@ div.cs-select span {
 #nsg-taxi-wrapper {
   overflow-x: hidden;
   position: relative;
+  box-shadow: 0px 0px 10px 0px #d2bebe;
 }
 
 .nsg-taxi-offcanvas {
