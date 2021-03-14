@@ -299,7 +299,6 @@
                   <input type="hidden" id="exact_drop_off_longitude" name="exact_drop_off_longitude" />
                 </div>
               </div>
-
               <br>
               <br>
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 distance">
@@ -314,7 +313,6 @@
                   </div>
                 </div>
               </div>
-
               <!-- New Distance -->
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 new-distance" style="display: none;">
                 <div class="input-field">
@@ -329,7 +327,6 @@
                 </div>
               </div>
               <!-- New Distance -->
-
               <!-- Extra Kms-->
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 extra-distance" style="display: none;">
                 <div class="input-field">
@@ -344,7 +341,6 @@
                 </div>
               </div>
               <!-- Extra Kms -->
-
               <!-- Per KM charge for extra distance-->
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-per-km" style="display: none;">
                 <div class="input-field">
@@ -359,7 +355,6 @@
                 </div>
               </div>
               <!-- Per KM charge for extra distance -->
-
               <!-- Extra Charges-->
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 extra-charge" style="display: none;">
                 <div class="input-field">
@@ -374,9 +369,7 @@
                 </div>
               </div>
               <!-- Extra Charges -->
-
               <div class="form-booking__dropup">
-
                 <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-start">
                   <div class="input-field">
                     <div class="left">Base Fare</div>
@@ -423,8 +416,6 @@
                   <div class="left">Total Fare<span class="faredetails" id="dropup-btn"
                       style="color: #ef6437; margin-left: 0rem; cursor: pointer;"> (Fare Details)</span>
                   </div>
-
-
                 </div>
               </div>
               <div class="col-xxs-6 col-xs-6 col-sm-6 col-md-6 fare-section-end">
@@ -437,7 +428,6 @@
               <br />
               <br />
               <br />
-
               <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt2">
                 <div class="input-field">
                   <div class="fare-note" id="fare-note">
@@ -447,7 +437,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="col-xxs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 mt1">
                 <div class="input-field1">
                   <input type="checkbox" class="checkbox-input" id="terms_and_conditions" name="terms_and_conditions"
@@ -469,67 +458,45 @@
     </div>
     <div class="col-sm-12 col-sm-push-1 col-md-7 col-md-push-1 offer-section" id="offer-section">
       <div class="desc2 animate-box">
-
-        <img src="<%=root_url %>/assets/images/bankoffers/paytm.svg"  width="600px" class="modal-open" data-modal="modal1" style="margin-top: -50px; cursor: pointer;" >
-    <br/>
-    <br/>
-    <img src="<%=root_url %>/assets/images/bankoffers/nsgtaxi.svg"  width="600px" class="modal-open" data-modal="modal2" style="cursor: pointer;" >
-    <br/>
-    <br/>
-    <img src="<%=root_url %>/assets/images/bankoffers/icici.svg"  width="600px" class="modal-open" data-modal="modal3" style="cursor: pointer;" >
-    
-      <!-- modals -->
-      <div class="modal" id="modal1">
-        <div class="modal-content">
-          <!-- <span class="close">&times;</span> -->
-          <div class="modal-body">
-            <img src="<%=root_url %>/assets/images/bankoffers/offerpaytm.svg"  height="400px" width="300px">
+        <img src="<%=root_url %>/assets/images/bankoffers/paytm.svg" width="600px" class="modal-open"
+          onclick="openModal('modal1')" style="margin-top: -50px; cursor: pointer;">
+        <br />
+        <br />
+        <img src="<%=root_url %>/assets/images/bankoffers/nsgtaxi.svg" width="600px" class="modal-open"
+        onclick="openModal('modal2')" style="cursor: pointer;">
+        <br />
+        <br />
+        <img src="<%=root_url %>/assets/images/bankoffers/icici.svg" width="600px" class="modal-open"
+        onclick="openModal('modal3')" style="cursor: pointer;">
+        <div class="modal fade opened-modal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1"
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog" role="document">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+              <img src="<%=root_url %>/assets/images/bankoffers/offerpaytm.svg" height="400px" width="300px">
+            </div>
           </div>
         </div>
-
-        <div class="modal" id="modal2">
-          <div class="modal-content">
-            <!-- <span class="close">&times;</span> -->
+        <div class="modal fade opened-modal" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2"
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog" role="document">
+            <span class="close">&times;</span>
             <div class="modal-body">
               <img src="<%=root_url %>/assets/images/bankoffers/offernsg.svg" height="400px" width="300px">
             </div>
           </div>
         </div>
-
-
-        <div class="modal" id="modal3">
-          <div class="modal-content">
-            <!-- <span class="close">&times;</span> -->
+        <div class="modal fade opened-modal" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modal3"
+        aria-hidden="true" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog" role="document">
+            <span class="close">&times;</span>
             <div class="modal-body">
               <img src="<%=root_url %>/assets/images/bankoffers/offericici.svg" height="400px" width="300px">
             </div>
           </div>
         </div>
       </div>
-        <script>
-                    //getting modal opening buttons
-                var modalBtns = document.querySelectorAll('.modal-open');
-
-                modalBtns.forEach(function(btn){
-                  btn.onclick = function(){
-                    var modal = btn.getAttribute('data-modal');
-
-                    document.getElementById(modal).style.display = "block";
-                  };
-                });
-
-                // var span = document.getElementsByClassName("close")[0];
-                // span.onclick = function () {
-                //                       modal.style.display = "none";
-                //                   }
-
-               (window).onclick = function (event) {
-                    if (event.target == modal) {
-                       modal.style.display = "none";
-                     }
-                }
-        </script>
-      </div>  
     </div>
+  </div>
   </div>
 </form>

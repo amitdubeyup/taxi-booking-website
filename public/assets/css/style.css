@@ -2912,3 +2912,16 @@ optgroup[label] {
 
 .offer_description {
 }
+
+#modal1 {
+  z-index: 9999999;
+  top: 40px;
+}
+#modal2 {
+  z-index: 9999999;
+  top: 40px;
+}
+#modal3 {
+  z-index: 9999999;
+  top: 40px;
+}
