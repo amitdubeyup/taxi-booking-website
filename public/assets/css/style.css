@@ -2306,7 +2306,7 @@ div.cs-select span {
 @media screen and (max-width: 480px) {
   .dateright {
     float: none;
-    width: 56%;
+    width: 50%;
   }
 }
 

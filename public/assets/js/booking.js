@@ -667,33 +667,30 @@ function selectTripType() {
   if (one_way_trip) {
     one_way_trip = 0;
     round_way_trip = 1;
-
     $("#vehicle-type-section").removeClass("col-xxs-12 col-xs-12 col-md-12 col-lg-12");
     $("#vehicle-type-section").addClass("col-xxs-12 col-xs-6 col-md-6 col-lg-6");
-
-
     $("#pickup-time-section").removeClass("pickright");
-
     $(".featured-trip").css("display", "none");
     $("#vehicle-type-section-one-way").css("display", "none");
     $(".proper_location_one_way").css("display", "none");
-
     $(".state-tax").css("display", "none");
     $(".toll-tax").css("display", "none");
     $(".extra-charge").css("display", "none");
     $(".fare-per-km").css("display", "none");
     $(".extra-distance").css("display", "none");
     $(".new-distance").css("display", "none");
-
     $(".round-way-vehicle-section").css("display", "block");
     $(".proper_location_round_way").css("display", "block");
-
     $('.specialmargin').css('margin-top', '80px');
-
     $("#pickup-date-section").removeClass("col-xxs-12");
-    // $("#drop-off-date-section").css("display", "block");
-    $("#drop-off-date-section").css("display", "none");
+    $("#pickup-date-section").removeClass("dateright");
+    $("#drop-off-date-section").css("display", "block");
 
+    $("#pickup-date-section").addClass("col-xxs-6 col-xs-6 mt alternate dateright");
+    $("#drop-off-date-section").addClass("col-xxs-6 col-xs-6 mt alternate dropright");
+    $("#drop-off-date-section").css("display", "none");
+    $("#pickup-time-section").addClass("col-xxs-6 col-xs-6 mt pickright");
+    $("#vehicle-type-section-one-way").addClass("col-xxs-12 col-xs-12 mt vehicleright");
   } else {
     one_way_trip = 1;
     round_way_trip = 0;
@@ -702,34 +699,36 @@ function selectTripType() {
     $(".specialmargin").removeClass("specialmargin");
     $("#drop-off-date-section").css("display", "none");
     $("#pickup_date").parent().parent().removeClass("col-xxs-12");
-
     $("#vehicle-type-section").addClass(
       "col-xxs-12 col-xs-12 col-md-12 col-lg-12"
     );
     $("#vehicle-type-section").removeClass(
       "col-xxs-12 col-xs-6 col-md-6 col-lg-6"
     );
-
     $(".featured-trip").css("display", "block");
     $("#vehicle-type-section-one-way").css("display", "block");
     $(".proper_location_one_way").css("display", "block");
-
     $(".round-way-vehicle-section").css("display", "none");
     $(".proper_location_round_way").css("display", "none");
+
+    $("#pickup-date-section").addClass("col-xxs-6 col-xs-6 mt alternate dateright");
+    $("#drop-off-date-section").addClass("col-xxs-6 col-xs-6 mt alternate dropright");
+    $("#drop-off-date-section").css("display", "none");
+    $("#pickup-time-section").addClass("col-xxs-6 col-xs-6 mt pickright");
+    $("#vehicle-type-section-one-way").addClass("col-xxs-12 col-xs-12 mt vehicleright");
+
   }
   $("#pricing-section").css("display", "none");
   $("#distance-section").css("display", "none");
   $("#offer-section").css("display", "block");
   $("#one_way_trip").val(one_way_trip);
-  $("#round_way_trip").val(round_way_trip);
   $("#one_way_trip").prop("checked", one_way_trip);
+  $("#round_way_trip").val(round_way_trip);
   $("#round_way_trip").prop("checked", round_way_trip);
-
-  //Change location of this code
   $('.specialmargin').css('margin-top', '180px');
-
   $("#pickup-time-section").removeClass("col-xxs-12");
   $("#vehicle-type-section").removeClass("col-xxs-12");
+  console.log(one_way_trip, round_way_trip);
 
   selectVehicleType();
   calculateAmount();
@@ -879,6 +878,8 @@ function calculateAmount() {
       "col-xxs-12 col-xs-12 col-md-12 col-lg-12 mt"
     );
     return showNextForm();
+  } else {
+
   }
 
   if (vehicle_details) {
