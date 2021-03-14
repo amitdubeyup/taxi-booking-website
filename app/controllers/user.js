@@ -609,6 +609,14 @@ function verifyBookingUserAccount(req, res) {
                 success: true,
                 message: "User verified successfully!",
                 token: tokenData,
+                data: {
+                  salutation: userData["salutation"],
+                  first_name: userData["first_name"],
+                  last_name: userData["last_name"],
+                  gender: userData["gender"],
+                  mobile: userData["mobile"],
+                  email: userData["email"]
+                }
               });
             } else {
               sendBookingVerificationCode(req, res);

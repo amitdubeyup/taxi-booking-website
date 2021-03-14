@@ -876,15 +876,12 @@ function selectVehicleName() {
 
 function calculateAmount() {
   $('#drop_off_address').addClass("dateright")
-
-  $('#drop-off-date-section').css("display", "inline-block");
-  $('#drop-off-date-section').css("width", "42.5%");
-  $('#pickup-date-section').css("display", "inline-block");
-  $('#pickup-date-section').css("width", "53%");
-  $('#vehicle-type-section').css("width", "50%");
-
   const one_way_trip = parseInt($("#one_way_trip").val());
   if (one_way_trip) {
+    $("#drop-off-date-section").css("display", "none");
+    $("#vehicle-type-section").addClass(
+      "col-xxs-12 col-xs-12 col-md-12 col-lg-12 mt"
+    );
     return showNextForm();
   }
 
