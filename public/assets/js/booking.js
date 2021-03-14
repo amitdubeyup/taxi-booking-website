@@ -179,8 +179,6 @@ function exactPickupAddressAutoComplete() {
   );
   autocomplete.addListener("place_changed", () => {
     var place = autocomplete.getPlace();
-    console.log(place.formatted_address);
-    console.log($("#pickup_city").val());
     var actual_pickup = (place.formatted_address).toLowerCase().replace(/,/g, ' ').split(' ').map((val) => val.trim());
     var pickup_city = ($("#pickup_city").val()).toLowerCase().replace(/,/g, ' ').split(' ').map((val) => val.trim());
     var address_matched = actual_pickup.indexOf(pickup_city[0]);
@@ -208,8 +206,6 @@ function exactDropOffAddressAutoComplete() {
   );
   autocomplete.addListener("place_changed", () => {
     const place = autocomplete.getPlace();
-    console.log(place.formatted_address);
-    console.log($("#drop_city").val());
     var actual_drop_off = (place.formatted_address).toLowerCase().replace(/,/g, ' ').split(' ').map((val) => val.trim());
     var drop_city = ($("#drop_city").val()).toLowerCase().replace(/,/g, ' ').split(' ').map((val) => val.trim());
     var address_matched = actual_drop_off.indexOf(drop_city[0]);
