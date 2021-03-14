@@ -865,6 +865,10 @@ div.cs-select span {
   padding: 4em 0em;
 }
 
+#nsg-taxi-features {
+  padding: 4em 0 !important;
+}
+
 #nsg-taxi-tours {
   padding: 0em;
 }
@@ -889,7 +893,7 @@ div.cs-select span {
 
 .landingpage {
   padding: 40px;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
 }
 
 .deal {
@@ -2676,6 +2680,7 @@ label a {
 
 .popular-searches-keywords {
   color: rgba(255, 255, 255, 0.5);
+  margin: 30px;
 }
 
 @media (max-width: 450px) {
@@ -2872,7 +2877,7 @@ optgroup[label] {
   width: 94%;
   margin: auto;
   margin-bottom: 100px;
-  margin-top: 100px;
+  margin-top: 30px;
   background: white;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
