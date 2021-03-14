@@ -675,7 +675,7 @@ function selectTripType() {
     
     $("#vehicle-type-section").removeClass("col-xxs-12 col-xs-12 col-md-12 col-lg-12");
     $("#vehicle-type-section").addClass("col-xxs-12 col-xs-6 col-md-6 col-lg-6");
-    $("#drop-off-date-section").removeClass("col-xxs-12 col-xs-6 mt alternate dropright");
+    
 
     $("#pickup-time-section").removeClass("pickright");
 
@@ -696,14 +696,15 @@ function selectTripType() {
     $('.specialmargin').css('margin-top','80px');
 
     $("#pickup-date-section").removeClass("col-xxs-12");
-    $("#drop-off-date-section").css("display", "block");
+    // $("#drop-off-date-section").css("display", "block");
+    $("#drop-off-date-section").css("display", "none");
 
   } else {
     one_way_trip = 1;
     round_way_trip = 0;
+    // $("#drop-off-date-section").removeClass("col-xxs-12 col-xs-6 mt alternate dropright");
     $(".specialmargin").addClass("specialmargin_round_trip");
     $(".specialmargin").removeClass("specialmargin");
-    
     $("#drop-off-date-section").css("display", "none");
     $("#pickup_date").parent().parent().removeClass("col-xxs-12");
 
