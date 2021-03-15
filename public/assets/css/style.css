@@ -2270,7 +2270,6 @@ div.cs-select span {
 }
 
 @media screen and (max-width: 480px) {
-
 }
 
 /* @media screen and (max-width: 480px) {
@@ -2793,10 +2792,9 @@ optgroup[label] {
 @media screen and (max-width: 620px) {
   .form-booking__dropup {
     width: 90%;
-    display: none;
     position: absolute;
     background-color: white;
-    top: 560px;
+    top: 200px;
     z-index: 1;
     width: 80%;
     left: 50px;
