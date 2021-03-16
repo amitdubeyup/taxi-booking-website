@@ -2680,6 +2680,13 @@ label a {
   margin: 30px;
 }
 
+@media screen and (min-width: 0px) and (max-width: 1800px) {
+  .address_mobile{ display: none; }  /* show it on large screen */
+}
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .address_mobile{ display: block; }   /* hide it small screens */
+}
+
 @media (max-width: 450px) {
   .modal-body {
     padding: 25px 15px;
