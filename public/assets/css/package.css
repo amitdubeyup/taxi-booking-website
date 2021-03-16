@@ -31,9 +31,9 @@
   margin-top: 0px;
 }
 
-.marginm {
+/* .marginm {
   margin-top: 1180px;
-}
+} */
 
 .usericon {
   margin-top: 10px;
@@ -508,7 +508,7 @@
   }
   .containeroffer {
     width: 100%;
-    padding: 10px;
+    padding: 50px;
   }
   .dest, .dest0, .dest1 {
     font-size: 20px;
