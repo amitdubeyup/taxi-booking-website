@@ -80,6 +80,16 @@
   font-size: 20px;
 }
 
+@media screen and (min-width: 0px) and (max-width: 1800px) {
+  .container_mobile_routes {
+    display: none;
+  } /* show it on large screen */
+}
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .container_mobile_routes {
+    display: block;
+  } /* hide it small screens */
+}
 .package-location {
   font-size: 14px;
   color: #8b8dd2;
@@ -384,7 +394,8 @@
   width: 500px;
 }
 
-.book-wrap, .tc-wrap {
+.book-wrap,
+.tc-wrap {
   flex: 4;
   display: flex;
   justify-content: center;
@@ -392,7 +403,8 @@
   transition: 0.5s;
 }
 
-.book-wrap:hover, .tc-wrap:hover {
+.book-wrap:hover,
+.tc-wrap:hover {
   flex: 5;
 }
 
@@ -510,7 +522,9 @@
     width: 100%;
     padding: 50px;
   }
-  .dest, .dest0, .dest1 {
+  .dest,
+  .dest0,
+  .dest1 {
     font-size: 20px;
   }
   .cardoffer {
@@ -567,6 +581,8 @@
   }
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+}
 
-@media screen and (max-width: 992px) {}
+@media screen and (max-width: 992px) {
+}

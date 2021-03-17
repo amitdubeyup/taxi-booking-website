@@ -2681,10 +2681,14 @@ label a {
 }
 
 @media screen and (min-width: 0px) and (max-width: 1800px) {
-  .address_mobile{ display: none; }  /* show it on large screen */
+  .address_mobile {
+    display: none;
+  } /* show it on large screen */
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
-  .address_mobile{ display: block; }   /* hide it small screens */
+  .address_mobile {
+    display: block;
+  } /* hide it small screens */
 }
 
 @media (max-width: 450px) {
@@ -2891,6 +2895,21 @@ optgroup[label] {
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 11%);
 }
 
+.featurecol2 {
+  width: 10%;
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: 30px;
+  background: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 15px;
+  -webkit-box-shadow: 0 3px 8px 0 rgb(0 0 0 / 11%);
+  -moz-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.11);
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 11%);
+}
+
 .featuretext {
   background: linear-gradient(to right, orange 0%, rgba(250, 8, 8, 0.815) 100%);
   -webkit-background-clip: text;
@@ -2902,8 +2921,8 @@ optgroup[label] {
 .featurea {
   color: black;
   display: -webkit-inline-box;
-  padding-block-start: 2px;
-  padding-block-end: 2px;
+  /* padding-block-start: 2px;
+  padding-block-end: 2px; */
   padding-inline: 5px;
 }
 
@@ -2932,4 +2951,87 @@ optgroup[label] {
 #modal3 {
   z-index: 9999999;
   top: 40px;
+}
+
+/* .text-container {
+  width: 100%;
+  height: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+}
+
+.text {
+  color: blue;
+  font-size: 25px;
+  font-weight: 550;
+  text-transform: uppercase;
+  text-align: center;
+} */
+
+.row_mobile {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
+  justify-content: center;
+}
+
+/* .profile-card {
+  background-color: white;
+  width: 250px;
+  height: 80px;
+  margin: 20px 10px 10px 10px;
+  border-radius: 5px;
+  margin-left: 150px;
+} */
+
+/* .card-content {
+  padding: 15px;
+}
+
+.desc {
+  text-align: center;
+}
+
+.desc h2 {
+  color: black;
+}
+
+a {
+  color: black;
+  padding: 5px;
+} */
+
+.buttons-wrapoffer_mobile {
+  display: flex;
+  margin-left: 200px;
+  padding: 15px;
+  height: 50px;
+  width: 500px;
+}
+
+.book-wrap_mobile {
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.bookoffer_mobile {
+  padding: 9.6px 0;
+  width: 30%;
+  background: linear-gradient(to right, #ec7200 0%, #ec7200 140%);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 18.1px;
+  margin-right: 300px;
+  margin-top: 35px;
 }
