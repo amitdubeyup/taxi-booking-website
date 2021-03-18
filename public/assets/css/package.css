@@ -581,8 +581,13 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 1800px) {
+  .featurecol1 {
+    display: block;
+  } /* show it on large screen */
 }
-
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .featurecol1 {
+    display: none;
+  } /* hide it small screens */
 }
