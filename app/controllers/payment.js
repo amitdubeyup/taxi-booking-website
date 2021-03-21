@@ -326,6 +326,8 @@ function createOrder(req, res) {
         params['customer_contact'] = req.body.customer_contact;
         PaymentCollection.doc(params.document_id).set(params).then((responseTwo) => {
             const data = {
+                booking_id: req.body.receipt,
+                payment_id: params.document_id,
                 key: config.key,
                 amount: params['amount'],
                 currency: config.currency,
@@ -1446,6 +1448,7 @@ function returnBookingTransactionData(data) {
         instance.orders
             .fetchPayments(data.razorpay_order_id)
             .then((orderResponse) => {
+                console.log('Order Response: ', orderResponse);
                 if (orderResponse["items"].length) {
                     const orderData = orderResponse["items"][0];
                     PaymentCollection.where("id", "==", data.razorpay_order_id)
@@ -1458,6 +1461,7 @@ function returnBookingTransactionData(data) {
                                 paymentResponse.forEach((doc) => {
                                     paymentData.push(doc.data());
                                 });
+                                console.log('Payment Data: ', paymentData);
                                 BookingCollection.where(
                                     "document_id",
                                     "==",
@@ -1472,6 +1476,7 @@ function returnBookingTransactionData(data) {
                                             bookingResponse.forEach((doc) => {
                                                 bookingData.push(doc.data());
                                             });
+                                            console.log('Booking Data: ', bookingData);
                                             resolve({
                                                 order: orderData,
                                                 payment: paymentData[0],
@@ -1511,59 +1516,64 @@ function generateValidateSignature(signatureData) {
 }
 
 function updatePaymentStatus(req, res) {
+    console.log(req.body);
+    console.log(generateValidateSignature(req.body));
     if (generateValidateSignature(req.body)) {
         returnBookingTransactionData(req.body)
             .then((response) => {
+                console.log(req.body);
                 updateFinalStatus(response);
                 if (
                     response.order.status == "captured" ||
                     response.order.status == "authorized"
                 ) {
+                    const successData = {
+                        transaction_status: "success",
+                        transaction_amount: parseInt(response.order.amount / 100, 10),
+                        transaction_id: response.payment.id,
+                        first_name: response.booking.first_name,
+                        last_name: response.booking.last_name,
+                        gender: response.booking.gender,
+                        mobile: response.booking.mobile,
+                        email: response.booking.email,
+                        pickup_address: response.booking.pickup_address,
+                        drop_off_address: response.booking.drop_off_address,
+                        trip_type: parseInt(response.booking.round_way_trip, 10)
+                            ? "Round Way"
+                            : "One Way",
+                        car_type: response.booking.car_type,
+                        actual_distance: response.booking.actual_distance,
+                        pickup_date: response.booking.pickup_date,
+                        pickup_time: response.booking.pickup_time,
+                        booking_id: response.booking.created_at,
+                    };
                     res.status(200);
                     return res.json({
                         success: true,
                         message: 'Transaction Success',
-                        data: {
-                            transaction_status: "success",
-                            transaction_amount: parseInt(response.order.amount / 100, 10),
-                            transaction_id: response.payment.id,
-                            first_name: response.booking.first_name,
-                            last_name: response.booking.last_name,
-                            gender: response.booking.gender,
-                            mobile: response.booking.mobile,
-                            email: response.booking.email,
-                            pickup_address: response.booking.pickup_address,
-                            drop_off_address: response.booking.drop_off_address,
-                            trip_type: parseInt(response.booking.round_way_trip, 10)
-                                ? "Round Way"
-                                : "One Way",
-                            car_type: response.booking.car_type,
-                            actual_distance: response.booking.actual_distance,
-                            pickup_date: response.booking.pickup_date,
-                            pickup_time: response.booking.pickup_time,
-                            booking_id: response.booking.created_at,
-                        }
+                        data: successData
                     });
                 } else {
                     res.status(400);
                     return res.json({
                         success: false,
-                        message: 'Transaction Failed'
+                        message: 'Transaction Failed 3'
                     });
                 }
             })
             .catch((error) => {
+                console.log(error);
                 res.status(400);
                 return res.json({
                     success: false,
-                    message: 'Transaction Failed'
+                    message: 'Transaction Failed 2'
                 });
             });
     } else {
         res.status(400);
         return res.json({
             success: false,
-            message: 'Transaction Failed'
+            message: 'Transaction Failed 1'
         });
     }
 }
