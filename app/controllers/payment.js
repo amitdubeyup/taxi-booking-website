@@ -1448,7 +1448,6 @@ function returnBookingTransactionData(data) {
         instance.orders
             .fetchPayments(data.razorpay_order_id)
             .then((orderResponse) => {
-                console.log('Order Response: ', orderResponse);
                 if (orderResponse["items"].length) {
                     const orderData = orderResponse["items"][0];
                     PaymentCollection.where("id", "==", data.razorpay_order_id)
@@ -1461,7 +1460,6 @@ function returnBookingTransactionData(data) {
                                 paymentResponse.forEach((doc) => {
                                     paymentData.push(doc.data());
                                 });
-                                console.log('Payment Data: ', paymentData);
                                 BookingCollection.where(
                                     "document_id",
                                     "==",
@@ -1476,7 +1474,6 @@ function returnBookingTransactionData(data) {
                                             bookingResponse.forEach((doc) => {
                                                 bookingData.push(doc.data());
                                             });
-                                            console.log('Booking Data: ', bookingData);
                                             resolve({
                                                 order: orderData,
                                                 payment: paymentData[0],
@@ -1516,12 +1513,9 @@ function generateValidateSignature(signatureData) {
 }
 
 function updatePaymentStatus(req, res) {
-    console.log(req.body);
-    console.log(generateValidateSignature(req.body));
     if (generateValidateSignature(req.body)) {
         returnBookingTransactionData(req.body)
             .then((response) => {
-                console.log(req.body);
                 updateFinalStatus(response);
                 if (
                     response.order.status == "captured" ||
@@ -1557,7 +1551,7 @@ function updatePaymentStatus(req, res) {
                     res.status(400);
                     return res.json({
                         success: false,
-                        message: 'Transaction Failed 3'
+                        message: 'Transaction Failed'
                     });
                 }
             })
@@ -1566,14 +1560,14 @@ function updatePaymentStatus(req, res) {
                 res.status(400);
                 return res.json({
                     success: false,
-                    message: 'Transaction Failed 2'
+                    message: 'Transaction Failed'
                 });
             });
     } else {
         res.status(400);
         return res.json({
             success: false,
-            message: 'Transaction Failed 1'
+            message: 'Transaction Failed'
         });
     }
 }
