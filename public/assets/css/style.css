@@ -3049,3 +3049,7 @@ a {
 .specialroutes {
   margin-top: 100px;
 }
+
+.routes_link:hover {
+  color: orange;
+}
