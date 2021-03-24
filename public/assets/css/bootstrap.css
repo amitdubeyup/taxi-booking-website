@@ -8164,10 +8164,11 @@ button.close {
 
 /*# sourceMappingURL=bootstrap.css.map */
 .routes_link {
-  color: #747474 !important;
+  color: #747474;
   line-height: 2;
   font-size: 15px;
 }
+
 .margin1 {
   margin-top: 50px;
 }
