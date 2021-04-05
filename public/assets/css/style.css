@@ -2038,7 +2038,7 @@ div.cs-select span {
 @media screen and (min-width: 375px) {
   .header-phone-icon {
     display: flex;
-    margin-left: 12rem;
+    margin-left: 5rem;
     background-color: #f78536;
     height: 36px;
     width: 36px;
