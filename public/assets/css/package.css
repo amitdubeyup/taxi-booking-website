@@ -90,6 +90,18 @@
     display: block;
   } /* hide it small screens */
 }
+
+@media screen and (min-width: 0px) and (max-width: 1800px) {
+  .playstore {
+    display: block;
+  } /* show it on large screen */
+}
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .playstore {
+    display: none;
+  } /* hide it small screens */
+}
+
 .package-location {
   font-size: 14px;
   color: #8b8dd2;
