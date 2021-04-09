@@ -3054,6 +3054,8 @@ a {
   color: orange;
 }
 
+/* PLAYSTORE CSS */
+
 .gradient_red {
   color: #fff !important;
   background: #01a088;
@@ -3329,4 +3331,14 @@ a {
 
 .bg-orange {
   background: orange;
+}
+
+/* @media screen and (max-width: 480px) {
+  .header_logo {
+    width: 50px;
+  }
+} */
+
+.playstore {
+  margin-top: 100px;
 }
