@@ -94,14 +94,7 @@ function loginUser(req, res) {
                 success: true,
                 message: "Logged in successfully!",
                 token: tokenData,
-                data: {
-                  salutation: userData["salutation"],
-                  first_name: userData["first_name"],
-                  last_name: userData["last_name"],
-                  gender: userData["gender"],
-                  mobile: userData["mobile"],
-                  email: userData["email"]
-                }
+                data: payload
               });
             } else {
               return res.status(400).json({
