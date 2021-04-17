@@ -2038,6 +2038,7 @@ div.cs-select span {
 
 @media screen and (min-width: 375px) {
   .header-phone-icon {
+    /* margin-top: 10px; */
     display: flex;
     margin-left: 5rem;
     background-color: #f78536;
@@ -2254,7 +2255,7 @@ div.cs-select span {
 
 .nsg-taxi-nav-toggle {
   position: absolute;
-  /* top: 0px; */
+
   right: 0px;
   z-index: 9999;
   display: block;
@@ -2772,7 +2773,7 @@ optgroup[label] {
 @media (max-width: 768px) {
   #nsg-taxi-logo,
   .nsg-taxi-nav-toggle {
-    margin: 0.8rem;
+    /* margin: 0.8rem 0 1.8rem; */
   }
   #nsg-taxi-logo {
     margin-top: 10px;
