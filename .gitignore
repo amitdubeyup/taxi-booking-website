@@ -1,3 +1,4 @@
 node_modules
 todo.css
-package-lock.json
+package-lock.jsongoogle-config.json
+.env
